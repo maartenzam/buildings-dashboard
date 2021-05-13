@@ -9,13 +9,13 @@
 
 <div class="flexy">
   <div class="top-app-bar-container">
-    <TopAppBar variant="static" color="secondary" dense>
+    <TopAppBar variant="static" color="primary">
       <Row>
         <Section>
           <Title>ECF Buildings Dashboard</Title>
         </Section>
         <Section align="end">
-          <img src="./logo-ecf@2x.png" alt="ECF logo" height="100%" />
+          <img src="./ecf-logo-white.png" alt="ECF logo" height="100%" />
         </Section>
       </Row>
     </TopAppBar>
