@@ -7,7 +7,7 @@
   <TopAppBar variant="static" color="primary" dense>
     <Row>
       <Section>
-        <Router>
+        <Router primary={false}>
           <Link to="/">
             <Title>ECF Buildings Dashboard</Title>
           </Link>
@@ -15,7 +15,7 @@
       </Section>
       <Section align="end">
         <Router>
-          <Link to="about">Go to about</Link>
+          <Link to="country/Belgium">Belgium</Link>
         </Router>
         <img src="./ecf-logo-white.png" alt="ECF logo" height="100%" />
       </Section>
