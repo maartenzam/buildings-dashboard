@@ -42,11 +42,15 @@
           {/each}
         </Select>
       </div>
-      <pre class="status">Selected: {value}</pre>
-      <pre class="status">Selected: {units}</pre>
+      <!--pre class="status">Selected: {value}</pre>
+      <pre class="status">Selected: {units}</pre-->
     </div>
     <div class="right">
-      <p>Under construction, by {name}</p>
+      <h2>Selected indicator name</h2>
+      <p>
+        Under construction, by {name}, and lots and lots more text to see how it
+        wraps. And even more text
+      </p>
     </div>
   </main>
 
@@ -67,6 +71,7 @@
   }
   main {
     display: flex;
+    flex-wrap: wrap-reverse;
     flex: 1;
     padding: 0;
     margin: 0 auto;
@@ -75,12 +80,14 @@
 
   .left {
     border-right: 1px solid #f8f7f7;
-    flex: 7;
+    flex: 100000 0 400px;
     position: relative;
+    min-height: 500px;
   }
   .right {
-    flex: 3;
-    padding: 2rem;
+    flex: 1 10000 300px;
+    padding: 1rem;
+    width: 100%;
   }
   .select-container {
     position: absolute;
