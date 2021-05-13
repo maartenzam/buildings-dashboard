@@ -21,7 +21,11 @@
   },
   "dependencies": {
     "@smui/button": "^4.2.0",
+    "@smui/icon-button": "^4.2.0",
     "@smui/select": "^4.2.0",
+    "@smui/top-app-bar": "^4.2.0",
+    "install": "^0.13.0",
+    "npm": "^7.12.1",
     "sirv-cli": "^1.0.0"
   }
 }
