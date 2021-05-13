@@ -4,12 +4,14 @@
 
   let fruits = ["A failure", "Meh", "Great", "Awesome"];
   let value = "Great";
+  let options = ["Absolute", "Relative"];
+  let units = "Absolute";
   export let name;
 </script>
 
-<div class="flexy">
-  <div class="top-app-bar-container">
-    <TopAppBar variant="static" color="primary">
+<div class="wrapper">
+  <nav class="top-app-bar-container">
+    <TopAppBar variant="static" color="primary" dense>
       <Row>
         <Section>
           <Title>ECF Buildings Dashboard</Title>
@@ -19,36 +21,68 @@
         </Section>
       </Row>
     </TopAppBar>
-  </div>
+  </nav>
 
   <main>
-    <h1>ECF Buildings dashboard</h1>
-    <p>Under construction, by {name}</p>
-    <div>
-      <Select bind:value label="This is going to be">
-        {#each fruits as fruit}
-          <Option value={fruit}>{fruit}</Option>
-        {/each}
-      </Select>
+    <div class="left">
+      <div class="select-container">
+        <Select bind:value label="This is going to be">
+          {#each fruits as fruit}
+            <Option value={fruit}>{fruit}</Option>
+          {/each}
+        </Select>
 
+        <Select bind:value={units} label="Units">
+          {#each options as opt}
+            <Option value={opt}>{opt}</Option>
+          {/each}
+        </Select>
+      </div>
       <pre class="status">Selected: {value}</pre>
+      <pre class="status">Selected: {units}</pre>
+    </div>
+    <div class="right">
+      <p>Under construction, by {name}</p>
     </div>
   </main>
+
+  <footer>Footer</footer>
 </div>
 
 <style>
-  main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
   }
 
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
+  .top-app-bar-container {
+    width: 100%;
+    display: inline-flex;
+    flex-direction: column;
+  }
+  main {
+    display: flex;
+    flex: 1;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .left {
+    border-right: 1px solid #f8f7f7;
+    flex: 7;
+    padding: 2rem;
+  }
+  .right {
+    flex: 3;
+    padding: 2rem;
+  }
+  footer {
+    width: 100%;
+    height: 30px;
+    background-color: #f8f7f7;
+    text-align: center;
   }
 
   @media (min-width: 640px) {
