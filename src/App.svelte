@@ -7,6 +7,9 @@
   let options = ["Absolute", "Relative"];
   let units = "Absolute";
   export let name;
+
+  let width = "100%";
+  let height = "100%";
 </script>
 
 <div class="wrapper">
@@ -25,6 +28,7 @@
 
   <main>
     <div class="left">
+      <svg {width} {height} />
       <div class="select-container">
         <Select bind:value label="This is going to be">
           {#each fruits as fruit}
@@ -72,11 +76,16 @@
   .left {
     border-right: 1px solid #f8f7f7;
     flex: 7;
-    padding: 2rem;
+    position: relative;
   }
   .right {
     flex: 3;
     padding: 2rem;
+  }
+  .select-container {
+    position: absolute;
+    left: 1rem;
+    top: 0rem;
   }
   footer {
     width: 100%;
