@@ -1,6 +1,7 @@
 <script>
   import { Router, Link, Route } from "svelte-navigator";
   import Home from "./routes/Home.svelte";
+  import About from "./routes/About.svelte";
   import TopBar from "./TopBar.svelte";
   import Footer from "./Footer.svelte";
 </script>
@@ -8,7 +9,12 @@
 <div class="wrapper">
   <TopBar />
   <main>
-    <Home />
+    <Router>
+      <Route path="/">
+        <Home />
+      </Route>
+      <Route path="/about" component={About} />
+    </Router>
   </main>
   <Footer />
 </div>
