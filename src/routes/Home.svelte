@@ -2,6 +2,8 @@
   import Select, { Option } from "@smui/select";
   import { fecGdpDataSet } from "./../data/DataStore.js";
   import indicators from "./../data/Indicators.js";
+  import TrendChart from "./../TrendChart.svelte";
+  import { onMount } from "svelte";
 
   let indicatorValue = "fec";
   $: unitsOptions = indicators.filter(
@@ -10,12 +12,31 @@
 
   let unitsValue = "absolute";
 
-  let width = "100%";
-  let height = "100%";
+  //let width = "100%";
+  //let height = "100%";
+  let width;
+  let height;
+
+  $: dataMap = {
+    fec: {
+      data: $fecGdpDataSet.byCountry,
+      absolute: "values",
+      relative: "relative",
+    },
+  };
+
+  $: countryData = dataMap[indicatorValue].data;
 </script>
 
 <div class="left">
-  <svg {width} {height} />
+  <!--svg {width} {height} /-->
+  <div
+    class="chart-wrapper"
+    bind:offsetWidth={width}
+    bind:offsetHeight={height}
+  >
+    <TrendChart {width} {height} {countryData} />
+  </div>
   <div class="select-container">
     <Select
       bind:value={indicatorValue}
@@ -59,9 +80,13 @@
 <style>
   .left {
     border-right: 1px solid #f8f7f7;
-    flex: 100000 0 400px;
+    flex: 100000 0 200px;
     position: relative;
-    min-height: 500px;
+    min-height: 300px;
+  }
+  .chart-wrapper {
+    width: 160px;
+    height: 160px;
   }
   .right {
     flex: 1 10000 300px;
