@@ -1,5 +1,6 @@
 <script>
   import Select, { Option } from "@smui/select";
+  import { fecGdpDataSet } from "./../data/DataStore.js";
 
   let fruits = ["A failure", "Meh", "Great", "Awesome"];
   let value = "Great";
