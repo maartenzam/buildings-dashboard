@@ -1,11 +1,14 @@
 <script>
   import Select, { Option } from "@smui/select";
   import { fecGdpDataSet } from "./../data/DataStore.js";
+  import indicators from "./../data/Indicators.js";
 
-  let fruits = ["A failure", "Meh", "Great", "Awesome"];
-  let value = "Great";
-  let options = ["Absolute", "Relative"];
-  let units = "Absolute";
+  let indicatorValue = "fec";
+  $: unitsOptions = indicators.filter(
+    (d) => d.indicatorCode === indicatorValue
+  )[0].indicatorUnits;
+
+  let unitsValue = "absolute";
 
   let width = "100%";
   let height = "100%";
@@ -14,26 +17,42 @@
 <div class="left">
   <svg {width} {height} />
   <div class="select-container">
-    <Select bind:value label="This is going to be">
-      {#each fruits as fruit}
-        <Option value={fruit}>{fruit}</Option>
+    <Select
+      bind:value={indicatorValue}
+      label="Indicator"
+      style={"width: 300px;"}
+    >
+      {#each indicators as indicator}
+        <Option value={indicator.indicatorCode}
+          >{indicator.indicatorName}</Option
+        >
       {/each}
     </Select>
 
-    <Select bind:value={units} label="Units">
-      {#each options as opt}
-        <Option value={opt}>{opt}</Option>
-      {/each}
-    </Select>
+    {#if unitsOptions.length > 0}
+      <Select
+        bind:value={unitsValue}
+        label="Units"
+        style={"width: 300px;"}
+        disabled={unitsOptions.length === 1}
+      >
+        {#each unitsOptions as opt}
+          <Option value={opt.unitsCode}
+            >{`${opt.unitsName} - ${opt.unitsShort}`}</Option
+          >
+        {/each}
+      </Select>
+    {/if}
   </div>
-  <!--pre class="status">Selected: {value}</pre>
-    <pre class="status">Selected: {units}</pre-->
 </div>
 <div class="right">
-  <h2>Selected indicator name</h2>
+  <h2>
+    {indicators.filter((d) => d.indicatorCode === indicatorValue)[0]
+      .indicatorName}
+  </h2>
   <p>
-    Under construction, by Maarten, and lots and lots more text to see how it
-    wraps. And even more text
+    {indicators.filter((d) => d.indicatorCode === indicatorValue)[0]
+      .indicatorExplanation}
   </p>
 </div>
 
