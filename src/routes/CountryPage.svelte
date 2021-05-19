@@ -1,5 +1,6 @@
 <script>
-  export let id;
+  import { meta } from "tinro";
+  const route = meta();
 </script>
 
-<div>Country: {id}</div>
+<div>Country: {route.params.country}</div>

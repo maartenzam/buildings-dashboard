@@ -1,7 +1,7 @@
 <script>
-  import { Router, Route } from "svelte-navigator";
+  import { Route } from "tinro";
   import Home from "./routes/Home.svelte";
-  //import About from "./routes/About.svelte";
+  import About from "./routes/About.svelte";
   import CountryPage from "./routes/CountryPage.svelte";
   import TopBar from "./TopBar.svelte";
   import Footer from "./Footer.svelte";
@@ -10,15 +10,13 @@
 <div class="wrapper">
   <TopBar />
   <main>
-    <Router primary={false}>
-      <Route path="/">
-        <Home />
-      </Route>
-      <Route path="country/*">
-        <Route path=":id" component={CountryPage} />
-      </Route>
-      <!--Route path="/about" component={About} /-->
-    </Router>
+    <Route path="/">
+      <Home />
+    </Route>
+    <Route path="/:country" let:meta>
+      <CountryPage />
+    </Route>
+    <Route path="/about" component={About} />
   </main>
   <Footer />
 </div>

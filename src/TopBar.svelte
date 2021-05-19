@@ -1,22 +1,17 @@
 <script>
   import TopAppBar, { Row, Section, Title } from "@smui/top-app-bar";
-  import { Router, Link } from "svelte-navigator";
 </script>
 
 <nav class="top-app-bar-container">
   <TopAppBar variant="static" color="primary" dense>
     <Row>
       <Section>
-        <Router primary={false}>
-          <Link to="/">
-            <Title>ECF Buildings Dashboard</Title>
-          </Link>
-        </Router>
+        <a href="/">
+          <Title>ECF Buildings Dashboard</Title>
+        </a>
       </Section>
       <Section align="end">
-        <Router>
-          <Link to="country/Belgium">Belgium</Link>
-        </Router>
+        <a href="/belgium">Belgium</a>
         <img src="./ecf-logo-white.png" alt="ECF logo" height="100%" />
       </Section>
     </Row>
