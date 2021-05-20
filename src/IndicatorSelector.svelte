@@ -2,12 +2,16 @@
   import Select, { Option } from "@smui/select";
   import indicators from "./data/Indicators.js";
 
-  export let indicatorValue;
+  export let selectedIndicator;
 </script>
 
-<Select bind:value={indicatorValue} label="Indicator" style={"width: 300px;"}>
+<Select
+  bind:value={selectedIndicator}
+  label="Indicator"
+  style={"width: 300px;"}
+>
   {#each indicators as indicator}
-    <Option value={indicator.indicatorCode}>{indicator.indicatorName}</Option>
+    <Option value={indicator}>{indicator.indicatorName}</Option>
   {/each}
 </Select>
 

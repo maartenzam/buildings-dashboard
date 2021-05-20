@@ -4,20 +4,24 @@ import { autoType } from "d3-dsv";
 import { readable } from "svelte/store";
 
 const fecGdpDataURL = "./data/fec-gdp.csv";
+const countryDataURL = "./data/EU27.csv";
 
 export const fecGdpDataSet = readable({ table: [] }, (set) => {
   Promise.all([csv(fecGdpDataURL, autoType)]).then(([table]) => {
-    //const tableOrdered = orderBy(table, 'year', 'asc');
-    //const countryTimeSeries = groupBy(tableOrdered, 'id');
-    //const latestCountryValues = mapValues(countryTimeSeries, a => last(a));
     const byCountry = groups(table, (d) => d.geo);
-
     set({
       table,
       byCountry,
-      //latestCountryValues,
     });
   });
-  // return cleanup function
+  return () => {};
+});
+
+export const countryDataSet = readable({ table: [] }, (set) => {
+  Promise.all([csv(countryDataURL, autoType)]).then(([table]) => {
+    set({
+      table,
+    });
+  });
   return () => {};
 });

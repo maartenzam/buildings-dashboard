@@ -10,16 +10,10 @@
   let width;
   let height;
 
-  let indicatorValue = "fec";
-  //  let unitsValue = "absolute";
-  $: unitsValue = indicators.filter(
-    (d) => d.indicatorCode === indicatorValue
-  )[0].indicatorUnits[0].unitsCode;
-  $: console.log(indicatorValue);
-  $: console.log(
-    indicators.filter((d) => d.indicatorCode === indicatorValue)[0]
-  );
-  $: console.log(unitsValue);
+  let selectedIndicator = indicators[0];
+  let selectedUnit;
+  //$: console.log(selectedIndicator);
+  //$: console.log(selectedUnit);
 
   $: dataMap = {
     fec: {
@@ -30,33 +24,19 @@
   };
 
   //$: countryData = dataMap[indicatorValue].data;
-  $: countryData = dataMap["fec"].data;
+  $: countriesData = dataMap["fec"].data;
 </script>
 
 <div class="left">
   <div class="select-container">
-    <IndicatorSelector bind:indicatorValue />
-    <UnitSelector bind:unitsValue {indicatorValue} />
+    <IndicatorSelector bind:selectedIndicator />
+    <UnitSelector bind:selectedUnit {selectedIndicator} />
   </div>
-  <!--svg {width} {height} /-->
-  <!--div
-    class="chart-wrapper"
-    bind:offsetWidth={width}
-    bind:offsetHeight={height}
-  >
-    <TrendChart {width} {height} {countryData} />
-  </div-->
-  <Grid {countryData} />
+  <Grid {countriesData} />
 </div>
 <div class="right">
-  <h2>
-    {indicators.filter((d) => d.indicatorCode === indicatorValue)[0]
-      .indicatorName}
-  </h2>
-  <p>
-    {indicators.filter((d) => d.indicatorCode === indicatorValue)[0]
-      .indicatorExplanation}
-  </p>
+  <h2>{selectedIndicator.indicatorName}</h2>
+  <p>{selectedIndicator.indicatorExplanation}</p>
 </div>
 
 <style>

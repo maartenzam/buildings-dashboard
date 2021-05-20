@@ -1,25 +1,20 @@
 <script>
   import Select, { Option } from "@smui/select";
-  import indicators from "./data/Indicators.js";
 
-  export let indicatorValue;
+  export let selectedIndicator;
 
-  $: unitsOptions = indicators.filter(
-    (d) => d.indicatorCode === indicatorValue
-  )[0].indicatorUnits;
-
-  export let unitsValue = "absolute";
+  export let selectedUnit = "absolute";
 </script>
 
-{#if unitsOptions.length > 0}
+{#if selectedIndicator.indicatorUnits.length > 0}
   <Select
-    bind:value={unitsValue}
+    bind:value={selectedUnit}
     label="Units"
     style={"width: 300px;"}
-    disabled={unitsOptions.length === 1}
+    disabled={selectedIndicator.indicatorUnits.length === 1}
   >
-    {#each unitsOptions as opt}
-      <Option value={opt.unitsCode}
+    {#each selectedIndicator.indicatorUnits as opt}
+      <Option value={opt.unitsCode} selected={selectedUnit === opt.unitsCode}
         >{`${opt.unitsName} - ${opt.unitsShort}`}</Option
       >
     {/each}

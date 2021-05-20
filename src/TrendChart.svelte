@@ -1,7 +1,8 @@
 <script>
   import { scaleLinear, scaleTime } from "d3-scale";
   import { extent, min, max } from "d3-array";
-  export let countryData = [["", []]];
+
+  export let countryData;
   export let width;
   export let height;
 
@@ -9,15 +10,17 @@
 
   const yAxisMargin = 0.2;
 
-  $: austriaData = countryData[0][1];
+  $: countryDataPoints = countryData[1];
 
   $: chartWidth = width - margins.left - margins.right;
   $: chartHeight = height - margins.top - margins.bottom;
-  $: xDomain = extent(austriaData, (d) => d.time);
-  $: yDomain = extent(austriaData, (d) => d.values).map(
+
+  $: xDomain = extent(countryDataPoints, (d) => d.time);
+  $: yDomain = extent(countryDataPoints, (d) => d.values).map(
     (d, i) =>
       d -
-      (max(austriaData, (d) => d.values) - min(austriaData, (d) => d.values)) *
+      (max(countryDataPoints, (d) => d.values) -
+        min(countryDataPoints, (d) => d.values)) *
         -(i - 1) *
         yAxisMargin
   );
@@ -28,13 +31,7 @@
 
 <svg {width} {height}>
   <g transform={`translate(${margins.left}, ${margins.top})`}>
-    <rect
-      width={chartWidth}
-      height={chartHeight}
-      fill="deeppink"
-      opacity={0.1}
-    />
-    {#each austriaData as point}
+    {#each countryDataPoints as point}
       <circle cx={xScale(point.time)} cy={yScale(point.values)} r={5} />
     {/each}
   </g>
