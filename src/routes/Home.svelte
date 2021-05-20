@@ -1,21 +1,17 @@
 <script>
-  import Select, { Option } from "@smui/select";
+  import Grid from "./../Grid.svelte";
+  import IndicatorSelector from "../IndicatorSelector.svelte";
+  //import UnitSelector from "../UnitSelector.svelte";
   import { fecGdpDataSet } from "./../data/DataStore.js";
   import indicators from "./../data/Indicators.js";
-  import TrendChart from "./../TrendChart.svelte";
-  import { onMount } from "svelte";
-
-  let indicatorValue = "fec";
-  $: unitsOptions = indicators.filter(
-    (d) => d.indicatorCode === indicatorValue
-  )[0].indicatorUnits;
-
-  let unitsValue = "absolute";
 
   //let width = "100%";
   //let height = "100%";
   let width;
   let height;
+
+  let indicatorValue = "fec";
+  $: console.log(indicatorValue);
 
   $: dataMap = {
     fec: {
@@ -25,46 +21,21 @@
     },
   };
 
-  $: countryData = dataMap[indicatorValue].data;
+  //$: countryData = dataMap[indicatorValue].data;
+  $: countryData = dataMap["fec"].data;
 </script>
 
 <div class="left">
+  <IndicatorSelector bind:indicatorValue />
   <!--svg {width} {height} /-->
-  <div
+  <!--div
     class="chart-wrapper"
     bind:offsetWidth={width}
     bind:offsetHeight={height}
   >
     <TrendChart {width} {height} {countryData} />
-  </div>
-  <div class="select-container">
-    <Select
-      bind:value={indicatorValue}
-      label="Indicator"
-      style={"width: 300px;"}
-    >
-      {#each indicators as indicator}
-        <Option value={indicator.indicatorCode}
-          >{indicator.indicatorName}</Option
-        >
-      {/each}
-    </Select>
-
-    {#if unitsOptions.length > 0}
-      <Select
-        bind:value={unitsValue}
-        label="Units"
-        style={"width: 300px;"}
-        disabled={unitsOptions.length === 1}
-      >
-        {#each unitsOptions as opt}
-          <Option value={opt.unitsCode}
-            >{`${opt.unitsName} - ${opt.unitsShort}`}</Option
-          >
-        {/each}
-      </Select>
-    {/if}
-  </div>
+  </div-->
+  <Grid {countryData} />
 </div>
 <div class="right">
   <h2>
@@ -92,10 +63,5 @@
     flex: 1 10000 300px;
     padding: 1rem;
     width: 100%;
-  }
-  .select-container {
-    position: absolute;
-    left: 1rem;
-    top: 0rem;
   }
 </style>

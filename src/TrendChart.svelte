@@ -5,7 +5,7 @@
   export let width;
   export let height;
 
-  const margins = { top: 10, left: 20, right: 10, bottom: 10 };
+  const margins = { top: 10, left: 10, right: 10, bottom: 10 };
 
   const yAxisMargin = 0.2;
 
