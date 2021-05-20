@@ -5,16 +5,11 @@
   export let indicatorValue;
 </script>
 
-<div class="select-container">
-  <Select bind:value={indicatorValue} label="Indicator" style={"width: 300px;"}>
-    {#each indicators as indicator}
-      <Option value={indicator.indicatorCode}>{indicator.indicatorName}</Option>
-    {/each}
-  </Select>
-</div>
+<Select bind:value={indicatorValue} label="Indicator" style={"width: 300px;"}>
+  {#each indicators as indicator}
+    <Option value={indicator.indicatorCode}>{indicator.indicatorName}</Option>
+  {/each}
+</Select>
 
 <style>
-  .select-container {
-    z-index: 10;
-  }
 </style>

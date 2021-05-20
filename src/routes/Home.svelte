@@ -1,7 +1,7 @@
 <script>
   import Grid from "./../Grid.svelte";
   import IndicatorSelector from "../IndicatorSelector.svelte";
-  //import UnitSelector from "../UnitSelector.svelte";
+  import UnitSelector from "../UnitSelector.svelte";
   import { fecGdpDataSet } from "./../data/DataStore.js";
   import indicators from "./../data/Indicators.js";
 
@@ -11,7 +11,15 @@
   let height;
 
   let indicatorValue = "fec";
+  //  let unitsValue = "absolute";
+  $: unitsValue = indicators.filter(
+    (d) => d.indicatorCode === indicatorValue
+  )[0].indicatorUnits[0].unitsCode;
   $: console.log(indicatorValue);
+  $: console.log(
+    indicators.filter((d) => d.indicatorCode === indicatorValue)[0]
+  );
+  $: console.log(unitsValue);
 
   $: dataMap = {
     fec: {
@@ -26,7 +34,10 @@
 </script>
 
 <div class="left">
-  <IndicatorSelector bind:indicatorValue />
+  <div class="select-container">
+    <IndicatorSelector bind:indicatorValue />
+    <UnitSelector bind:unitsValue {indicatorValue} />
+  </div>
   <!--svg {width} {height} /-->
   <!--div
     class="chart-wrapper"
@@ -54,6 +65,8 @@
     flex: 100000 0 200px;
     position: relative;
     min-height: 300px;
+  }
+  .select-container {
   }
   .chart-wrapper {
     width: 160px;
