@@ -46,10 +46,8 @@
     },
   };
 
-  //$: countryData = dataMap[indicatorValue].data;
   $: countriesData = dataMap[selectedIndicator.indicatorCode].data;
   $: displayUnits = dataMap[selectedIndicator.indicatorCode][selectedUnit];
-  //$: console.log(displayUnits);
 </script>
 
 <div class="left">

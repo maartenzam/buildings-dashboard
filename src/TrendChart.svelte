@@ -7,8 +7,6 @@
   export let height;
   export let displayUnits;
 
-  $: console.log(displayUnits);
-
   const margins = { top: 10, left: 10, right: 10, bottom: 10 };
 
   const yAxisMargin = 0.2;

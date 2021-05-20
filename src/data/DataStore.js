@@ -5,7 +5,7 @@ import { readable } from "svelte/store";
 
 const fecGdpDataURL = "./data/fec-gdp.csv";
 const fecHhDataURL = "./data/fec-hh.csv";
-const renewHhDataURL = "./data/fec-hh.csv";
+const renewHhDataURL = "./data/renew-hh.csv";
 const povertyDataURL = "./data/poverty.csv";
 const housingDataURL = "./data/housing.csv";
 const countryDataURL = "./data/EU27.csv";
