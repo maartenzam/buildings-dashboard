@@ -4,6 +4,7 @@
   let width;
   let height;
   export let countriesData;
+  export let displayUnits;
 
   function getCountryCode(countrydata, row, column) {
     const countryCode = countrydata.filter(
@@ -27,6 +28,7 @@
               (d) =>
                 d[0] === getCountryCode($countryDataSet.table, r + 1, c + 1)
             )[0]}
+            {displayUnits}
           />
         {/if}
       </div>

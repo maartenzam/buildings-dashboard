@@ -5,6 +5,9 @@
   export let countryData;
   export let width;
   export let height;
+  export let displayUnits;
+
+  $: console.log(displayUnits);
 
   const margins = { top: 10, left: 10, right: 10, bottom: 10 };
 
@@ -16,11 +19,11 @@
   $: chartHeight = height - margins.top - margins.bottom;
 
   $: xDomain = extent(countryDataPoints, (d) => d.time);
-  $: yDomain = extent(countryDataPoints, (d) => d.values).map(
+  $: yDomain = extent(countryDataPoints, (d) => d[displayUnits]).map(
     (d, i) =>
       d -
-      (max(countryDataPoints, (d) => d.values) -
-        min(countryDataPoints, (d) => d.values)) *
+      (max(countryDataPoints, (d) => d[displayUnits]) -
+        min(countryDataPoints, (d) => d[displayUnits])) *
         -(i - 1) *
         yAxisMargin
   );
@@ -32,7 +35,7 @@
 <svg {width} {height}>
   <g transform={`translate(${margins.left}, ${margins.top})`}>
     {#each countryDataPoints as point}
-      <circle cx={xScale(point.time)} cy={yScale(point.values)} r={5} />
+      <circle cx={xScale(point.time)} cy={yScale(point[displayUnits])} r={5} />
     {/each}
   </g>
 </svg>

@@ -3,6 +3,10 @@
   import IndicatorSelector from "../IndicatorSelector.svelte";
   import UnitSelector from "../UnitSelector.svelte";
   import { fecGdpDataSet } from "./../data/DataStore.js";
+  import { fecHhDataSet } from "./../data/DataStore.js";
+  import { renewHhDataSet } from "./../data/DataStore.js";
+  import { povertyDataSet } from "./../data/DataStore.js";
+  import { housingDataSet } from "./../data/DataStore.js";
   import indicators from "./../data/Indicators.js";
 
   //let width = "100%";
@@ -12,19 +16,40 @@
 
   let selectedIndicator = indicators[0];
   let selectedUnit;
-  //$: console.log(selectedIndicator);
-  //$: console.log(selectedUnit);
+  $: console.log(selectedIndicator.indicatorCode);
+  $: console.log(selectedUnit);
 
   $: dataMap = {
     fec: {
       data: $fecGdpDataSet.byCountry,
       absolute: "values",
-      relative: "relative",
+      relative: "eneff",
+    },
+    fechh: {
+      data: $fecHhDataSet.byCountry,
+      absolute: "values",
+      climate: "fechh",
+      climatecapita: "fechh.cap",
+    },
+    renewables: {
+      data: $renewHhDataSet.byCountry,
+      share: "renew.perc",
+      sharenobiom: "renew.nobiom.perc",
+    },
+    housing: {
+      data: $housingDataSet.byCountry,
+      share: "values",
+    },
+    poverty: {
+      data: $povertyDataSet.byCountry,
+      share: "values",
     },
   };
 
   //$: countryData = dataMap[indicatorValue].data;
-  $: countriesData = dataMap["fec"].data;
+  $: countriesData = dataMap[selectedIndicator.indicatorCode].data;
+  $: displayUnits = dataMap[selectedIndicator.indicatorCode][selectedUnit];
+  //$: console.log(displayUnits);
 </script>
 
 <div class="left">
@@ -32,7 +57,7 @@
     <IndicatorSelector bind:selectedIndicator />
     <UnitSelector bind:selectedUnit {selectedIndicator} />
   </div>
-  <Grid {countriesData} />
+  <Grid {countriesData} {displayUnits} />
 </div>
 <div class="right">
   <h2>{selectedIndicator.indicatorName}</h2>
