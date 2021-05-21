@@ -62,14 +62,12 @@
 <style>
   .grid-container {
     width: 100%;
-    height: 100vh;
     display: grid;
     grid-template-columns: repeat(7, minmax(100px, 1fr));
     column-gap: 0.5rem;
     row-gap: 0.5rem;
   }
   .cell {
-    background-color: #e6e6fa;
-    max-height: 160px;
+    max-height: 100px;
   }
 </style>

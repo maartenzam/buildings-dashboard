@@ -31,9 +31,10 @@
 </script>
 
 <svg {width} {height}>
+  <rect {width} {height} fill={"#1db6c1"} opacity={0.2} />
   <g transform={`translate(${margins.left}, ${margins.top})`}>
     {#each countryDataPoints as point}
-      <circle cx={xScale(point.time)} cy={yScale(point[displayUnits])} r={5} />
+      <circle cx={xScale(point.time)} cy={yScale(point[displayUnits])} r={4} />
     {/each}
   </g>
 </svg>
@@ -41,7 +42,8 @@
 <style>
   circle {
     stroke-width: 1.5px;
-    stroke: black;
+    stroke: #1db6c1;
+    fill: #1db6c1;
     fill-opacity: 0.2;
     stroke-opacity: 1;
   }

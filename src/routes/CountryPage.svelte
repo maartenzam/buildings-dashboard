@@ -139,8 +139,8 @@
   }
   .cell {
     flex: 1;
-    background-color: #e6e6fa;
     min-width: 300px;
+    padding: 12px;
   }
 
   .chart-container {

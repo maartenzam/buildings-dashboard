@@ -4,9 +4,6 @@
   export let selectedIndicator;
   export let selectedUnit = selectedIndicator.indicatorUnits[0].unitsCode;
   //disabled={selectedIndicator.indicatorUnits.length === 1}
-
-  $: console.log(selectedIndicator);
-  $: console.log(selectedIndicator.indicatorUnits[0].unitsCode);
 </script>
 
 {#if selectedIndicator.indicatorUnits.length > 0}
