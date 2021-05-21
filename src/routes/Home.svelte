@@ -26,27 +26,27 @@
   $: dataMap = {
     fec: {
       data: $fecGdpDataSet.byCountry,
-      absolute: "values",
-      relative: "eneff",
+      absolute: "absolute",
+      relative: "relative",
     },
     fechh: {
       data: $fecHhDataSet.byCountry,
-      absolute: "values",
-      climate: "fechh",
-      climatecapita: "fechh.cap",
+      absolute: "absolute",
+      climate: "climate",
+      climatecapita: "climatecapita",
     },
     renewables: {
       data: $renewHhDataSet.byCountry,
-      share: "renew.perc",
-      sharenobiom: "renew.nobiom.perc",
+      share: "share",
+      sharenobiom: "sharenobiom",
     },
     housing: {
       data: $housingDataSet.byCountry,
-      share: "values",
+      share: "share",
     },
     poverty: {
       data: $povertyDataSet.byCountry,
-      share: "values",
+      share: "share",
     },
     gasban: {
       data: $gasGridDataSet.byCountry,

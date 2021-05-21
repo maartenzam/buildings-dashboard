@@ -1,4 +1,4 @@
-"nrg_bal","siec","unit","geo","time","values","hdd.ind","pop","demand","fechh","fechh.cap"
+"nrg_bal","siec","unit","geo","time","absolute","hdd.ind","pop","demand","climate","climatecapita"
 "FC_OTH_HH_E","TOTAL","KTOE","AT",2019-01-01,6695.287,0.95,8858775,0.69,6938.43163315789,0.000783226984900045
 "FC_OTH_HH_E","TOTAL","KTOE","BE",2019-01-01,7899.465,0.94,11455519,0.74,8272.58866595745,0.000722148744719244
 "FC_OTH_HH_E","TOTAL","KTOE","BG",2019-01-01,2159.861,0.87,7000039,0.53,2330.9120608046,0.000332985582052414

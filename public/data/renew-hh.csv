@@ -1,4 +1,4 @@
-"nrg_bal","unit","geo","time","RA000","RA200","RA410","RA600","TOTAL","renew.perc","renew.nobiom.perc"
+"nrg_bal","unit","geo","time","RA000","RA200","RA410","RA600","TOTAL","share","sharenobiom"
 "FC_OTH_HH_E","KTOE","AT",2019-01-01,1976.263,0,112.906,172.733,6695.287,29.5,4.3
 "FC_OTH_HH_E","KTOE","BE",2019-01-01,683.22,0,26.139,85.547,7899.465,8.6,1.4
 "FC_OTH_HH_E","KTOE","BG",2019-01-01,721.516,0,10.953,0,2159.861,33.4,0.5

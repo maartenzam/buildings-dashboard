@@ -1,13 +1,19 @@
 <script>
   import { meta } from "tinro";
   import TrendChart from "./../TrendChart.svelte";
+  import UnitSelector from "./../UnitSelector.svelte";
   import { country, allCountryData } from "./../data/DataStore.js";
+  import indicators from "./../data/Indicators.js";
 
   const route = meta();
   country.set(route.params.country);
-  $: console.log($allCountryData.renew);
+  //$: console.log($allCountryData.renew);
   let width;
   let height;
+
+  let selectedUnit = "absolute";
+  let hhSelectedUnit = "absolute";
+  let renewSelectedUnit = "share";
 </script>
 
 <div class="wrapper">
@@ -35,6 +41,7 @@
     </div>
     <div class="cell">
       <h3>Final energy consumption</h3>
+      <UnitSelector selectedIndicator={indicators[0]} bind:selectedUnit />
       <div
         class="chart-container"
         bind:offsetWidth={width}
@@ -44,12 +51,16 @@
           {width}
           {height}
           countryData={$allCountryData.fec}
-          displayUnits={"values"}
+          displayUnits={selectedUnit}
         />
       </div>
     </div>
     <div class="cell">
       <h3>Final energy consumption households</h3>
+      <UnitSelector
+        selectedIndicator={indicators[1]}
+        bind:selectedUnit={hhSelectedUnit}
+      />
       <div
         class="chart-container"
         bind:offsetWidth={width}
@@ -59,7 +70,7 @@
           {width}
           {height}
           countryData={$allCountryData.fechh}
-          displayUnits={"values"}
+          displayUnits={hhSelectedUnit}
         />
       </div>
     </div>
@@ -67,6 +78,10 @@
   <div class="row">
     <div class="cell">
       <h3>Renewables in FEC in households</h3>
+      <UnitSelector
+        selectedIndicator={indicators[2]}
+        bind:selectedUnit={renewSelectedUnit}
+      />
       <div
         class="chart-container"
         bind:offsetWidth={width}
@@ -76,7 +91,7 @@
           {width}
           {height}
           countryData={$allCountryData.renew}
-          displayUnits={"renew.perc"}
+          displayUnits={renewSelectedUnit}
         />
       </div>
     </div>
@@ -91,7 +106,7 @@
           {width}
           {height}
           countryData={$allCountryData.housing}
-          displayUnits={"values"}
+          displayUnits={"share"}
         />
       </div>
     </div>
@@ -106,7 +121,7 @@
           {width}
           {height}
           countryData={$allCountryData.poverty}
-          displayUnits={"values"}
+          displayUnits={"share"}
         />
       </div>
     </div>

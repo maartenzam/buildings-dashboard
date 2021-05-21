@@ -1,4 +1,4 @@
-"nrg_bal","siec","unit","geo","time","values","gdp","eneff"
+"nrg_bal","siec","unit","geo","time","absolute","gdp","relative"
 "FEC2020-2030","TOTAL","KTOE","AT",2019-01-01,28280.645,338835.1,83.4643311746628
 "FEC2020-2030","TOTAL","KTOE","BE",2019-01-01,35759.653,413018.9,86.5811540343553
 "FEC2020-2030","TOTAL","KTOE","BG",2019-01-01,9836.304,47734.5,206.062784778305
