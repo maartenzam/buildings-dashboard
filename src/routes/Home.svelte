@@ -2,11 +2,15 @@
   import Grid from "./../Grid.svelte";
   import IndicatorSelector from "../IndicatorSelector.svelte";
   import UnitSelector from "../UnitSelector.svelte";
-  import { fecGdpDataSet } from "./../data/DataStore.js";
-  import { fecHhDataSet } from "./../data/DataStore.js";
-  import { renewHhDataSet } from "./../data/DataStore.js";
-  import { povertyDataSet } from "./../data/DataStore.js";
-  import { housingDataSet } from "./../data/DataStore.js";
+  import {
+    fecGdpDataSet,
+    fecHhDataSet,
+    renewHhDataSet,
+    povertyDataSet,
+    housingDataSet,
+    gasGridDataSet,
+    credibilityDataSet,
+  } from "./../data/DataStore.js";
   import indicators from "./../data/Indicators.js";
 
   //let width = "100%";
@@ -16,8 +20,8 @@
 
   let selectedIndicator = indicators[0];
   let selectedUnit;
-  $: console.log(selectedIndicator.indicatorCode);
-  $: console.log(selectedUnit);
+  //$: console.log(selectedIndicator.indicatorCode);
+  //$: console.log(selectedUnit);
 
   $: dataMap = {
     fec: {
@@ -44,6 +48,27 @@
       data: $povertyDataSet.byCountry,
       share: "values",
     },
+    gasban: {
+      data: $gasGridDataSet.byCountry,
+    },
+    credibility: {
+      data: $credibilityDataSet.byCountry,
+    },
+  };
+
+  const trafficLightColors = ["#387E90", "#F5B944", "#E34C27"];
+
+  const colorScales = {
+    gasban: {
+      adopted: trafficLightColors[0],
+      announced: trafficLightColors[1],
+      "no policy": trafficLightColors[2],
+    },
+    credibility: {
+      credible: trafficLightColors[0],
+      "partly credible": trafficLightColors[1],
+      "not credible": trafficLightColors[2],
+    },
   };
 
   $: countriesData = dataMap[selectedIndicator.indicatorCode].data;
@@ -55,7 +80,7 @@
     <IndicatorSelector bind:selectedIndicator />
     <UnitSelector bind:selectedUnit {selectedIndicator} />
   </div>
-  <Grid {countriesData} {displayUnits} />
+  <Grid {selectedIndicator} {countriesData} {displayUnits} {colorScales} />
 </div>
 <div class="right">
   <h2>{selectedIndicator.indicatorName}</h2>
