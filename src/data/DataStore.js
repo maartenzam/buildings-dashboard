@@ -1,7 +1,7 @@
 import { csv } from "d3-fetch";
 import { groups } from "d3-array";
 import { autoType } from "d3-dsv";
-import { readable } from "svelte/store";
+import { readable, writable, derived } from "svelte/store";
 
 const fecGdpDataURL = "./data/fec-gdp.csv";
 const fecHhDataURL = "./data/fec-hh.csv";
@@ -97,3 +97,51 @@ export const countryDataSet = readable({ table: [] }, (set) => {
   });
   return () => {};
 });
+
+export const country = writable("SE");
+
+export const allCountryData = derived(
+  [
+    fecGdpDataSet,
+    fecHhDataSet,
+    renewHhDataSet,
+    housingDataSet,
+    povertyDataSet,
+    gasGridDataSet,
+    credibilityDataSet,
+    country,
+  ],
+  ([
+    $fecGdpDataSet,
+    $fecHhDataSet,
+    $renewHhDataSet,
+    $povertyDataSet,
+    $housingDataSet,
+    $gasGridDataSet,
+    $credibilityDataSet,
+    $country,
+  ]) => {
+    function countryFilter(el) {
+      return el[0] === $country;
+    }
+
+    const fecData = $fecGdpDataSet.byCountry.filter(countryFilter)[0]; //[1];
+    const fecHhData = $fecHhDataSet.byCountry.filter(countryFilter)[0]; //[1];
+    const renewHhData = $renewHhDataSet.byCountry.filter(countryFilter)[0]; //[1];
+    const povertyData = $povertyDataSet.byCountry.filter(countryFilter)[0]; //[1];
+    const housingData = $housingDataSet.byCountry.filter(countryFilter)[0]; //[1];
+    const gasGridData = $gasGridDataSet.byCountry.filter(countryFilter)[0]; //[1];
+    const credibilityData =
+      $credibilityDataSet.byCountry.filter(countryFilter)[0]; //[1];
+
+    return {
+      fec: fecData,
+      fechh: fecHhData,
+      renew: renewHhData,
+      poverty: povertyData,
+      housing: housingData,
+      gasgrid: gasGridData,
+      credibility: credibilityData,
+    };
+  }
+);
