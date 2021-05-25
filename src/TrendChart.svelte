@@ -13,12 +13,11 @@
   export let width;
   export let height;
   export let displayUnits;
-  export let targetsData = [];
-  $: console.log(targetsData);
+  export let targetsData;
 
   const margins = { top: 10, left: 30, right: 10, bottom: 10 };
 
-  const yAxisMargin = 0.5;
+  const yAxisMargin = 1;
 
   $: countryDataPoints = countryData[1];
 
@@ -43,6 +42,14 @@
         yAxisMargin
   );
 
+  $: if (targetsData !== undefined) {
+    yDomain[0] = Math.min(
+      targetsData[1][0]["target.necp"] * 1000,
+      targetsData[1][0]["target.euco"] * 1000,
+      targetsData[1][0]["target.2020"] * 1000
+    );
+  }
+
   $: xScale = scaleTime().domain(xDomain).range([0, chartWidth]);
   $: yScale = scaleLinear().domain(yDomain).range([chartHeight, 0]);
 
@@ -63,7 +70,7 @@
 </script>
 
 <svg {width} {height}>
-  <rect {width} {height} fill={"#1db6c1"} opacity={0.2} />
+  <!--rect {width} {height} fill={"#1db6c1"} opacity={0.2} /-->
   <g transform={`translate(${margins.left}, ${margins.top})`}>
     <g class="axis y-axis">
       {#each yTicks as tick}
@@ -90,14 +97,31 @@
         />
       {/each}
     </g>
-    {#if targetsData.length > 0}
+    {#if targetsData !== undefined}
       <g class="target-lines">
         <!-- svelte-ignore component-name-lowercase -->
         <line
+          class="target-necp"
           x1={xScale(xDomain[0])}
           x2={xScale(xDomain[1])}
           y1={yScale(targetsData[1][0]["target.necp"] * 1000)}
           y2={yScale(targetsData[1][0]["target.necp"] * 1000)}
+        />
+        <!-- svelte-ignore component-name-lowercase -->
+        <line
+          class="target-euco"
+          x1={xScale(xDomain[0])}
+          x2={xScale(xDomain[1])}
+          y1={yScale(targetsData[1][0]["target.euco"] * 1000)}
+          y2={yScale(targetsData[1][0]["target.euco"] * 1000)}
+        />
+        <!-- svelte-ignore component-name-lowercase -->
+        <line
+          class="target-2020"
+          x1={xScale(xDomain[0])}
+          x2={xScale(xDomain[1])}
+          y1={yScale(targetsData[1][0]["target.2020"] * 1000)}
+          y2={yScale(targetsData[1][0]["target.2020"] * 1000)}
         />
       </g>
     {/if}
@@ -126,6 +150,16 @@
   }
   .target-lines line {
     stroke-width: 1.5;
+    stroke-dasharray: 6;
+    stroke-linecap: round;
+  }
+  line.target-necp {
     stroke: purple;
+  }
+  line.target-euco {
+    stroke: orange;
+  }
+  line.target-2020 {
+    stroke: steelblue;
   }
 </style>

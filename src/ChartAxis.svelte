@@ -25,8 +25,8 @@
 <style>
   .tick line {
     stroke: #a3a3a3;
-    stroke-dasharray: 2;
-    opacity: 0.6;
+    stroke-dasharray: 0;
+    opacity: 0.2;
   }
 
   .tick text {
