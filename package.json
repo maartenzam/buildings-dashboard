@@ -27,9 +27,12 @@
     "@smui/select": "^4.2.0",
     "@smui/top-app-bar": "^4.2.0",
     "d3-array": "^2.12.1",
+    "d3-axis": "^2.1.0",
     "d3-dsv": "^2.0.0",
     "d3-fetch": "^2.0.0",
+    "d3-format": "^3.0.0",
     "d3-scale": "^3.3.0",
+    "d3-time-format": "^3.0.0",
     "install": "^0.13.0",
     "npm": "^7.12.1",
     "sirv-cli": "^1.0.0"
