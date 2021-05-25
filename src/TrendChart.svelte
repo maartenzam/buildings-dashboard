@@ -6,6 +6,8 @@
   import { format } from "d3-format";
   import { regressionLoess } from "d3-regression";
   import { line } from "d3-shape";
+  import { tweened } from "svelte/motion";
+  import * as easings from "svelte/easing";
 
   export let countryData;
   export let width;
@@ -17,6 +19,14 @@
   const yAxisMargin = 0;
 
   $: countryDataPoints = countryData[1];
+
+  $: tweenedPoints = tweened(countryDataPoints, {
+    delay: 0,
+    duration: 750,
+    easing: easings.cubicOut,
+  });
+
+  $: tweenedPoints.set(countryDataPoints);
 
   $: chartWidth = width - margins.left - margins.right;
   $: chartHeight = height - margins.top - margins.bottom;
@@ -78,7 +88,7 @@
         />
       {/each}
     </g>
-    {#each countryDataPoints as point}
+    {#each $tweenedPoints as point}
       <circle cx={xScale(point.time)} cy={yScale(point[displayUnits])} r={3} />
     {/each}
     <path
