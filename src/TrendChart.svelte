@@ -4,6 +4,8 @@
   import ChartAxis from "./ChartAxis.svelte";
   import { timeFormat } from "d3-time-format";
   import { format } from "d3-format";
+  import { regressionLoess } from "d3-regression";
+  import { line } from "d3-shape";
 
   export let countryData;
   export let width;
@@ -31,6 +33,15 @@
 
   $: xScale = scaleTime().domain(xDomain).range([0, chartWidth]);
   $: yScale = scaleLinear().domain(yDomain).range([chartHeight, 0]);
+
+  $: loessRegression = regressionLoess()
+    .x((d) => d.time)
+    .y((d) => d[displayUnits])
+    .bandwidth(0.4);
+
+  $: lineLoess = line()
+    .x((d) => xScale(new Date(d[0])))
+    .y((d) => yScale(d[1]));
 
   const xTicks = [new Date(2005, 1), new Date(2010, 1), new Date(2015, 1)];
   const formatTime = timeFormat("%y");
@@ -68,17 +79,26 @@
       {/each}
     </g>
     {#each countryDataPoints as point}
-      <circle cx={xScale(point.time)} cy={yScale(point[displayUnits])} r={4} />
+      <circle cx={xScale(point.time)} cy={yScale(point[displayUnits])} r={3} />
     {/each}
-  </g>
+    <path
+      class="regression-line"
+      d={lineLoess(loessRegression(countryDataPoints))}
+    /></g
+  >
 </svg>
 
 <style>
   circle {
-    stroke-width: 1.5px;
+    stroke-width: 0.5px;
     stroke: #1db6c1;
     fill: #1db6c1;
-    fill-opacity: 0.2;
+    fill-opacity: 0.5;
     stroke-opacity: 1;
+  }
+  .regression-line {
+    fill: none;
+    stroke: #1db6c1;
+    stroke-width: 2;
   }
 </style>
