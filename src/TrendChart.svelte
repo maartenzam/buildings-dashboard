@@ -13,10 +13,12 @@
   export let width;
   export let height;
   export let displayUnits;
+  export let targetsData = [];
+  $: console.log(targetsData);
 
   const margins = { top: 10, left: 30, right: 10, bottom: 10 };
 
-  const yAxisMargin = 0;
+  const yAxisMargin = 0.5;
 
   $: countryDataPoints = countryData[1];
 
@@ -88,6 +90,17 @@
         />
       {/each}
     </g>
+    {#if targetsData.length > 0}
+      <g class="target-lines">
+        <!-- svelte-ignore component-name-lowercase -->
+        <line
+          x1={xScale(xDomain[0])}
+          x2={xScale(xDomain[1])}
+          y1={yScale(targetsData[1][0]["target.necp"] * 1000)}
+          y2={yScale(targetsData[1][0]["target.necp"] * 1000)}
+        />
+      </g>
+    {/if}
     {#each $tweenedPoints as point}
       <circle cx={xScale(point.time)} cy={yScale(point[displayUnits])} r={3} />
     {/each}
@@ -110,5 +123,9 @@
     fill: none;
     stroke: #1db6c1;
     stroke-width: 2;
+  }
+  .target-lines line {
+    stroke-width: 1.5;
+    stroke: purple;
   }
 </style>

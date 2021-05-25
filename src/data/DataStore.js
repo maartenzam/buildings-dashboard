@@ -11,6 +11,7 @@ const housingDataURL = "./data/housing.csv";
 const gasGridDataURL = "./data/gas-grid.csv";
 const credibilityDataURL = "./data/credibility.csv";
 const countryDataURL = "./data/EU27.csv";
+const targetsDataURL = "./data/targets.csv";
 
 export const fecGdpDataSet = readable({ table: [] }, (set) => {
   Promise.all([csv(fecGdpDataURL, autoType)]).then(([table]) => {
@@ -98,8 +99,20 @@ export const countryDataSet = readable({ table: [] }, (set) => {
   return () => {};
 });
 
+export const targetsDataSet = readable({ table: [] }, (set) => {
+  Promise.all([csv(targetsDataURL, autoType)]).then(([table]) => {
+    const byCountry = groups(table, (d) => d.geo);
+    set({
+      table,
+      byCountry,
+    });
+  });
+  return () => {};
+});
+
 export const country = writable("SE");
 
+// Data for country pages
 export const allCountryData = derived(
   [
     fecGdpDataSet,

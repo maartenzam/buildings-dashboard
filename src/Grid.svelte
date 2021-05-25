@@ -1,13 +1,18 @@
 <script>
   import TrendChart from "./TrendChart.svelte";
   import TrafficLightChart from "./TrafficLightChart.svelte";
-  import { countryDataSet } from "./data/DataStore.js";
+  import { countryDataSet, targetsDataSet } from "./data/DataStore.js";
   let width;
   let height;
   export let selectedIndicator;
   export let countriesData;
   export let displayUnits;
   export let colorScales;
+
+  $: targetsData =
+    selectedIndicator.indicatorCode === "fec" && displayUnits === "absolute"
+      ? $targetsDataSet.byCountry
+      : [];
 
   function getCountryCode(countrydata, row, column) {
     const countryCode = countrydata.filter(
@@ -33,11 +38,11 @@
                 <TrafficLightChart
                   {width}
                   {height}
-                  countryData={countriesData.filter(
+                  countryData={countriesData.find(
                     (d) =>
                       d[0] ===
                       getCountryCode($countryDataSet.table, r + 1, c + 1)
-                  )[0]}
+                  )}
                   colorScale={colorScales[selectedIndicator.indicatorCode]}
                 />
               {/if}
@@ -45,11 +50,15 @@
               <TrendChart
                 {width}
                 {height}
-                countryData={countriesData.filter(
+                countryData={countriesData.find(
                   (d) =>
                     d[0] === getCountryCode($countryDataSet.table, r + 1, c + 1)
-                )[0]}
+                )}
                 {displayUnits}
+                targetsData={targetsData.find(
+                  (d) =>
+                    d[0] === getCountryCode($countryDataSet.table, r + 1, c + 1)
+                )}
               />
             {/if}
           {/if}
