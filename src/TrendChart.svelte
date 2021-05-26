@@ -8,26 +8,27 @@
   import { line } from "d3-shape";
   import { tweened } from "svelte/motion";
   import * as easings from "svelte/easing";
+  import { onMount } from "svelte";
 
-  export let countryData;
-  export let width;
-  export let height;
+  export let countryData = ["", [{ time: 0, absolute: 0 }]];
+  export let width = 0;
+  export let height = 0;
   export let displayUnits;
   export let targetsData;
 
   const margins = { top: 10, left: 30, right: 10, bottom: 10 };
 
-  const yAxisMargin = 1;
+  const yAxisMargin = 0;
 
   $: countryDataPoints = countryData[1];
 
-  $: tweenedPoints = tweened(countryDataPoints, {
+  /*$: tweenedPoints = tweened(countryDataPoints, {
     delay: 0,
     duration: 750,
     easing: easings.cubicOut,
   });
 
-  $: tweenedPoints.set(countryDataPoints);
+  $: tweenedPoints.set(countryDataPoints);*/
 
   $: chartWidth = width - margins.left - margins.right;
   $: chartHeight = height - margins.top - margins.bottom;
@@ -44,6 +45,13 @@
 
   $: if (targetsData !== undefined) {
     yDomain[0] = Math.min(
+      yDomain[0],
+      targetsData[1][0]["target.necp"] * 1000,
+      targetsData[1][0]["target.euco"] * 1000,
+      targetsData[1][0]["target.2020"] * 1000
+    );
+    yDomain[1] = Math.max(
+      yDomain[1],
       targetsData[1][0]["target.necp"] * 1000,
       targetsData[1][0]["target.euco"] * 1000,
       targetsData[1][0]["target.2020"] * 1000
@@ -125,7 +133,7 @@
         />
       </g>
     {/if}
-    {#each $tweenedPoints as point}
+    {#each countryDataPoints as point}
       <circle cx={xScale(point.time)} cy={yScale(point[displayUnits])} r={3} />
     {/each}
     <path

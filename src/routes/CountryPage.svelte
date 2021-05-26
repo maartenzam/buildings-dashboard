@@ -2,12 +2,18 @@
   import { meta } from "tinro";
   import TrendChart from "./../TrendChart.svelte";
   import UnitSelector from "./../UnitSelector.svelte";
-  import { country, allCountryData } from "./../data/DataStore.js";
+  import {
+    country,
+    allCountryData,
+    countryDataSet,
+  } from "./../data/DataStore.js";
   import indicators from "./../data/Indicators.js";
 
   const route = meta();
   country.set(route.params.country);
-  //$: console.log($allCountryData.renew);
+
+  $: countryName = $countryDataSet.table.find((d) => d.code === $country).name;
+
   let width;
   let height;
 
@@ -19,9 +25,9 @@
 <div class="wrapper">
   <div class="row">
     <div class="cell">
-      <h2>{$country}</h2>
+      <h2>{countryName}</h2>
       <p>
-        {$country} has {$allCountryData.gasgrid[1][0].status} on banning connections
+        {countryName} has {$allCountryData.gasgrid[1][0].status} on banning connections
         to the gas grid.
       </p>
       <p>
