@@ -12,6 +12,16 @@ const gasGridDataURL = "./data/gas-grid.csv";
 const credibilityDataURL = "./data/credibility.csv";
 const countryDataURL = "./data/EU27.csv";
 const targetsDataURL = "./data/targets.csv";
+const centroidsDataURL = "./data/centroids.csv";
+
+export const centroidsDataSet = readable({ table: [] }, (set) => {
+  Promise.all([csv(centroidsDataURL, autoType)]).then(([table]) => {
+    set({
+      table,
+    });
+  });
+  return () => {};
+});
 
 export const fecGdpDataSet = readable({ table: [] }, (set) => {
   Promise.all([csv(fecGdpDataURL, autoType)]).then(([table]) => {
