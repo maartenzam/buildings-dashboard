@@ -3,8 +3,6 @@
   export let width;
   export let height;
   export let colorScale;
-  //$: console.log(colorScale[countryData[1][0].status]);
-  $: console.log(countryData);
 
   const margins = { top: 10, left: 10, right: 10, bottom: 10 };
   $: chartWidth = width - margins.left - margins.right;
