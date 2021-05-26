@@ -76,6 +76,7 @@
   <input type="checkbox" bind:checked={bubble} />
   Bubble map
 </label>
+
 <svg {width} {height}>
   <rect {width} {height} class="sea" />
   {#each data as feature}
@@ -126,5 +127,11 @@
     stroke: white;
     stroke-width: 1px;
     opacity: 0.9;
+  }
+  label {
+    position: absolute;
+    left: 10px;
+    top: 80px;
+    z-index: 10;
   }
 </style>
