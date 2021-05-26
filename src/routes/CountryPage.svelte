@@ -58,6 +58,7 @@
           {height}
           countryData={$allCountryData.fec}
           displayUnits={selectedUnit}
+          targetsData={$allCountryData.targets}
         />
       </div>
     </div>

@@ -122,6 +122,7 @@ export const allCountryData = derived(
     povertyDataSet,
     gasGridDataSet,
     credibilityDataSet,
+    targetsDataSet,
     country,
   ],
   ([
@@ -132,6 +133,7 @@ export const allCountryData = derived(
     $housingDataSet,
     $gasGridDataSet,
     $credibilityDataSet,
+    $targetsDataSet,
     $country,
   ]) => {
     function countryFilter(el) {
@@ -146,6 +148,7 @@ export const allCountryData = derived(
     const gasGridData = $gasGridDataSet.byCountry.filter(countryFilter)[0]; //[1];
     const credibilityData =
       $credibilityDataSet.byCountry.filter(countryFilter)[0]; //[1];
+    const targetsData = $targetsDataSet.byCountry.filter(countryFilter)[0];
 
     return {
       fec: fecData,
@@ -155,6 +158,7 @@ export const allCountryData = derived(
       housing: housingData,
       gasgrid: gasGridData,
       credibility: credibilityData,
+      targets: targetsData,
     };
   }
 );
