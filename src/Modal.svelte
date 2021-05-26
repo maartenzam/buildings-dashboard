@@ -31,16 +31,17 @@
   <div class="modal-wrapper">
     <div class="modal">
       <span class="close" on:click={() => hide()}>&times;</span>
-      <slot />
+      <h2>{$country}</h2>
+      <p>{selectedIndicator.indicatorCode + ", " + displayUnits}</p>
       <div
         class="chart-container"
         bind:offsetWidth={width}
         bind:offsetHeight={height}
       >
         <TrendChart
-          width={width - 20}
+          {width}
           {height}
-          countryData={$allCountryData.fec}
+          countryData={$allCountryData[selectedIndicator.indicatorCode]}
           {displayUnits}
           targetsData={$allCountryData.targets}
         />

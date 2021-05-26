@@ -94,8 +94,6 @@
   <p>{selectedIndicator.indicatorExplanation}</p>
 </div>
 <Modal bind:this={modal} {selectedIndicator} {displayUnits}>
-  <h2>Modal title</h2>
-  <p>Modal content.</p>
   <button on:click={() => modal.hide()}>Close</button>
 </Modal>
 
