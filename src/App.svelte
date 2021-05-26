@@ -1,7 +1,7 @@
 <script>
   import { Route } from "tinro";
   import Home from "./routes/Home.svelte";
-  import About from "./routes/About.svelte";
+  import Map from "./routes/Map.svelte";
   import CountryPage from "./routes/CountryPage.svelte";
   import TopBar from "./TopBar.svelte";
   import Footer from "./Footer.svelte";
@@ -13,10 +13,12 @@
     <Route path="/">
       <Home />
     </Route>
-    <Route path="/:country" let:meta>
+    <Route path="/country/:country" let:meta>
       <CountryPage />
     </Route>
-    <Route path="/about" component={About} />
+    <Route path="/map">
+      <Map />
+    </Route>
   </main>
   <Footer />
 </div>

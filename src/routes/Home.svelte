@@ -20,8 +20,6 @@
 
   let selectedIndicator = indicators[0];
   let selectedUnit;
-  //$: console.log(selectedIndicator.indicatorCode);
-  //$: console.log(selectedUnit);
 
   $: dataMap = {
     fec: {
@@ -93,12 +91,6 @@
     flex: 100000 0 200px;
     position: relative;
     min-height: 300px;
-  }
-  .select-container {
-  }
-  .chart-wrapper {
-    width: 160px;
-    height: 160px;
   }
   .right {
     flex: 1 10000 300px;

@@ -40,7 +40,13 @@
       <div class="cell">
         <!--Only charts where there is a country-->
         {#if $countryDataSet.table.filter((d) => d.col === c + 1 && d.row === r + 1).length > 0}
-          <a href={`/${getCountryCode($countryDataSet.table, r + 1, c + 1)}`}>
+          <a
+            href={`/country/${getCountryCode(
+              $countryDataSet.table,
+              r + 1,
+              c + 1
+            )}`}
+          >
             <div class="title">
               {getCountryName($countryDataSet.table, r + 1, c + 1)}
             </div>
