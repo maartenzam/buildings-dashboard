@@ -3,16 +3,18 @@ import { groups } from "d3-array";
 import { autoType } from "d3-dsv";
 import { readable, writable, derived } from "svelte/store";
 
-const fecGdpDataURL = "./data/fec-gdp.csv";
-const fecHhDataURL = "./data/fec-hh.csv";
-const renewHhDataURL = "./data/renew-hh.csv";
-const povertyDataURL = "./data/poverty.csv";
-const housingDataURL = "./data/housing.csv";
-const gasGridDataURL = "./data/gas-grid.csv";
-const credibilityDataURL = "./data/credibility.csv";
-const countryDataURL = "./data/EU27.csv";
-const targetsDataURL = "./data/targets.csv";
-const centroidsDataURL = "./data/centroids.csv";
+const fecGdpDataURL = "/data/fec-gdp.csv";
+const fecHhDataURL = "/data/fec-hh.csv";
+const renewHhDataURL = "/data/renew-hh.csv";
+const povertyDataURL = "/data/poverty.csv";
+const housingDataURL = "/data/housing.csv";
+const gasGridDataURL = "/data/gas-grid.csv";
+const credibilityDataURL = "/data/credibility.csv";
+const countryDataURL = "/data/EU27.csv";
+const targetsDataURL = "/data/targets.csv";
+const centroidsDataURL = "/data/centroids.csv";
+
+export const selectedUnits = writable("absolute");
 
 export const centroidsDataSet = readable({ table: [] }, (set) => {
   Promise.all([csv(centroidsDataURL, autoType)]).then(([table]) => {

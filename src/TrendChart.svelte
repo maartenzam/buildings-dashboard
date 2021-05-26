@@ -43,7 +43,7 @@
         yAxisMargin
   );
 
-  $: if (targetsData !== undefined) {
+  $: if (targetsData !== undefined && displayUnits === "absolute") {
     yDomain[0] = Math.min(
       yDomain[0],
       targetsData[1][0]["target.necp"] * 1000,
@@ -106,7 +106,7 @@
         />
       {/each}
     </g>
-    {#if targetsData !== undefined}
+    {#if targetsData !== undefined && displayUnits === "absolute"}
       <g class="target-lines">
         <!-- svelte-ignore component-name-lowercase -->
         <line

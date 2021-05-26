@@ -10,6 +10,7 @@
     housingDataSet,
     gasGridDataSet,
     credibilityDataSet,
+    selectedUnits,
   } from "./../data/DataStore.js";
   import indicators from "./../data/Indicators.js";
 
@@ -70,7 +71,7 @@
   };
 
   $: countriesData = dataMap[selectedIndicator.indicatorCode].data;
-  $: displayUnits = dataMap[selectedIndicator.indicatorCode][selectedUnit];
+  $: displayUnits = dataMap[selectedIndicator.indicatorCode][$selectedUnits];
 </script>
 
 <div class="left">
