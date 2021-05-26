@@ -6,9 +6,9 @@
   import { format } from "d3-format";
   import { regressionLoess } from "d3-regression";
   import { line } from "d3-shape";
-  import { tweened } from "svelte/motion";
-  import * as easings from "svelte/easing";
-  import { onMount } from "svelte";
+  import Tooltip, { Wrapper } from "@smui/tooltip";
+  /*import { tweened } from "svelte/motion";
+  import * as easings from "svelte/easing";*/
 
   export let countryData;
   export let width = 0;
@@ -72,6 +72,7 @@
 
   const xTicks = [new Date(2005, 1), new Date(2010, 1), new Date(2015, 1)];
   const formatTime = timeFormat("%y");
+  const formatFullYear = timeFormat("%Y");
 
   $: yTicks = yScale.ticks(3);
   const formatNumber = format(".2s");
@@ -134,7 +135,16 @@
       </g>
     {/if}
     {#each countryDataPoints as point}
-      <circle cx={xScale(point.time)} cy={yScale(point[displayUnits])} r={3} />
+      <Wrapper>
+        <circle
+          cx={xScale(point.time)}
+          cy={yScale(point[displayUnits])}
+          r={3}
+        />
+        <Tooltip
+          >{`${formatFullYear(point.time)}: ${point[displayUnits]}`}</Tooltip
+        >
+      </Wrapper>
     {/each}
     <path
       class="regression-line"

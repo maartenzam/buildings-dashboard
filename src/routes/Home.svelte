@@ -91,6 +91,7 @@
     flex: 100000 0 200px;
     position: relative;
     min-height: 300px;
+    padding: 10px;
   }
   .right {
     flex: 1 10000 300px;
