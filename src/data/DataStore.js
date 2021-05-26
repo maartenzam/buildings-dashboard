@@ -25,7 +25,7 @@ export const centroidsDataSet = readable({ table: [] }, (set) => {
   return () => {};
 });
 
-export const fecGdpDataSet = readable({ table: [] }, (set) => {
+export const fecGdpDataSet = readable({ table: [], byCountry: [] }, (set) => {
   Promise.all([csv(fecGdpDataURL, autoType)]).then(([table]) => {
     const byCountry = groups(table, (d) => d.geo);
     set({
@@ -36,7 +36,7 @@ export const fecGdpDataSet = readable({ table: [] }, (set) => {
   return () => {};
 });
 
-export const fecHhDataSet = readable({ table: [] }, (set) => {
+export const fecHhDataSet = readable({ table: [], byCountry: [] }, (set) => {
   Promise.all([csv(fecHhDataURL, autoType)]).then(([table]) => {
     const byCountry = groups(table, (d) => d.geo);
     set({
@@ -47,7 +47,7 @@ export const fecHhDataSet = readable({ table: [] }, (set) => {
   return () => {};
 });
 
-export const renewHhDataSet = readable({ table: [] }, (set) => {
+export const renewHhDataSet = readable({ table: [], byCountry: [] }, (set) => {
   Promise.all([csv(renewHhDataURL, autoType)]).then(([table]) => {
     const byCountry = groups(table, (d) => d.geo);
     set({
@@ -58,7 +58,7 @@ export const renewHhDataSet = readable({ table: [] }, (set) => {
   return () => {};
 });
 
-export const povertyDataSet = readable({ table: [] }, (set) => {
+export const povertyDataSet = readable({ table: [], byCountry: [] }, (set) => {
   Promise.all([csv(povertyDataURL, autoType)]).then(([table]) => {
     const byCountry = groups(table, (d) => d.geo);
     set({
@@ -69,7 +69,7 @@ export const povertyDataSet = readable({ table: [] }, (set) => {
   return () => {};
 });
 
-export const housingDataSet = readable({ table: [] }, (set) => {
+export const housingDataSet = readable({ table: [], byCountry: [] }, (set) => {
   Promise.all([csv(housingDataURL, autoType)]).then(([table]) => {
     const byCountry = groups(table, (d) => d.geo);
     set({
@@ -80,7 +80,7 @@ export const housingDataSet = readable({ table: [] }, (set) => {
   return () => {};
 });
 
-export const gasGridDataSet = readable({ table: [] }, (set) => {
+export const gasGridDataSet = readable({ table: [], byCountry: [] }, (set) => {
   Promise.all([csv(gasGridDataURL, autoType)]).then(([table]) => {
     const byCountry = groups(table, (d) => d.geo);
     set({
@@ -91,16 +91,19 @@ export const gasGridDataSet = readable({ table: [] }, (set) => {
   return () => {};
 });
 
-export const credibilityDataSet = readable({ table: [] }, (set) => {
-  Promise.all([csv(credibilityDataURL, autoType)]).then(([table]) => {
-    const byCountry = groups(table, (d) => d.geo);
-    set({
-      table,
-      byCountry,
+export const credibilityDataSet = readable(
+  { table: [], byCountry: [] },
+  (set) => {
+    Promise.all([csv(credibilityDataURL, autoType)]).then(([table]) => {
+      const byCountry = groups(table, (d) => d.geo);
+      set({
+        table,
+        byCountry,
+      });
     });
-  });
-  return () => {};
-});
+    return () => {};
+  }
+);
 
 export const countryDataSet = readable({ table: [] }, (set) => {
   Promise.all([csv(countryDataURL, autoType)]).then(([table]) => {
@@ -111,7 +114,7 @@ export const countryDataSet = readable({ table: [] }, (set) => {
   return () => {};
 });
 
-export const targetsDataSet = readable({ table: [] }, (set) => {
+export const targetsDataSet = readable({ table: [], byCountry: [] }, (set) => {
   Promise.all([csv(targetsDataURL, autoType)]).then(([table]) => {
     const byCountry = groups(table, (d) => d.geo);
     set({
@@ -152,14 +155,14 @@ export const allCountryData = derived(
       return el[0] === $country;
     }
 
-    const fecData = $fecGdpDataSet.byCountry.filter(countryFilter)[0]; //[1];
-    const fecHhData = $fecHhDataSet.byCountry.filter(countryFilter)[0]; //[1];
-    const renewHhData = $renewHhDataSet.byCountry.filter(countryFilter)[0]; //[1];
-    const povertyData = $povertyDataSet.byCountry.filter(countryFilter)[0]; //[1];
-    const housingData = $housingDataSet.byCountry.filter(countryFilter)[0]; //[1];
-    const gasGridData = $gasGridDataSet.byCountry.filter(countryFilter)[0]; //[1];
+    const fecData = $fecGdpDataSet.byCountry.filter(countryFilter)[0];
+    const fecHhData = $fecHhDataSet.byCountry.filter(countryFilter)[0];
+    const renewHhData = $renewHhDataSet.byCountry.filter(countryFilter)[0];
+    const povertyData = $povertyDataSet.byCountry.filter(countryFilter)[0];
+    const housingData = $housingDataSet.byCountry.filter(countryFilter)[0];
+    const gasGridData = $gasGridDataSet.byCountry.filter(countryFilter)[0];
     const credibilityData =
-      $credibilityDataSet.byCountry.filter(countryFilter)[0]; //[1];
+      $credibilityDataSet.byCountry.filter(countryFilter)[0];
     const targetsData = $targetsDataSet.byCountry.filter(countryFilter)[0];
 
     return {

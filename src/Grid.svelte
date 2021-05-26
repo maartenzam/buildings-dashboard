@@ -10,6 +10,7 @@
   export let countriesData;
   export let displayUnits;
   export let colorScales;
+  export let modal;
 
   $: targetsData =
     selectedIndicator.indicatorCode === "fec" && displayUnits === "absolute"
@@ -90,6 +91,7 @@
                   (d) =>
                     d[0] === getCountryCode($countryDataSet.table, r + 1, c + 1)
                 )}
+                {modal}
               />
             {/if}
           </div>

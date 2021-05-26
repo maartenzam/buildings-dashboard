@@ -7,6 +7,7 @@
   import { regressionLoess } from "d3-regression";
   import { line } from "d3-shape";
   import Tooltip, { Wrapper } from "@smui/tooltip";
+  import { country } from "./data/DataStore.js";
   /*import { tweened } from "svelte/motion";
   import * as easings from "svelte/easing";*/
 
@@ -15,6 +16,7 @@
   export let height = 0;
   export let displayUnits;
   export let targetsData;
+  export let modal;
 
   const margins = { top: 10, left: 30, right: 10, bottom: 10 };
 
@@ -78,7 +80,14 @@
   const formatNumber = format(".2s");
 </script>
 
-<svg {width} {height}>
+<svg
+  {width}
+  {height}
+  on:click={() => {
+    country.set(countryData[0]);
+    modal.show();
+  }}
+>
   <!--rect {width} {height} fill={"#ffffff"} /-->
   <g transform={`translate(${margins.left}, ${margins.top})`}>
     <g class="axis y-axis">

@@ -13,6 +13,8 @@
     selectedUnits,
   } from "./../data/DataStore.js";
   import indicators from "./../data/Indicators.js";
+  import Modal from "./../Modal.svelte";
+  let modal;
 
   //let width = "100%";
   //let height = "100%";
@@ -79,12 +81,23 @@
     <IndicatorSelector bind:selectedIndicator />
     <UnitSelector bind:selectedUnit {selectedIndicator} />
   </div>
-  <Grid {selectedIndicator} {countriesData} {displayUnits} {colorScales} />
+  <Grid
+    {selectedIndicator}
+    {countriesData}
+    {displayUnits}
+    {colorScales}
+    {modal}
+  />
 </div>
 <div class="right">
   <h2>{selectedIndicator.indicatorName}</h2>
   <p>{selectedIndicator.indicatorExplanation}</p>
 </div>
+<Modal bind:this={modal} {selectedIndicator} {displayUnits}>
+  <h2>Modal title</h2>
+  <p>Modal content.</p>
+  <button on:click={() => modal.hide()}>Close</button>
+</Modal>
 
 <style>
   .left {
