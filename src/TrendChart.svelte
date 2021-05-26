@@ -78,7 +78,7 @@
 </script>
 
 <svg {width} {height}>
-  <!--rect {width} {height} fill={"#1db6c1"} opacity={0.2} /-->
+  <!--rect {width} {height} fill={"#ffffff"} /-->
   <g transform={`translate(${margins.left}, ${margins.top})`}>
     <g class="axis y-axis">
       {#each yTicks as tick}
