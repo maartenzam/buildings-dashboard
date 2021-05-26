@@ -10,7 +10,7 @@
   import * as easings from "svelte/easing";
   import { onMount } from "svelte";
 
-  export let countryData = ["", [{ time: 0, absolute: 0 }]];
+  export let countryData;
   export let width = 0;
   export let height = 0;
   export let displayUnits;

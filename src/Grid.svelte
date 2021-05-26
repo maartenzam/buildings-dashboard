@@ -1,6 +1,7 @@
 <script>
   import TrendChart from "./TrendChart.svelte";
   import TrafficLightChart from "./TrafficLightChart.svelte";
+  import TargetsLegend from "./TargetsLegend.svelte";
   import { countryDataSet, targetsDataSet } from "./data/DataStore.js";
   let width;
   let height;
@@ -78,6 +79,16 @@
                 )}
               />
             {/if}
+          </div>
+        {/if}
+        {#if r === 0 && c === 6 && selectedIndicator.indicatorCode === "fec" && displayUnits === "absolute"}
+          <div class="title">Targets</div>
+          <div
+            class="chart-container"
+            bind:offsetWidth={width}
+            bind:offsetHeight={height}
+          >
+            <TargetsLegend {width} {height} />
           </div>
         {/if}
       </div>
