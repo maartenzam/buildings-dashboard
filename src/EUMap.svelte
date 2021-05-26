@@ -66,24 +66,46 @@
       ),*/,
     };
     data = land.features;
+    console.log(data);
   });
+
+  let bubble = true;
 </script>
 
-<svg width="960" height="500">
+<label>
+  <input type="checkbox" bind:checked={bubble} />
+  Bubble map
+</label>
+<svg {width} {height}>
+  <rect {width} {height} class="sea" />
   {#each data as feature}
-    <path d={path(feature)} class="country" fill={"#cccccc"} />
-  {/each}
-  {#each $centroidsDataSet.table as bubble}
-    <circle
-      class="bubble"
-      cx={projection([bubble.long, bubble.lat])[0]}
-      cy={projection([bubble.long, bubble.lat])[1]}
-      r={sizeScale(bubble.pop)}
-      fill={colorScales.gasban[
-        $gasGridDataSet.table.find((d) => d.geo === bubble.code).status
-      ]}
+    <path
+      d={path(feature)}
+      class="country"
+      fill={$gasGridDataSet.table.find(
+        (d) => d.name === feature.properties.name
+      ) && !bubble
+        ? colorScales.gasban[
+            $gasGridDataSet.table.find(
+              (d) => d.name === feature.properties.name
+            ).status
+          ]
+        : "#ffffff"}
     />
   {/each}
+  {#if bubble}
+    {#each $centroidsDataSet.table as bubble}
+      <circle
+        class="bubble"
+        cx={projection([bubble.long, bubble.lat])[0]}
+        cy={projection([bubble.long, bubble.lat])[1]}
+        r={sizeScale(bubble.pop)}
+        fill={colorScales.gasban[
+          $gasGridDataSet.table.find((d) => d.geo === bubble.code).status
+        ]}
+      />
+    {/each}
+  {/if}
 </svg>
 
 <style>
@@ -96,9 +118,13 @@
     stroke: #444444;
     stroke-width: 0.5;
   }
+  .sea {
+    fill: #55b4bf;
+    opacity: 0.2;
+  }
   .bubble {
     stroke: white;
     stroke-width: 1px;
-    opacity: 0.8;
+    opacity: 0.9;
   }
 </style>

@@ -1,28 +1,28 @@
-"geo","status","new.buildings","existing.buildings"
-"BE","announced","yyyy (Flanders): ban to use fossil fuels",NA
-"BG","no policy",NA,NA
-"CZ","no policy",NA,NA
-"DK","announced","yyyy: ban to use fossil fuels","yyyy: ban of oil boilers"
-"DE","announced",NA,"yyyy: ban of oil boilers"
-"EE","no policy",NA,NA
-"EL","no policy",NA,NA
-"ES","no policy",NA,NA
-"FR","adopted","yyyy: ban to use fossil fuels","yyyy: ban of coal and oil boilers"
-"HR","no policy",NA,NA
-"IE","announced","yyyy: ban to use fossil fuels",NA
-"IT","no policy",NA,NA
-"CY","no policy",NA,NA
-"LV","no policy",NA,NA
-"LT","no policy",NA,NA
-"LU","no policy",NA,NA
-"HU","no policy",NA,NA
-"MT","no policy",NA,NA
-"NL","adopted","yyyy: ban to use fossil fuels",NA
-"AT","announced","yyyy: ban to use fossil fuels",NA
-"PL","no policy",NA,NA
-"PT","no policy",NA,NA
-"RO","no policy",NA,NA
-"SI","no policy",NA,NA
-"SK","no policy",NA,NA
-"FI","no policy",NA,NA
-"SE","no policy",NA,NA
+"geo","status","new.buildings","existing.buildings","name"
+"BE","announced","yyyy (Flanders): ban to use fossil fuels",NA,"Belgium"
+"BG","no policy",NA,NA,"Bulgaria"
+"CZ","no policy",NA,NA,"Czechia"
+"DK","announced","yyyy: ban to use fossil fuels","yyyy: ban of oil boilers","Denmark"
+"DE","announced",NA,"yyyy: ban of oil boilers","Germany"
+"EE","no policy",NA,NA,"Estonia"
+"EL","no policy",NA,NA,"Greece"
+"ES","no policy",NA,NA,"Spain"
+"FR","adopted","yyyy: ban to use fossil fuels","yyyy: ban of coal and oil boilers","France"
+"HR","no policy",NA,NA,"Croatia"
+"IE","announced","yyyy: ban to use fossil fuels",NA,"Ireland"
+"IT","no policy",NA,NA,"Italy"
+"CY","no policy",NA,NA,"Cyprus"
+"LV","no policy",NA,NA,"Latvia"
+"LT","no policy",NA,NA,"Lithuania"
+"LU","no policy",NA,NA,"Luxembourg"
+"HU","no policy",NA,NA,"Hungary"
+"MT","no policy",NA,NA,"Malta"
+"NL","adopted","yyyy: ban to use fossil fuels",NA,"Netherlands"
+"AT","announced","yyyy: ban to use fossil fuels",NA,"Austria"
+"PL","no policy",NA,NA,"Poland"
+"PT","no policy",NA,NA,"Portugal"
+"RO","no policy",NA,NA,"Romania"
+"SI","no policy",NA,NA,"Slovenia"
+"SK","no policy",NA,NA,"Slovakia"
+"FI","no policy",NA,NA,"Finland"
+"SE","no policy",NA,NA,"Sweden"
