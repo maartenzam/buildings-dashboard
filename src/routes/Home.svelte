@@ -71,7 +71,7 @@
   };
 
   $: countriesData = dataMap[selectedIndicator.indicatorCode].data;
-  $: displayUnits = dataMap[selectedIndicator.indicatorCode][$selectedUnits];
+  $: displayUnits = dataMap[selectedIndicator.indicatorCode][selectedUnit];
 </script>
 
 <div class="left">
