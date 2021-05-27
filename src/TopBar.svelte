@@ -11,7 +11,7 @@
         </a>
       </Section>
       <Section align="end">
-        <a href="/map">Map</a>
+        <a href="/map" style={"color: white; margin-right: 12px;"}>Map</a>
         <img src="./ecf-logo-white.png" alt="ECF logo" height="100%" />
       </Section>
     </Row>

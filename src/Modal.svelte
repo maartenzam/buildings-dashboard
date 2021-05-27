@@ -3,6 +3,7 @@
   export let displayUnits;
   import { country, allCountryData, countryDataSet } from "./data/DataStore.js";
   import TrendChart from "./TrendChart.svelte";
+  import { fade } from "svelte/transition";
 
   let width;
   let height;
@@ -27,7 +28,7 @@
 />
 
 {#if shown}
-  <div class="modal-wrapper" on:click={() => hide()}>
+  <div class="modal-wrapper" on:click={() => hide()} transition:fade>
     <div class="modal">
       <div class="modal-header">
         <span class="close" on:click={() => hide()}>&times;</span>
