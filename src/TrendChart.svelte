@@ -90,7 +90,6 @@
     new Date(2010, 0, 1),
     new Date(2015, 0, 1),
   ];
-  console.log(xTicks);
   const formatFullYear = timeFormat("%Y");
 
   $: yTicks = yScale.ticks(3);

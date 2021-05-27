@@ -13,6 +13,8 @@
   } from "./../data/DataStore.js";
   import indicators from "./../data/Indicators.js";
   import Modal from "./../Modal.svelte";
+  import Treemap from "./../Treemap.svelte";
+
   let modal;
 
   //let width = "100%";
@@ -73,6 +75,16 @@
 
   $: countriesData = dataMap[selectedIndicator.indicatorCode].data;
   $: displayUnits = dataMap[selectedIndicator.indicatorCode][selectedUnit];
+
+  $: treemapData = countriesData.map((d) => {
+    const country = d[0];
+    const absolute = d[1].slice(-1)[0].absolute;
+    return {
+      parent: "root",
+      country: country,
+      absolute: absolute,
+    };
+  });
 </script>
 
 <div class="left">
@@ -91,6 +103,15 @@
 <div class="right">
   <h2>{selectedIndicator.indicatorName}</h2>
   <p>{selectedIndicator.indicatorExplanation}</p>
+  {#if displayUnits === "absolute"}
+    <div
+      class="treemap-container"
+      bind:offsetWidth={width}
+      bind:offsetHeight={height}
+    >
+      <Treemap {treemapData} {width} {height} />
+    </div>
+  {/if}
 </div>
 <Modal bind:this={modal} {selectedIndicator} {displayUnits}>
   <button on:click={() => modal.hide()}>Close</button>
@@ -108,5 +129,9 @@
     flex: 1 10000 300px;
     padding: 1rem;
     width: 100%;
+  }
+  .treemap-container {
+    width: 100%;
+    height: 400px;
   }
 </style>
