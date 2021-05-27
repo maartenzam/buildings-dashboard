@@ -23,7 +23,7 @@
   let height;
 
   let selectedIndicator = indicators[0];
-  let selectedUnit;
+  let selectedUnit = "absolute";
 
   $: dataMap = {
     fec: {
@@ -89,7 +89,7 @@
 
 <div class="left">
   <div class="select-container">
-    <IndicatorSelector bind:selectedIndicator />
+    <IndicatorSelector bind:selectedIndicator bind:selectedUnit />
     <UnitSelector bind:selectedUnit {selectedIndicator} />
   </div>
   <Grid
