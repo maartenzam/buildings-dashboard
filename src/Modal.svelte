@@ -1,14 +1,13 @@
 <script>
   export let selectedIndicator;
   export let displayUnits;
-  import { country, allCountryData } from "./data/DataStore.js";
+  import { country, allCountryData, countryDataSet } from "./data/DataStore.js";
   import TrendChart from "./TrendChart.svelte";
-
-  $: console.log($country);
-  $: console.log($allCountryData);
 
   let width;
   let height;
+
+  $: countryName = $countryDataSet.table.find((d) => d.code === $country).name;
 
   let shown = false;
   export function show() {
@@ -28,23 +27,41 @@
 />
 
 {#if shown}
-  <div class="modal-wrapper">
+  <div class="modal-wrapper" on:click={() => hide()}>
     <div class="modal">
-      <span class="close" on:click={() => hide()}>&times;</span>
-      <h2>{$country}</h2>
-      <p>{selectedIndicator.indicatorCode + ", " + displayUnits}</p>
-      <div
-        class="chart-container"
-        bind:offsetWidth={width}
-        bind:offsetHeight={height}
-      >
-        <TrendChart
-          {width}
-          {height}
-          countryData={$allCountryData[selectedIndicator.indicatorCode]}
-          {displayUnits}
-          targetsData={$allCountryData.targets}
-        />
+      <div class="modal-header">
+        <span class="close" on:click={() => hide()}>&times;</span>
+        <h2>
+          {`${countryName}, ${selectedIndicator.indicatorName}`}
+        </h2>
+        <p>
+          {`${
+            selectedIndicator.indicatorUnits.find(
+              (d) => d.unitsCode === displayUnits
+            ).unitsName
+          } (${
+            selectedIndicator.indicatorUnits.find(
+              (d) => d.unitsCode === displayUnits
+            ).unitsShort
+          })`}
+        </p>
+      </div>
+      <div class="modal-content">
+        <div
+          class="chart-container"
+          bind:offsetWidth={width}
+          bind:offsetHeight={height}
+        >
+          <TrendChart
+            {width}
+            {height}
+            countryData={$allCountryData[selectedIndicator.indicatorCode]}
+            {displayUnits}
+            targetsData={selectedIndicator.indicator !== "fec"
+              ? undefined
+              : $allCountryData.targets}
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -67,6 +84,11 @@
     height: 80vh;
     padding: 1rem;
     margin: 5% auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .modal-content {
+    flex: 1;
   }
   .close {
     float: right;

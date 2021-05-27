@@ -97,7 +97,7 @@
         <TrendChart
           {width}
           {height}
-          countryData={$allCountryData.renew}
+          countryData={$allCountryData.renewables}
           displayUnits={renewSelectedUnit}
         />
       </div>

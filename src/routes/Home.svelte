@@ -10,7 +10,6 @@
     housingDataSet,
     gasGridDataSet,
     credibilityDataSet,
-    selectedUnits,
   } from "./../data/DataStore.js";
   import indicators from "./../data/Indicators.js";
   import Modal from "./../Modal.svelte";

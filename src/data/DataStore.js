@@ -105,14 +105,17 @@ export const credibilityDataSet = readable(
   }
 );
 
-export const countryDataSet = readable({ table: [] }, (set) => {
-  Promise.all([csv(countryDataURL, autoType)]).then(([table]) => {
-    set({
-      table,
+export const countryDataSet = readable(
+  { table: [{ code: "SE", name: "Sweden" }] },
+  (set) => {
+    Promise.all([csv(countryDataURL, autoType)]).then(([table]) => {
+      set({
+        table,
+      });
     });
-  });
-  return () => {};
-});
+    return () => {};
+  }
+);
 
 export const targetsDataSet = readable({ table: [], byCountry: [] }, (set) => {
   Promise.all([csv(targetsDataURL, autoType)]).then(([table]) => {
@@ -168,7 +171,7 @@ export const allCountryData = derived(
     return {
       fec: fecData,
       fechh: fecHhData,
-      renew: renewHhData,
+      renewables: renewHhData,
       poverty: povertyData,
       housing: housingData,
       gasgrid: gasGridData,

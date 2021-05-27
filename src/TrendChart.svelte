@@ -18,22 +18,34 @@
   export let targetsData;
   export let modal;
 
-  const margins = { top: 10, left: 30, right: 10, bottom: 10 };
+  const chartConfig = {
+    compact: {
+      circleRadius: 3,
+      lineWidth: 2,
+      margins: { top: 10, left: 30, right: 10, bottom: 10 },
+      axisLabels: 11,
+      yearFormat: timeFormat("%y"),
+      numberFormat: format(".2s"),
+    },
+    generous: {
+      circleRadius: 6,
+      lineWidth: 3,
+      margins: { top: 20, left: 60, right: 20, bottom: 40 },
+      axisLabels: 14,
+      yearFormat: timeFormat("%Y"),
+      numberFormat: format(","),
+    },
+  };
 
   const yAxisMargin = 0;
 
   $: countryDataPoints = countryData[1];
 
-  /*$: tweenedPoints = tweened(countryDataPoints, {
-    delay: 0,
-    duration: 750,
-    easing: easings.cubicOut,
-  });
-
-  $: tweenedPoints.set(countryDataPoints);*/
-
   $: chartWidth = width - margins.left - margins.right;
   $: chartHeight = height - margins.top - margins.bottom;
+
+  $: sizing = chartConfig[width > 600 ? "generous" : "compact"];
+  $: margins = sizing.margins;
 
   $: xDomain = extent(countryDataPoints, (d) => d.time);
   $: yDomain = extent(countryDataPoints, (d) => d[displayUnits]).map(
@@ -73,11 +85,9 @@
     .y((d) => yScale(d[1]));
 
   const xTicks = [new Date(2005, 1), new Date(2010, 1), new Date(2015, 1)];
-  const formatTime = timeFormat("%y");
   const formatFullYear = timeFormat("%Y");
 
   $: yTicks = yScale.ticks(3);
-  const formatNumber = format(".2s");
 </script>
 
 <svg
@@ -99,7 +109,8 @@
           x2={xScale(xDomain[1])}
           x={-4}
           y="+4"
-          text={formatNumber(tick)}
+          text={sizing.numberFormat(tick)}
+          {sizing}
         />
       {/each}
     </g>
@@ -111,7 +122,8 @@
           y1={yScale(yDomain[0])}
           y2={yScale(yDomain[1])}
           y={height - margins.bottom}
-          text={formatTime(tick)}
+          text={sizing.yearFormat(tick)}
+          {sizing}
         />
       {/each}
     </g>
@@ -148,7 +160,7 @@
         <circle
           cx={xScale(point.time)}
           cy={yScale(point[displayUnits])}
-          r={3}
+          r={sizing.circleRadius}
         />
         <Tooltip
           >{`${formatFullYear(point.time)}: ${point[displayUnits]}`}</Tooltip
@@ -158,11 +170,15 @@
     <path
       class="regression-line"
       d={lineLoess(loessRegression(countryDataPoints))}
+      stroke-width={sizing.lineWidth}
     /></g
   >
 </svg>
 
 <style>
+  svg:hover {
+    cursor: pointer;
+  }
   circle {
     stroke-width: 0.5px;
     stroke: #1db6c1;
@@ -173,7 +189,7 @@
   .regression-line {
     fill: none;
     stroke: #1db6c1;
-    stroke-width: 2;
+    stroke-linecap: round;
   }
   .target-lines line {
     stroke-width: 1.5;

@@ -8,17 +8,22 @@
   export let y1 = 0;
   export let y2 = 0;
   export let text = "";
+  export let sizing;
 </script>
 
 {#if axisType == "xAxis"}
   <g class="tick" transform={translate}>
     <line {y1} {y2} />
-    <text {y} style="text-anchor:middle;">{text}</text>
+    <text {y} style={`text-anchor:middle; font-size: ${sizing.axisLabels}`}
+      >{text}</text
+    >
   </g>
 {:else}
   <g class="tick" transform={translate}>
     <line {x1} {x2} />
-    <text {x} {y} style="text-anchor:end;">{text}</text>
+    <text {x} {y} style={`text-anchor:end; font-size: ${sizing.axisLabels}`}
+      >{text}</text
+    >
   </g>
 {/if}
 
