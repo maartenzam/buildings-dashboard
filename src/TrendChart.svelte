@@ -85,7 +85,12 @@
     .x((d) => xScale(new Date(d[0])))
     .y((d) => yScale(d[1]));
 
-  const xTicks = [new Date(2005, 1), new Date(2010, 1), new Date(2015, 1)];
+  const xTicks = [
+    new Date(2005, 0, 1),
+    new Date(2010, 0, 1),
+    new Date(2015, 0, 1),
+  ];
+  console.log(xTicks);
   const formatFullYear = timeFormat("%Y");
 
   $: yTicks = yScale.ticks(3);

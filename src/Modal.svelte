@@ -57,7 +57,7 @@
             {height}
             countryData={$allCountryData[selectedIndicator.indicatorCode]}
             {displayUnits}
-            targetsData={selectedIndicator.indicator !== "fec"
+            targetsData={selectedIndicator.indicatorCode !== "fec"
               ? undefined
               : $allCountryData.targets}
           />
