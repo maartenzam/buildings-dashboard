@@ -66,7 +66,6 @@
       ),*/,
     };
     data = land.features;
-    console.log(data);
   });
 
   let bubble = true;
