@@ -18,19 +18,20 @@
   export let targetsData;
   export let modal;
 
-  const chartConfig = {
+  $: chartConfig = {
     compact: {
       circleRadius: 3,
       lineWidth: 2,
       margins: { top: 10, left: 30, right: 10, bottom: 10 },
       axisLabels: 11,
       yearFormat: timeFormat("%y"),
-      numberFormat: format(".2s"),
+      numberFormat:
+        displayUnits === "sharenobiom" ? format(",") : format(".2s"),
     },
     generous: {
       circleRadius: 6,
       lineWidth: 3,
-      margins: { top: 20, left: 60, right: 20, bottom: 40 },
+      margins: { top: 20, left: 70, right: 20, bottom: 40 },
       axisLabels: 14,
       yearFormat: timeFormat("%Y"),
       numberFormat: format(","),
@@ -95,8 +96,11 @@
   {height}
   on:click={() => {
     country.set(countryData[0]);
-    modal.show();
+    if (modal) {
+      modal.show();
+    }
   }}
+  class={modal ? "clickable" : ""}
 >
   <!--rect {width} {height} fill={"#ffffff"} /-->
   <g transform={`translate(${margins.left}, ${margins.top})`}>
@@ -163,7 +167,9 @@
           r={sizing.circleRadius}
         />
         <Tooltip
-          >{`${formatFullYear(point.time)}: ${point[displayUnits]}`}</Tooltip
+          >{`${formatFullYear(point.time)}: ${
+            Math.round(point[displayUnits] * 10) / 10
+          }`}</Tooltip
         >
       </Wrapper>
     {/each}
@@ -176,7 +182,7 @@
 </svg>
 
 <style>
-  svg:hover {
+  svg.clickable:hover {
     cursor: pointer;
   }
   circle {
@@ -185,6 +191,9 @@
     fill: #1db6c1;
     fill-opacity: 0.5;
     stroke-opacity: 1;
+  }
+  circle:hover {
+    cursor: pointer;
   }
   .regression-line {
     fill: none;
