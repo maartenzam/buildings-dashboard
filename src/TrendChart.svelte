@@ -8,9 +8,6 @@
   import { line } from "d3-shape";
   import Tooltip, { Wrapper } from "@smui/tooltip";
   import { country } from "./data/DataStore.js";
-  /*import { tweened } from "svelte/motion";
-  import * as easings from "svelte/easing";*/
-  import { draw, scale } from "svelte/transition";
 
   export let countryData;
   export let width = 0;
@@ -18,6 +15,8 @@
   export let displayUnits;
   export let targetsData;
   export let modal;
+  export let selectedIndicator;
+  $: console.log(targetsData);
 
   $: chartConfig = {
     compact: {
@@ -59,7 +58,11 @@
         yAxisMargin
   );
 
-  $: if (targetsData !== undefined && displayUnits === "absolute") {
+  $: if (
+    targetsData !== undefined &&
+    displayUnits === "absolute" &&
+    selectedIndicator.indicatorCode === "fec"
+  ) {
     yDomain[0] = Math.min(
       yDomain[0],
       targetsData[1][0]["target.necp"] * 1000,
@@ -72,6 +75,15 @@
       targetsData[1][0]["target.euco"] * 1000,
       targetsData[1][0]["target.2020"] * 1000
     );
+  }
+
+  $: if (
+    targetsData !== undefined &&
+    displayUnits === "absolute" &&
+    selectedIndicator.indicatorCode === "fechh"
+  ) {
+    yDomain[0] = Math.min(yDomain[0], targetsData[1][0]["target.fechh"] * 1000);
+    yDomain[1] = Math.max(yDomain[1], targetsData[1][0]["target.fechh"] * 1000);
   }
 
   $: xScale = scaleTime().domain(xDomain).range([0, chartWidth]);
@@ -136,7 +148,7 @@
         />
       {/each}
     </g>
-    {#if targetsData !== undefined && displayUnits === "absolute"}
+    {#if targetsData !== undefined && displayUnits === "absolute" && selectedIndicator.indicatorCode === "fec"}
       <g class="target-lines">
         <!-- svelte-ignore component-name-lowercase -->
         <line
@@ -164,17 +176,24 @@
         />
       </g>
     {/if}
+    {#if targetsData !== undefined && displayUnits === "absolute" && selectedIndicator.indicatorCode === "fechh"}
+      <g class="target-lines">
+        <!-- svelte-ignore component-name-lowercase -->
+        <line
+          class="target-fechh"
+          x1={xScale(xDomain[0])}
+          x2={xScale(xDomain[1])}
+          y1={yScale(targetsData[1][0]["target.fechh"] * 1000)}
+          y2={yScale(targetsData[1][0]["target.fechh"] * 1000)}
+        />
+      </g>
+    {/if}
     {#each countryDataPoints as point}
       <Wrapper>
         <circle
           cx={xScale(point.time)}
           cy={yScale(point[displayUnits])}
           r={sizing.circleRadius}
-          transition:scale={{
-            duration: 1000,
-            r: sizing.circleRadius,
-            start: 0.5,
-          }}
         />
         <Tooltip
           >{`${formatFullYear(point.time)}: ${
@@ -187,7 +206,6 @@
       class="regression-line"
       d={lineLoess(loessRegression(countryDataPoints))}
       stroke-width={sizing.lineWidth}
-      transition:draw={{ duration: 2000 }}
     /></g
   >
 </svg>
@@ -224,5 +242,8 @@
   }
   line.target-2020 {
     stroke: steelblue;
+  }
+  line.target-fechh {
+    stroke: red;
   }
 </style>

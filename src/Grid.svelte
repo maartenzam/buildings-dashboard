@@ -13,7 +13,9 @@
   export let modal;
 
   $: targetsData =
-    selectedIndicator.indicatorCode === "fec" && displayUnits === "absolute"
+    (selectedIndicator.indicatorCode === "fec" ||
+      selectedIndicator.indicatorCode === "fechh") &&
+    displayUnits === "absolute"
       ? $targetsDataSet.byCountry
       : [];
 
@@ -92,6 +94,7 @@
                     d[0] === getCountryCode($countryDataSet.table, r + 1, c + 1)
                 )}
                 {modal}
+                {selectedIndicator}
               />
             {/if}
           </div>
