@@ -11,7 +11,12 @@
         </a>
       </Section>
       <Section align="end">
-        <a href="/map" style={"color: white; margin-right: 12px;"}>Map</a>
+        <a
+          href="/ECF-buildings-dashboard-data-2021-06-01.xlsx"
+          tinro-ignore
+          download
+          style={"color: white; margin-right: 12px;"}>Download data</a
+        >
         <img src="./ecf-logo-white.png" alt="ECF logo" height="100%" />
       </Section>
     </Row>

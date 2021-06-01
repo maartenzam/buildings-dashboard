@@ -47,26 +47,6 @@
   </div>
   <div class="row">
     <div class="cell">
-      <p>
-        {countryName} has {$allCountryData.gasgrid[1][0].status} on banning connections
-        to the gas grid.
-      </p>
-      <p>
-        The national renovation strategy is {$allCountryData.credibility[1][0]
-          .status}
-      </p>
-      <ul>
-        <li>
-          Effective energy efficiency promotion: {$allCountryData
-            .credibility[1][0]["effective.ee.promotion"]}
-        </li>
-        <li>Financing: {$allCountryData.credibility[1][0]["financing"]}</li>
-        <li>
-          Energy poverty: {$allCountryData.credibility[1][0]["energy.poverty"]}
-        </li>
-      </ul>
-    </div>
-    <div class="cell">
       <h3>Final energy consumption</h3>
       <UnitSelector selectedIndicator={indicators[0]} bind:selectedUnit />
       <div
@@ -107,8 +87,6 @@
         />
       </div>
     </div>
-  </div>
-  <div class="row">
     <div class="cell">
       <h3>Renewables in FEC in households</h3>
       <UnitSelector
@@ -130,6 +108,8 @@
         />
       </div>
     </div>
+  </div>
+  <div class="row">
     <div class="cell">
       <h3>Population with bad housing condition</h3>
       <div
@@ -164,6 +144,26 @@
         />
       </div>
     </div>
+    <div class="cell">
+      <p>
+        {countryName} has {$allCountryData.gasgrid[1][0].status} on banning connections
+        to the gas grid.
+      </p>
+      <p>
+        The national renovation strategy is {$allCountryData.credibility[1][0]
+          .status}
+      </p>
+      <ul>
+        <li>
+          Effective energy efficiency promotion: {$allCountryData
+            .credibility[1][0]["effective.ee.promotion"]}
+        </li>
+        <li>Financing: {$allCountryData.credibility[1][0]["financing"]}</li>
+        <li>
+          Energy poverty: {$allCountryData.credibility[1][0]["energy.poverty"]}
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 
@@ -173,7 +173,6 @@
   }
   .row {
     display: flex;
-    height: 44%;
     flex-wrap: wrap;
   }
   .title-row {
