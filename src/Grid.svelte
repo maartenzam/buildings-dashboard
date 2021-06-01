@@ -99,7 +99,7 @@
             {/if}
           </div>
         </div>
-      {:else if r === 0 && c === 6 && selectedIndicator.indicatorCode === "fec" && displayUnits === "absolute"}
+      {:else if r === 0 && c === 6 && (selectedIndicator.indicatorCode === "fec" || selectedIndicator.indicatorCode === "fechh") && displayUnits === "absolute"}
         <div class="cell">
           <div class="title">Targets</div>
           <div
@@ -107,7 +107,7 @@
             bind:offsetWidth={width}
             bind:offsetHeight={height}
           >
-            <TargetsLegend {width} {height} />
+            <TargetsLegend {width} {height} {selectedIndicator} />
           </div>
         </div>
       {:else if r === 0 && c === 6 && (selectedIndicator.indicatorCode === "gasban" || selectedIndicator.indicatorCode === "credibility")}
