@@ -2,6 +2,7 @@
   import { meta } from "tinro";
   import TrendChart from "./../TrendChart.svelte";
   import UnitSelector from "./../UnitSelector.svelte";
+  import { router } from "tinro";
   import {
     country,
     allCountryData,
@@ -10,12 +11,17 @@
   import indicators from "./../data/Indicators.js";
 
   const route = meta();
-  country.set(route.params.country);
+  country.set($route.params.country);
 
   $: countryName = $countryDataSet.table.find((d) => d.code === $country).name;
 
+  $: countryOptions = $countryDataSet.table
+    .filter((d) => d.code !== "EU27_2020")
+    .sort((a, b) => (a.name > b.name ? 1 : -1));
+
   let width;
   let height;
+  let selectedCountry;
 
   let selectedUnit = "absolute";
   let hhSelectedUnit = "absolute";
@@ -23,9 +29,24 @@
 </script>
 
 <div class="wrapper">
+  <div class="title-row">
+    <select
+      bind:value={selectedCountry}
+      style={"width: 300px;"}
+      on:change={() => {
+        country.set(selectedCountry);
+        router.goto(`/country/${selectedCountry}`);
+      }}
+    >
+      {#each countryOptions as cntr (cntr.code)}
+        <option value={cntr.code} selected={cntr.code === $country}
+          >{cntr.name}</option
+        >
+      {/each}
+    </select>
+  </div>
   <div class="row">
     <div class="cell">
-      <h2>{countryName}</h2>
       <p>
         {countryName} has {$allCountryData.gasgrid[1][0].status} on banning connections
         to the gas grid.
@@ -152,8 +173,11 @@
   }
   .row {
     display: flex;
-    height: 50%;
+    height: 44%;
     flex-wrap: wrap;
+  }
+  .title-row {
+    padding: 12px 12px 0px 12px;
   }
   .cell {
     flex: 1;
