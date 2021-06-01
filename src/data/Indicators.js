@@ -26,7 +26,7 @@ const indicators = [
       {
         unitsCode: "climatecapita",
         unitsName: "Climate corrected, per capita",
-        unitsShort: "toe/cap/year",
+        unitsShort: "kg/cap/year",
       },
     ],
   },
