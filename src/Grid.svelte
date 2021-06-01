@@ -14,12 +14,42 @@
   export let colorScales;
   export let modal;
 
+  // No targets for other indicators and units then fec and fechh in absolute units
   $: targetsData =
     (selectedIndicator.indicatorCode === "fec" ||
       selectedIndicator.indicatorCode === "fechh") &&
     displayUnits === "absolute"
       ? $targetsDataSet.byCountry
       : [];
+
+  // Fix scales for fec-relative, fechh-climatecapita, renewables-share, renewables-sharenobiom, housing and poverty
+  function getDomain(arr, units) {
+    if (arr.length > 0) {
+      let min = arr[0][1][0][units];
+      let max = arr[0][1][0][units];
+      arr.forEach((cntr) => {
+        cntr[1].forEach((d) => {
+          if (d[units] > max) {
+            max = d[units];
+          }
+          if (d[units] < min) {
+            min = d[units];
+          }
+        });
+      });
+      return [min, max];
+    } else {
+      return [0, 1];
+    }
+  }
+  $: yDomain = getDomain(countriesData, displayUnits);
+
+  $: freeScales =
+    (selectedIndicator.indicatorCode === "fec" &&
+      displayUnits === "absolute") ||
+    (selectedIndicator.indicatorCode === "fechh" &&
+      displayUnits === "absolute") ||
+    (selectedIndicator.indicatorCode === "fechh" && displayUnits === "climate");
 
   function getCountryCode(countrydata, row, column) {
     const countryCode = countrydata.filter(
@@ -104,6 +134,8 @@
                 )}
                 {modal}
                 {selectedIndicator}
+                {freeScales}
+                {yDomain}
               />
             {/if}
           </div>

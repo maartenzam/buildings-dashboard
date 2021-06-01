@@ -60,6 +60,7 @@
           displayUnits={selectedUnit}
           targetsData={$allCountryData.targets}
           selectedIndicator={{ indicatorCode: "fec" }}
+          freeScales={true}
         />
       </div>
     </div>
@@ -81,6 +82,7 @@
           displayUnits={hhSelectedUnit}
           targetsData={$allCountryData.targets}
           selectedIndicator={{ indicatorCode: "fechh" }}
+          freeScales={true}
         />
       </div>
     </div>
@@ -103,6 +105,7 @@
           countryData={$allCountryData.renewables}
           displayUnits={renewSelectedUnit}
           selectedIndicator={{ indicatorCode: "renewables" }}
+          freeScales={true}
         />
       </div>
     </div>
@@ -119,6 +122,7 @@
           countryData={$allCountryData.housing}
           displayUnits={"share"}
           selectedIndicator={{ indicatorCode: "housing" }}
+          freeScales={true}
         />
       </div>
     </div>
@@ -135,6 +139,7 @@
           countryData={$allCountryData.poverty}
           displayUnits={"share"}
           selectedIndicator={{ indicatorCode: "poverty" }}
+          freeScales={true}
         />
       </div>
     </div>

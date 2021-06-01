@@ -14,7 +14,7 @@ const countryDataURL = "/data/EU27.csv";
 const targetsDataURL = "/data/targets.csv";
 const centroidsDataURL = "/data/centroids.csv";
 
-export const selectedUnits = writable("absolute");
+//export const selectedUnits = writable("absolute");
 
 export const centroidsDataSet = readable({ table: [] }, (set) => {
   Promise.all([csv(centroidsDataURL, autoType)]).then(([table]) => {

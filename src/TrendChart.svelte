@@ -16,10 +16,12 @@
   export let targetsData;
   export let modal;
   export let selectedIndicator;
+  export let yDomain = [0, 1];
+  export let freeScales;
 
   $: chartConfig = {
     compact: {
-      circleRadius: 3,
+      circleRadius: 2,
       lineWidth: 2,
       margins: { top: 10, left: 30, right: 10, bottom: 10 },
       axisLabels: 11,
@@ -37,8 +39,6 @@
     },
   };
 
-  const yAxisMargin = 0;
-
   $: countryDataPoints = countryData[1];
 
   $: chartWidth = width - margins.left - margins.right;
@@ -48,31 +48,26 @@
   $: margins = sizing.margins;
 
   $: xDomain = extent(countryDataPoints, (d) => d.time);
-  $: yDomain = extent(countryDataPoints, (d) => d[displayUnits]).map(
-    (d, i) =>
-      d -
-      (max(countryDataPoints, (d) => d[displayUnits]) -
-        min(countryDataPoints, (d) => d[displayUnits])) *
-        -(i - 1) *
-        yAxisMargin
-  );
+  $: yChartDomain = freeScales
+    ? extent(countryDataPoints, (d) => d[displayUnits])
+    : yDomain;
 
   $: if (
     targetsData !== undefined &&
     displayUnits === "absolute" &&
     selectedIndicator.indicatorCode === "fec"
   ) {
-    yDomain[0] = Math.min(
-      yDomain[0],
-      targetsData[1][0]["target.necp"] * 1000,
-      targetsData[1][0]["target.euco"] * 1000,
-      targetsData[1][0]["target.2020"] * 1000
+    yChartDomain[0] = Math.min(
+      yChartDomain[0],
+      targetsData[1][0]["target.necp"],
+      targetsData[1][0]["target.euco"],
+      targetsData[1][0]["target.2020"]
     );
-    yDomain[1] = Math.max(
-      yDomain[1],
-      targetsData[1][0]["target.necp"] * 1000,
-      targetsData[1][0]["target.euco"] * 1000,
-      targetsData[1][0]["target.2020"] * 1000
+    yChartDomain[1] = Math.max(
+      yChartDomain[1],
+      targetsData[1][0]["target.necp"],
+      targetsData[1][0]["target.euco"],
+      targetsData[1][0]["target.2020"]
     );
   }
 
@@ -81,12 +76,18 @@
     displayUnits === "absolute" &&
     selectedIndicator.indicatorCode === "fechh"
   ) {
-    yDomain[0] = Math.min(yDomain[0], targetsData[1][0]["target.fechh"] * 1000);
-    yDomain[1] = Math.max(yDomain[1], targetsData[1][0]["target.fechh"] * 1000);
+    yChartDomain[0] = Math.min(
+      yChartDomain[0],
+      targetsData[1][0]["target.fechh"]
+    );
+    yChartDomain[1] = Math.max(
+      yChartDomain[1],
+      targetsData[1][0]["target.fechh"]
+    );
   }
 
   $: xScale = scaleTime().domain(xDomain).range([0, chartWidth]);
-  $: yScale = scaleLinear().domain(yDomain).range([chartHeight, 0]);
+  $: yScale = scaleLinear().domain(yChartDomain).range([chartHeight, 0]);
 
   $: loessRegression = regressionLoess()
     .x((d) => d.time)
@@ -154,24 +155,24 @@
           class="target-necp"
           x1={xScale(xDomain[0])}
           x2={xScale(xDomain[1])}
-          y1={yScale(targetsData[1][0]["target.necp"] * 1000)}
-          y2={yScale(targetsData[1][0]["target.necp"] * 1000)}
+          y1={yScale(targetsData[1][0]["target.necp"])}
+          y2={yScale(targetsData[1][0]["target.necp"])}
         />
         <!-- svelte-ignore component-name-lowercase -->
         <line
           class="target-euco"
           x1={xScale(xDomain[0])}
           x2={xScale(xDomain[1])}
-          y1={yScale(targetsData[1][0]["target.euco"] * 1000)}
-          y2={yScale(targetsData[1][0]["target.euco"] * 1000)}
+          y1={yScale(targetsData[1][0]["target.euco"])}
+          y2={yScale(targetsData[1][0]["target.euco"])}
         />
         <!-- svelte-ignore component-name-lowercase -->
         <line
           class="target-2020"
           x1={xScale(xDomain[0])}
           x2={xScale(xDomain[1])}
-          y1={yScale(targetsData[1][0]["target.2020"] * 1000)}
-          y2={yScale(targetsData[1][0]["target.2020"] * 1000)}
+          y1={yScale(targetsData[1][0]["target.2020"])}
+          y2={yScale(targetsData[1][0]["target.2020"])}
         />
       </g>
     {/if}
@@ -182,8 +183,8 @@
           class="target-euco"
           x1={xScale(xDomain[0])}
           x2={xScale(xDomain[1])}
-          y1={yScale(targetsData[1][0]["target.fechh"] * 1000)}
-          y2={yScale(targetsData[1][0]["target.fechh"] * 1000)}
+          y1={yScale(targetsData[1][0]["target.fechh"])}
+          y2={yScale(targetsData[1][0]["target.fechh"])}
         />
       </g>
     {/if}

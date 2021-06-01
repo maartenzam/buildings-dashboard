@@ -61,6 +61,8 @@
             targetsData={selectedIndicator.indicatorCode !== "fec"
               ? undefined
               : $allCountryData.targets}
+            freeScales={true}
+            {selectedIndicator}
           />
         </div>
       </div>
