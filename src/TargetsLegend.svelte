@@ -8,6 +8,7 @@
 </script>
 
 <svg {width} {height}>
+  <!--rect {width} {height} class="background" /-->
   <g class="target-lines">
     {#if selectedIndicator.indicatorCode === "fec"}
       <line
@@ -52,23 +53,26 @@
     {/if}
     {#if selectedIndicator.indicatorCode === "fechh"}
       <line
-        class="target-fechh"
+        class="target-euco"
         x1={margins.left}
         x2={width - margins.right}
-        y1={margins.top + legendHeight / 3}
-        y2={margins.top + legendHeight / 3}
+        y1={margins.top + (legendHeight / 3) * 2}
+        y2={margins.top + (legendHeight / 3) * 2}
       />
       <text
         x={width / 2}
-        y={margins.top + legendHeight / 3}
+        y={margins.top + (legendHeight / 3) * 2}
         dy={-4}
-        class="target-fechh">2030 EU projection EUCO</text
+        class="target-euco">2030 EU projection EUCO</text
       >
     {/if}
   </g>
 </svg>
 
 <style>
+  /*.background {
+    fill: #f2f2f2;
+  }*/
   .target-lines line {
     stroke-width: 1.5;
     stroke-dasharray: 6;
@@ -95,11 +99,5 @@
   }
   text.target-2020 {
     fill: steelblue;
-  }
-  line.target-fechh {
-    stroke: red;
-  }
-  text.target-fechh {
-    fill: red;
   }
 </style>

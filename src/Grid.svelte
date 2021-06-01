@@ -43,9 +43,9 @@
     {#each Array(7) as _, c}
       <!--Only charts where there is a country-->
       {#if $countryDataSet.table.filter((d) => d.col === c + 1 && d.row === r + 1).length > 0}
-        <div class="cell">
+        <div class={c === 0 && r === 0 ? "cell" : "cell"}>
           {#if c === 0 && r === 0}
-            <div class="title">
+            <div class={c === 0 && r === 0 ? "highlight-title title" : "title"}>
               {getCountryName($countryDataSet.table, r + 1, c + 1)}
             </div>
           {:else}
@@ -100,8 +100,8 @@
           </div>
         </div>
       {:else if r === 0 && c === 6 && (selectedIndicator.indicatorCode === "fec" || selectedIndicator.indicatorCode === "fechh") && displayUnits === "absolute"}
-        <div class="cell">
-          <div class="title">Targets</div>
+        <div class="cell border">
+          <div class="title highlight-title">Targets</div>
           <div
             class="chart-container"
             bind:offsetWidth={width}
@@ -156,5 +156,15 @@
     text-align: center;
     font-size: 11px;
     background-color: white;
+  }
+  .highlight-title {
+    background-color: rgba(29, 182, 193, 1);
+    color: white;
+    padding: 2px;
+    font-weight: bold;
+  }
+  .border {
+    border: 1px solid #1db6c1;
+    background-color: rgba(29, 182, 193, 0);
   }
 </style>
