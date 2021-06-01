@@ -186,9 +186,14 @@
   .cell {
     max-height: 150px;
     background-color: white;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  .cell:hover {
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.4);
   }
   .cell.empty {
     background-color: transparent;
+    box-shadow: none;
   }
   .chart-container {
     height: 100px;
@@ -196,12 +201,12 @@
   .title {
     text-align: center;
     font-size: 11px;
+    padding: 2px;
     background-color: white;
   }
   .highlight-title {
     background-color: rgba(29, 182, 193, 1);
     color: white;
-    padding: 2px;
     font-weight: bold;
   }
   .border {

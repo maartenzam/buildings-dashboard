@@ -10,7 +10,7 @@
   key={(indicator) => indicator.indicatorCode}
   bind:value={selectedIndicator}
   label="Indicator"
-  style={"width: 300px;"}
+  style={"width: 350px;"}
   on:change={() => {
     if (selectedIndicator.indicatorUnits.length > 0) {
       selectedUnit = selectedIndicator.indicatorUnits[0].unitsCode;

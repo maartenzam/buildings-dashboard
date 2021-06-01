@@ -26,6 +26,8 @@
   let selectedUnit = "absolute";
   let hhSelectedUnit = "absolute";
   let renewSelectedUnit = "share";
+  let housingSelectedUnit = "share";
+  let povertySelectedUnit = "share";
 </script>
 
 <div class="wrapper">
@@ -112,6 +114,10 @@
   <div class="row">
     <div class="cell">
       <h3>Population with bad housing condition</h3>
+      <UnitSelector
+        selectedIndicator={indicators[3]}
+        bind:housingSelectedUnit
+      />
       <div
         class="chart-container"
         bind:offsetWidth={width}
@@ -129,6 +135,10 @@
     </div>
     <div class="cell">
       <h3>Population unable to keep home warm</h3>
+      <UnitSelector
+        selectedIndicator={indicators[4]}
+        bind:povertySelectedUnit
+      />
       <div
         class="chart-container"
         bind:offsetWidth={width}
@@ -145,6 +155,7 @@
       </div>
     </div>
     <div class="cell">
+      <h3>Ban on gas grid connection and renovation strategye credibility</h3>
       <p>
         {countryName} has {$allCountryData.gasgrid[1][0].status} on banning connections
         to the gas grid.

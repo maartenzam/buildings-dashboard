@@ -8,8 +8,7 @@
 {#if selectedIndicator.indicatorUnits.length > 0}
   <select
     bind:value={selectedUnit}
-    label="Units"
-    style={"width: 300px;"}
+    style={"width: 350px;"}
     disabled={selectedIndicator.indicatorUnits.length === 1}
   >
     {#each selectedIndicator.indicatorUnits as opt (opt.unitsCode)}

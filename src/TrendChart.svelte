@@ -19,15 +19,26 @@
   export let yDomain = [0, 1];
   export let freeScales;
 
+  const formatBigNumber = (x) => {
+    if (x < 1) {
+      return x;
+    }
+    if (x >= 1) {
+      return format(".2s")(x);
+    }
+  };
+
   $: chartConfig = {
     compact: {
       circleRadius: 2,
       lineWidth: 2,
-      margins: { top: 10, left: 30, right: 10, bottom: 10 },
+      margins: { top: 10, left: 30, right: 10, bottom: 14 },
       axisLabels: 11,
       yearFormat: timeFormat("%y"),
       numberFormat:
-        displayUnits === "sharenobiom" ? format(",") : format(".2s"),
+        displayUnits === "sharenobiom"
+          ? format(",")
+          : formatBigNumber /*format(".2s")*/,
     },
     generous: {
       circleRadius: 6,
