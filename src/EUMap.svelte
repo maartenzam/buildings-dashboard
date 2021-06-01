@@ -3,7 +3,18 @@
   import { scaleSqrt } from "d3-scale";
   import { onMount } from "svelte";
   import { feature } from "topojson";
-  import { centroidsDataSet, gasGridDataSet } from "./data/DataStore.js";
+  import {
+    centroidsDataSet,
+    gasGridDataSet,
+    credibilityDataSet,
+  } from "./data/DataStore.js";
+
+  export let selectedIndicator;
+  $: console.log(selectedIndicator);
+  $: mapData =
+    selectedIndicator.indicatorCode === "gasban"
+      ? $gasGridDataSet.table
+      : $credibilityDataSet.table;
 
   const trafficLightColors = ["#387E90", "#F5B944", "#E34C27"];
 
@@ -19,6 +30,8 @@
       "not credible": trafficLightColors[2],
     },
   };
+
+  $: colorScale = colorScales[selectedIndicator.indicatorCode];
 
   const sizeScale = scaleSqrt().domain([0, 85000000]).range([0, 36]);
 
@@ -68,13 +81,13 @@
     data = land.features;
   });
 
-  let bubble = true;
+  let bubble = false;
 </script>
 
-<label>
+<!--label>
   <input type="checkbox" bind:checked={bubble} />
   Bubble map
-</label>
+</label-->
 
 <svg {width} {height}>
   <rect {width} {height} class="sea" />
@@ -82,13 +95,9 @@
     <path
       d={path(feature)}
       class="country"
-      fill={$gasGridDataSet.table.find(
-        (d) => d.name === feature.properties.name
-      ) && !bubble
-        ? colorScales.gasban[
-            $gasGridDataSet.table.find(
-              (d) => d.name === feature.properties.name
-            ).status
+      fill={mapData.find((d) => d.name === feature.properties.name) && !bubble
+        ? colorScale[
+            mapData.find((d) => d.name === feature.properties.name).status
           ]
         : "#ffffff"}
     />
@@ -100,7 +109,7 @@
         cx={projection([bubble.long, bubble.lat])[0]}
         cy={projection([bubble.long, bubble.lat])[1]}
         r={sizeScale(bubble.pop)}
-        fill={colorScales.gasban[
+        fill={colorScale[
           $gasGridDataSet.table.find((d) => d.geo === bubble.code).status
         ]}
       />

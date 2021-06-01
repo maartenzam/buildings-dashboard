@@ -14,6 +14,7 @@
   import indicators from "./../data/Indicators.js";
   import Modal from "./../Modal.svelte";
   import Treemap from "./../Treemap.svelte";
+  import EUMap from "./../EUMap.svelte";
 
   let modal;
 
@@ -92,13 +93,17 @@
     <IndicatorSelector bind:selectedIndicator bind:selectedUnit />
     <UnitSelector bind:selectedUnit {selectedIndicator} />
   </div>
-  <Grid
-    {selectedIndicator}
-    {countriesData}
-    {displayUnits}
-    {colorScales}
-    {modal}
-  />
+  {#if selectedIndicator.indicatorCode === "gasban" || selectedIndicator.indicatorCode === "credibility"}
+    <EUMap {selectedIndicator} />
+  {:else}
+    <Grid
+      {selectedIndicator}
+      {countriesData}
+      {displayUnits}
+      {colorScales}
+      {modal}
+    />
+  {/if}
 </div>
 <div class="right">
   <h2>{selectedIndicator.indicatorName}</h2>
