@@ -20,8 +20,6 @@
 
   let width;
   let height;
-  let leftWidth;
-  let leftHeight;
 
   let selectedIndicator = indicators[0];
   let selectedUnit = "absolute";
@@ -93,6 +91,7 @@
     <IndicatorSelector bind:selectedIndicator bind:selectedUnit />
     <UnitSelector bind:selectedUnit {selectedIndicator} />
   </div>
+
   {#if selectedIndicator.indicatorCode === "gasban" || selectedIndicator.indicatorCode === "credibility"}
     <EUMap {selectedIndicator} />
   {:else}

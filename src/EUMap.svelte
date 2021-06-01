@@ -57,8 +57,6 @@
 
   const mapPadding = 20;
 
-  $: console.log(width);
-
   $: projection = geoAzimuthalEqualArea()
     .rotate([-10, -52, 0])
     .fitExtent(
@@ -83,6 +81,10 @@
   });
 
   let bubble = false;
+
+  const margins = { top: 10, left: 0, right: 10, bottom: 0 };
+  const legendHeight = 100 - margins.top - margins.bottom;
+  const legendWidth = 120;
 </script>
 
 <!--label>
@@ -104,6 +106,7 @@
           : "#ffffff"}
       />
     {/each}
+
     {#if bubble}
       {#each $centroidsDataSet.table as bubble}
         <circle
@@ -117,6 +120,40 @@
         />
       {/each}
     {/if}
+    {#each $centroidsDataSet.table as label}
+      <a href={`/country/${label.code}`}>
+        <text
+          class="country-label"
+          x={projection([label.long, label.lat])[0]}
+          y={projection([label.long, label.lat])[1]}>{label.name}</text
+        ></a
+      >
+    {/each}
+    {#each Object.entries(colorScale) as legendItem, i}
+      <g
+        class="traffic-light-legend"
+        transform={`translate(${width - legendWidth - margins.right}, ${
+          margins.top
+        })`}
+      >
+        <rect
+          x={0}
+          y={(legendHeight / 3) * i}
+          width={legendWidth}
+          height={legendHeight / 3}
+          fill={legendItem[1]}
+          stroke="white"
+          stroke-width={1}
+          stroke-opacity={0.5}
+        />
+        <text
+          x={legendWidth / 2}
+          y={(legendHeight / 3) * i + legendHeight / 6}
+          dy={4}>{legendItem[0]}</text
+        >
+        >
+      </g>
+    {/each}
   </svg>
 </div>
 
@@ -132,6 +169,14 @@
     stroke: #444444;
     stroke-width: 0.5;
   }
+  .country-label {
+    fill: white;
+    text-anchor: middle;
+    font-size: 11px;
+    opacity: 0.9;
+    text-shadow: -1px -1px black, -1px 1px black, 1px 1px black, 1px -1px black,
+      -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
   .sea {
     fill: #55b4bf;
     opacity: 0.2;
@@ -140,6 +185,12 @@
     stroke: white;
     stroke-width: 1px;
     opacity: 0.9;
+  }
+  .traffic-light-legend text {
+    font-size: 12px;
+    text-anchor: middle;
+    fill: #ffffff;
+    opacity: 0.8;
   }
   /*label {
     position: absolute;
