@@ -16,7 +16,6 @@
   export let targetsData;
   export let modal;
   export let selectedIndicator;
-  $: console.log(targetsData);
 
   $: chartConfig = {
     compact: {
@@ -180,7 +179,7 @@
       <g class="target-lines">
         <!-- svelte-ignore component-name-lowercase -->
         <line
-          class="target-fechh"
+          class="target-euco"
           x1={xScale(xDomain[0])}
           x2={xScale(xDomain[1])}
           y1={yScale(targetsData[1][0]["target.fechh"] * 1000)}
