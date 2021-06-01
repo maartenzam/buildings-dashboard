@@ -92,6 +92,7 @@
   }
   .modal-content {
     flex: 1;
+    max-height: 500px;
   }
   .close {
     float: right;

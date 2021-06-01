@@ -34,11 +34,11 @@
   <div class="title-row">
     <select
       bind:value={selectedCountry}
-      style={"width: 300px;"}
       on:change={() => {
         country.set(selectedCountry);
         router.goto(`/country/${selectedCountry}`);
       }}
+      style={"width: 350px;"}
     >
       {#each countryOptions as cntr (cntr.code)}
         <option value={cntr.code} selected={cntr.code === $country}
