@@ -18,10 +18,10 @@
 
   let modal;
 
-  //let width = "100%";
-  //let height = "100%";
   let width;
   let height;
+  let leftWidth;
+  let leftHeight;
 
   let selectedIndicator = indicators[0];
   let selectedUnit = "absolute";
@@ -128,7 +128,9 @@
     flex: 100000 0 200px;
     position: relative;
     min-height: 300px;
+    max-height: 900px;
     padding: 10px;
+    width: 100%;
   }
   .right {
     flex: 1 10000 300px;

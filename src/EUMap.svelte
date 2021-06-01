@@ -10,7 +10,10 @@
   } from "./data/DataStore.js";
 
   export let selectedIndicator;
-  $: console.log(selectedIndicator);
+
+  let width = 500;
+  let height = 500;
+
   $: mapData =
     selectedIndicator.indicatorCode === "gasban"
       ? $gasGridDataSet.table
@@ -36,8 +39,6 @@
   const sizeScale = scaleSqrt().domain([0, 85000000]).range([0, 36]);
 
   let data = [];
-  const width = 960;
-  const height = 500;
 
   let mapExtent = {
     type: "Feature",
@@ -54,19 +55,21 @@
     },
   };
 
-  const projection = geoAzimuthalEqualArea().rotate([-10, -52, 0]);
-
   const mapPadding = 20;
-  projection.fitExtent(
-    [
-      [mapPadding, mapPadding],
-      [width - mapPadding, height - mapPadding],
-    ],
-    mapExtent
-  );
 
-  let currentProj = projection;
-  let path = geoPath().projection(currentProj);
+  $: console.log(width);
+
+  $: projection = geoAzimuthalEqualArea()
+    .rotate([-10, -52, 0])
+    .fitExtent(
+      [
+        [mapPadding, mapPadding],
+        [width - mapPadding, height - mapPadding],
+      ],
+      mapExtent
+    );
+
+  $: path = geoPath().projection(projection);
 
   onMount(async function () {
     const response = await fetch("/data/countries-50m.json");
@@ -74,9 +77,7 @@
     const topoData = feature(json, json.objects.countries);
     const land = {
       ...topoData,
-      features: topoData.features /*.filter(
-        (d) => d.properties.type === "Sovereigncountry"
-      ),*/,
+      features: topoData.features,
     };
     data = land.features;
   });
@@ -89,38 +90,42 @@
   Bubble map
 </label-->
 
-<svg {width} {height}>
-  <rect {width} {height} class="sea" />
-  {#each data as feature}
-    <path
-      d={path(feature)}
-      class="country"
-      fill={mapData.find((d) => d.name === feature.properties.name) && !bubble
-        ? colorScale[
-            mapData.find((d) => d.name === feature.properties.name).status
-          ]
-        : "#ffffff"}
-    />
-  {/each}
-  {#if bubble}
-    {#each $centroidsDataSet.table as bubble}
-      <circle
-        class="bubble"
-        cx={projection([bubble.long, bubble.lat])[0]}
-        cy={projection([bubble.long, bubble.lat])[1]}
-        r={sizeScale(bubble.pop)}
-        fill={colorScale[
-          $gasGridDataSet.table.find((d) => d.geo === bubble.code).status
-        ]}
+<div class="map-container" bind:offsetWidth={width} bind:offsetHeight={height}>
+  <svg {width} {height}>
+    <rect {width} {height} class="sea" />
+    {#each data as feature}
+      <path
+        d={path(feature)}
+        class="country"
+        fill={mapData.find((d) => d.name === feature.properties.name) && !bubble
+          ? colorScale[
+              mapData.find((d) => d.name === feature.properties.name).status
+            ]
+          : "#ffffff"}
       />
     {/each}
-  {/if}
-</svg>
+    {#if bubble}
+      {#each $centroidsDataSet.table as bubble}
+        <circle
+          class="bubble"
+          cx={projection([bubble.long, bubble.lat])[0]}
+          cy={projection([bubble.long, bubble.lat])[1]}
+          r={sizeScale(bubble.pop)}
+          fill={colorScale[
+            $gasGridDataSet.table.find((d) => d.geo === bubble.code).status
+          ]}
+        />
+      {/each}
+    {/if}
+  </svg>
+</div>
 
 <style>
+  .map-container {
+    width: 100%;
+    height: 100%;
+  }
   svg {
-    width: 960px;
-    height: 500px;
     background-color: "#eeeeee";
   }
   .country {
@@ -136,10 +141,10 @@
     stroke-width: 1px;
     opacity: 0.9;
   }
-  label {
+  /*label {
     position: absolute;
     left: 10px;
     top: 80px;
     z-index: 10;
-  }
+  }*/
 </style>
