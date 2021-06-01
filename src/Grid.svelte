@@ -4,6 +4,8 @@
   import TargetsLegend from "./TargetsLegend.svelte";
   import TrafficLightLegend from "./TrafficLightLegend.svelte";
   import { countryDataSet, targetsDataSet } from "./data/DataStore.js";
+  import LinkIcon from "./LinkIcon.svelte";
+
   let width;
   let height;
   export let selectedIndicator;
@@ -58,6 +60,13 @@
             >
               <div class="title">
                 {getCountryName($countryDataSet.table, r + 1, c + 1)}
+                <LinkIcon />
+                <!--img
+                  src="./external-link-icon.svg"
+                  alt="ECF logo"
+                  width="10px"
+                  height="10px"
+                /-->
               </div>
             </a>
           {/if}
