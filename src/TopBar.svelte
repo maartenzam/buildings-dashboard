@@ -7,15 +7,13 @@
     <Row>
       <Section>
         <a href="/">
-          <Title>ECF Buildings Dashboard</Title>
+          <Title>Dashboard on building renovations - ECF</Title>
         </a>
       </Section>
       <Section align="end">
-        <a
-          href="/ECF-buildings-dashboard-data-2021-06-01.xlsx"
-          tinro-ignore
-          download
-          style={"color: white; margin-right: 12px;"}>Download data</a
+        <a href="/about" style={"color: white; margin-right: 12px;"}>About</a>
+        <a href="/guide" style={"color: white; margin-right: 12px;"}
+          >How to use</a
         >
         <img src="./ecf-logo-white.png" alt="ECF logo" height="100%" />
       </Section>

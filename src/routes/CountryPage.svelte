@@ -155,23 +155,43 @@
       </div>
     </div>
     <div class="cell">
-      <h3>Ban on gas grid connection and renovation strategye credibility</h3>
+      <h3>Further indicators</h3>
       <p>
-        {countryName} has {$allCountryData.gasgrid[1][0].status} on banning connections
-        to the gas grid.
+        {countryName} has {$allCountryData.gasgrid[1][0].status == "no policy"
+          ? "no policty"
+          : $allCountryData.gasgrid[1][0].status + " legislation"} to ban the connection
+        of buildings to the gas grid.
       </p>
+      <ul>
+        {#if $allCountryData.gasgrid[1][0]["new.buildings"] != "NA"}
+          <li>
+            {`New buildings: ${$allCountryData.gasgrid[1][0]["new.buildings"]}`}
+          </li>
+        {/if}
+        {#if $allCountryData.gasgrid[1][0]["existing.buildings"] != "NA"}
+          <li>
+            {`Existing buildings: ${$allCountryData.gasgrid[1][0]["existing.buildings"]}`}
+          </li>
+        {/if}
+      </ul>
       <p>
         The national renovation strategy is {$allCountryData.credibility[1][0]
-          .status}
+          .status} based on the following criteria:
       </p>
       <ul>
         <li>
           Effective energy efficiency promotion: {$allCountryData
             .credibility[1][0]["effective.ee.promotion"]}
         </li>
-        <li>Financing: {$allCountryData.credibility[1][0]["financing"]}</li>
         <li>
-          Energy poverty: {$allCountryData.credibility[1][0]["energy.poverty"]}
+          Appropriate financing: {$allCountryData.credibility[1][0][
+            "financing"
+          ]}
+        </li>
+        <li>
+          Measures tackling energy poverty: {$allCountryData.credibility[1][0][
+            "energy.poverty"
+          ]}
         </li>
       </ul>
     </div>
