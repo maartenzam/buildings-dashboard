@@ -106,7 +106,7 @@
 </div>
 <div class="right">
   <h2>{selectedIndicator.indicatorName}</h2>
-  <p>{selectedIndicator.indicatorExplanation}</p>
+  <div>{@html selectedIndicator.indicatorExplanation}</div>
   {#if displayUnits === "absolute"}
     <div
       class="treemap-container"
@@ -116,6 +116,14 @@
       <Treemap {treemapData} {width} {height} />
     </div>
   {/if}
+  <div class="sources">
+    Data sources:
+    <ul>
+      {#each selectedIndicator.indicatorSources as source}
+        <li><a href={source.url}>{source.text}</a></li>
+      {/each}
+    </ul>
+  </div>
 </div>
 <Modal bind:this={modal} {selectedIndicator} {displayUnits}>
   <button on:click={() => modal.hide()}>Close</button>
