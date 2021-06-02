@@ -108,6 +108,7 @@
   <h2>{selectedIndicator.indicatorName}</h2>
   <div>{@html selectedIndicator.indicatorExplanation}</div>
   {#if displayUnits === "absolute"}
+    <h3>{selectedIndicator.treeMapTitle}</h3>
     <div
       class="treemap-container"
       bind:offsetWidth={width}
