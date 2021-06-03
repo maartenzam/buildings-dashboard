@@ -6,7 +6,7 @@
 
   let width;
   let tileWidth;
-  $: console.log(tileWidth);
+
   let windowWidth;
 
   let height;
@@ -14,6 +14,10 @@
   export let countriesData;
   export let displayUnits;
   export let modal;
+
+  $: EUData = countriesData.filter((d) => d[0] === "EU27_2020");
+  $: withoutEUData = countriesData.filter((d) => d[0] !== "EU27_2020");
+  $: sortedEUData = withoutEUData = EUData.concat(withoutEUData);
 
   // No targets for other indicators and units then fec and fechh in absolute units
   $: targetsData =
@@ -149,7 +153,7 @@
   </div>
 {:else}
   <div class="chartlist-container">
-    {#each countriesData as cntrData}
+    {#each sortedEUData as cntrData}
       <div class="tile">
         <a href={`/country/${cntrData[0]}`}>
           <div class="title">
