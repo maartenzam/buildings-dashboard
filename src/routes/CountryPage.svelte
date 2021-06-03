@@ -15,9 +15,9 @@
 
   $: countryName = $countryDataSet.table.find((d) => d.code === $country).name;
 
-  $: countryOptions = $countryDataSet.table
-    .filter((d) => d.code !== "EU27_2020")
-    .sort((a, b) => (a.name > b.name ? 1 : -1));
+  $: countryOptions = $countryDataSet.table.sort((a, b) =>
+    a.name > b.name ? 1 : -1
+  );
 
   let width;
   let height;
@@ -46,6 +46,9 @@
         >
       {/each}
     </select>
+    <div class="overview-link">
+      <a href="/">Back to overview</a>
+    </div>
   </div>
   <div class="row">
     <div class="cell">
@@ -154,46 +157,48 @@
         />
       </div>
     </div>
+
     <div class="cell">
-      <h3>Further indicators</h3>
-      <p>
-        {countryName} has {$allCountryData.gasgrid[1][0].status == "no policy"
-          ? "no policty"
-          : $allCountryData.gasgrid[1][0].status + " legislation"} to ban the connection
-        of buildings to the gas grid.
-      </p>
-      <ul>
-        {#if $allCountryData.gasgrid[1][0]["new.buildings"] != "NA"}
+      {#if $country !== "EU27_2020"}
+        <h3>Further indicators</h3>
+        <p>
+          {countryName} has {$allCountryData.gasgrid[1][0].status == "no policy"
+            ? "no policty"
+            : $allCountryData.gasgrid[1][0].status + " legislation"} to ban the connection
+          of buildings to the gas grid.
+        </p>
+        <ul>
+          {#if $allCountryData.gasgrid[1][0]["new.buildings"] != "NA"}
+            <li>
+              {`New buildings: ${$allCountryData.gasgrid[1][0]["new.buildings"]}`}
+            </li>
+          {/if}
+          {#if $allCountryData.gasgrid[1][0]["existing.buildings"] != "NA"}
+            <li>
+              {`Existing buildings: ${$allCountryData.gasgrid[1][0]["existing.buildings"]}`}
+            </li>
+          {/if}
+        </ul>
+        <p>
+          The national renovation strategy is {$allCountryData.credibility[1][0]
+            .status} based on the following criteria:
+        </p>
+        <ul>
           <li>
-            {`New buildings: ${$allCountryData.gasgrid[1][0]["new.buildings"]}`}
+            Effective energy efficiency promotion: {$allCountryData
+              .credibility[1][0]["effective.ee.promotion"]}
           </li>
-        {/if}
-        {#if $allCountryData.gasgrid[1][0]["existing.buildings"] != "NA"}
           <li>
-            {`Existing buildings: ${$allCountryData.gasgrid[1][0]["existing.buildings"]}`}
+            Appropriate financing: {$allCountryData.credibility[1][0][
+              "financing"
+            ]}
           </li>
-        {/if}
-      </ul>
-      <p>
-        The national renovation strategy is {$allCountryData.credibility[1][0]
-          .status} based on the following criteria:
-      </p>
-      <ul>
-        <li>
-          Effective energy efficiency promotion: {$allCountryData
-            .credibility[1][0]["effective.ee.promotion"]}
-        </li>
-        <li>
-          Appropriate financing: {$allCountryData.credibility[1][0][
-            "financing"
-          ]}
-        </li>
-        <li>
-          Measures tackling energy poverty: {$allCountryData.credibility[1][0][
-            "energy.poverty"
-          ]}
-        </li>
-      </ul>
+          <li>
+            Measures tackling energy poverty: {$allCountryData
+              .credibility[1][0]["energy.poverty"]}
+          </li>
+        </ul>
+      {/if}
     </div>
   </div>
 </div>
@@ -209,10 +214,14 @@
   .title-row {
     padding: 12px 12px 0px 12px;
   }
+  .overview-link {
+    float: right;
+  }
   .cell {
     flex: 1;
-    min-width: 300px;
+    min-width: 374px;
     padding: 12px;
+    box-sizing: border-box;
   }
 
   .chart-container {

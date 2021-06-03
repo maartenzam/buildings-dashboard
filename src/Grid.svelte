@@ -1,6 +1,6 @@
 <script>
   import TrendChart from "./TrendChart.svelte";
-  import TrafficLightChart from "./TrafficLightChart.svelte";
+  //import TrafficLightChart from "./TrafficLightChart.svelte";
   import TargetsLegend from "./TargetsLegend.svelte";
   import TrafficLightLegend from "./TrafficLightLegend.svelte";
   import { countryDataSet, targetsDataSet } from "./data/DataStore.js";
@@ -75,8 +75,8 @@
     {#each Array(7) as _, c}
       <!--Only charts where there is a country-->
       {#if $countryDataSet.table.filter((d) => d.col === c + 1 && d.row === r + 1).length > 0}
-        <div class={c === 0 && r === 0 ? "cell" : "cell"}>
-          {#if c === 0 && r === 0}
+        <div class={"cell"}>
+          {#if c === -1 && r === 0}
             <div class={c === 0 && r === 0 ? "highlight-title title" : "title"}>
               {getCountryName($countryDataSet.table, r + 1, c + 1)}
             </div>
@@ -91,12 +91,6 @@
               <div class="title">
                 {getCountryName($countryDataSet.table, r + 1, c + 1)}
                 <LinkIcon />
-                <!--img
-                  src="./external-link-icon.svg"
-                  alt="ECF logo"
-                  width="10px"
-                  height="10px"
-                /-->
               </div>
             </a>
           {/if}
@@ -108,7 +102,7 @@
             {#if selectedIndicator.indicatorCode === "gasban" || selectedIndicator.indicatorCode === "credibility"}
               <!--No traffic light at EU level-->
               {#if !(c === 0 && r === 0)}
-                <TrafficLightChart
+                <!--TrafficLightChart
                   {width}
                   {height}
                   countryData={countriesData.find(
@@ -117,7 +111,7 @@
                       getCountryCode($countryDataSet.table, r + 1, c + 1)
                   )}
                   colorScale={colorScales[selectedIndicator.indicatorCode]}
-                />
+                /-->
               {/if}
             {:else}
               <TrendChart
