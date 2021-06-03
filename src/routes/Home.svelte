@@ -118,12 +118,14 @@
     </div>
   {/if}
   <div class="sources">
-    Data sources:
-    <ul>
+    <p>
+      {selectedIndicator.indicatorSources.length > 1
+        ? "Data sources:"
+        : "Data source"}<br />
       {#each selectedIndicator.indicatorSources as source}
-        <li><a href={source.url}>{source.text}</a></li>
+        <a href={source.url}>{source.text}</a><br />
       {/each}
-    </ul>
+    </p>
   </div>
 </div>
 <Modal bind:this={modal} {selectedIndicator} {displayUnits}>
@@ -145,8 +147,15 @@
     padding: 1rem;
     width: 100%;
   }
+  .right h2 {
+    margin-top: -5px;
+  }
   .treemap-container {
     width: 100%;
     height: 400px;
+  }
+  .sources {
+    font-size: 0.85rem;
+    opacity: 0.7;
   }
 </style>

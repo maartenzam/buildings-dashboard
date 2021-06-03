@@ -37,6 +37,7 @@
   main {
     display: flex;
     flex-wrap: wrap-reverse;
+    align-items: flex-end;
     flex: 1;
     padding: 0;
     margin: 0 auto;
