@@ -8,6 +8,7 @@
     gasGridDataSet,
     credibilityDataSet,
   } from "./data/DataStore.js";
+  import Tooltip, { Wrapper } from "@smui/tooltip";
 
   export let selectedIndicator;
 
@@ -96,15 +97,29 @@
   <svg {width} {height}>
     <rect {width} {height} class="sea" />
     {#each data as feature}
-      <path
-        d={path(feature)}
-        class="country"
-        fill={mapData.find((d) => d.name === feature.properties.name) && !bubble
-          ? colorScale[
-              mapData.find((d) => d.name === feature.properties.name).status
-            ]
-          : "#ffffff"}
-      />
+      <Wrapper>
+        <path
+          d={path(feature)}
+          class="country"
+          fill={mapData.find((d) => d.name === feature.properties.name) &&
+          !bubble
+            ? colorScale[
+                mapData.find((d) => d.name === feature.properties.name).status
+              ]
+            : "#ffffff"}
+        />
+        {#if selectedIndicator.indicatorCode === "gasban" && mapData.find((d) => d.name === feature.properties.name) !== undefined}
+          <Tooltip
+            >{mapData.find((d) => d.name === feature.properties.name)[
+              "new.buildings"
+            ] !== "NA"
+              ? mapData.find((d) => d.name === feature.properties.name)[
+                  "new.buildings"
+                ]
+              : "No ban"}</Tooltip
+          >
+        {/if}
+      </Wrapper>
     {/each}
 
     {#if bubble}

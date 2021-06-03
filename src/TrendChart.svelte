@@ -1,6 +1,7 @@
 <script>
   import { scaleLinear, scaleTime } from "d3-scale";
-  import { extent, min, max } from "d3-array";
+  import { extent } from "d3-array";
+  import { timeYear } from "d3-time";
   import ChartAxis from "./ChartAxis.svelte";
   import { timeFormat } from "d3-time-format";
   import { format } from "d3-format";
@@ -34,6 +35,7 @@
       lineWidth: 2,
       margins: { top: 10, left: 30, right: 10, bottom: 14 },
       axisLabels: 11,
+      yAxisOffset: 0,
       yearFormat: timeFormat("%y"),
       numberFormat:
         displayUnits === "sharenobiom"
@@ -43,8 +45,9 @@
     generous: {
       circleRadius: 6,
       lineWidth: 3,
-      margins: { top: 20, left: 70, right: 20, bottom: 40 },
+      margins: { top: 20, left: 40, right: 20, bottom: 40 },
       axisLabels: 14,
+      yAxisOffset: 6,
       yearFormat: timeFormat("%Y"),
       numberFormat: format(","),
     },
@@ -109,11 +112,10 @@
     .x((d) => xScale(new Date(d[0])))
     .y((d) => yScale(d[1]));
 
-  const xTicks = [
-    new Date(2005, 0, 1),
-    new Date(2010, 0, 1),
-    new Date(2015, 0, 1),
-  ];
+  $: xTicks = xDomain.concat(
+    scaleTime().domain(xDomain).ticks(timeYear.every(5))
+  );
+
   const formatFullYear = timeFormat("%Y");
 
   $: yTicks = yScale.ticks(3);
@@ -151,8 +153,8 @@
         <ChartAxis
           axisType="xAxis"
           translate="translate({xScale(tick)},0)"
-          y1={yScale(yDomain[0])}
-          y2={yScale(yDomain[1])}
+          y1={yScale(yChartDomain[0])}
+          y2={yScale(yChartDomain[1])}
           y={height - margins.bottom}
           text={sizing.yearFormat(tick)}
           {sizing}

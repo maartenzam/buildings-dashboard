@@ -21,8 +21,10 @@
 {:else}
   <g class="tick" transform={translate}>
     <line {x1} {x2} />
-    <text {x} {y} style={`text-anchor:end; font-size: ${sizing.axisLabels}`}
-      >{text}</text
+    <text
+      x={x - sizing.yAxisOffset}
+      {y}
+      style={`text-anchor:end; font-size: ${sizing.axisLabels}`}>{text}</text
     >
   </g>
 {/if}
@@ -30,6 +32,7 @@
 <style>
   .tick line {
     stroke: #a3a3a3;
+    stroke-width: 1;
     stroke-dasharray: 0;
     opacity: 0.2;
   }

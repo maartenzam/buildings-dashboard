@@ -30,7 +30,7 @@
   let povertySelectedUnit = "share";
 </script>
 
-<div class="wrapper">
+<div class="country-page-wrapper">
   <div class="title-row">
     <select
       bind:value={selectedCountry}
@@ -49,6 +49,20 @@
     <div class="overview-link">
       <a href="/">Back to overview</a>
     </div>
+  </div>
+  <div class="title-row">
+    <span
+      style="border-bottom: 2px dashed steelblue; padding-bottom: 3px; stroke-linecap: round; color: steelblue; margin-right: 20px;"
+      >Target 2020</span
+    >
+    <span
+      style="border-bottom: 2px dashed orange; padding-bottom: 3px; stroke-linecap: round; color: orange; margin-right: 20px;"
+      >2030 EU projection EUCO</span
+    >
+    <span
+      style="border-bottom: 2px dashed purple; padding-bottom: 3px; stroke-linecap: round; color: purple"
+      >Target 2030 NECP</span
+    >
   </div>
   <div class="row">
     <div class="cell">
@@ -204,8 +218,10 @@
 </div>
 
 <style>
-  .wrapper {
+  .country-page-wrapper {
     flex: 1;
+    max-width: 1200px;
+    margin: 0 auto 0 auto;
   }
   .row {
     display: flex;
@@ -226,7 +242,7 @@
 
   .chart-container {
     width: 100%;
-    height: 350px;
+    height: 300px;
   }
 
   @media (max-width: 900px) {
