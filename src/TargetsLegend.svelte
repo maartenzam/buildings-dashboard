@@ -8,7 +8,7 @@
 </script>
 
 <svg {width} {height}>
-  <!--rect {width} {height} class="background" /-->
+  <rect {width} {height} class="background" />
   <g class="target-lines">
     {#if selectedIndicator.indicatorCode === "fec"}
       <line
@@ -70,9 +70,9 @@
 </svg>
 
 <style>
-  /*.background {
-    fill: #f2f2f2;
-  }*/
+  .background {
+    fill: #ffffff;
+  }
   .target-lines line {
     stroke-width: 1.5;
     stroke-dasharray: 6;

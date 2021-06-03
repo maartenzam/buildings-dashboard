@@ -1,17 +1,18 @@
 <script>
   import TrendChart from "./TrendChart.svelte";
-  //import TrafficLightChart from "./TrafficLightChart.svelte";
   import TargetsLegend from "./TargetsLegend.svelte";
-  import TrafficLightLegend from "./TrafficLightLegend.svelte";
   import { countryDataSet, targetsDataSet } from "./data/DataStore.js";
   import LinkIcon from "./LinkIcon.svelte";
 
   let width;
+  let tileWidth;
+  $: console.log(tileWidth);
+  let windowWidth;
+
   let height;
   export let selectedIndicator;
   export let countriesData;
   export let displayUnits;
-  export let colorScales;
   export let modal;
 
   // No targets for other indicators and units then fec and fechh in absolute units
@@ -67,53 +68,49 @@
       return countryCode[0].name;
     }
   }
+  function getCountryNameFromCode(countrydata, code) {
+    const countryCode = countrydata.filter((d) => d.code === code);
+    if (countryCode.length > 0) {
+      return countryCode[0].name;
+    }
+  }
 </script>
 
-<div class="grid-container">
-  <!--Grid of 7 rows and 7 columns-->
-  {#each Array(7) as _, r}
-    {#each Array(7) as _, c}
-      <!--Only charts where there is a country-->
-      {#if $countryDataSet.table.filter((d) => d.col === c + 1 && d.row === r + 1).length > 0}
-        <div class={"cell"}>
-          {#if c === -1 && r === 0}
-            <div class={c === 0 && r === 0 ? "highlight-title title" : "title"}>
-              {getCountryName($countryDataSet.table, r + 1, c + 1)}
-            </div>
-          {:else}
-            <a
-              href={`/country/${getCountryCode(
-                $countryDataSet.table,
-                r + 1,
-                c + 1
-              )}`}
-            >
-              <div class="title">
+<svelte:window bind:innerWidth={windowWidth} />
+
+{#if windowWidth > 900}
+  <div class="grid-container">
+    <!--Grid of 7 rows and 7 columns-->
+    {#each Array(7) as _, r}
+      {#each Array(7) as _, c}
+        <!--Only charts where there is a country-->
+        {#if $countryDataSet.table.filter((d) => d.col === c + 1 && d.row === r + 1).length > 0}
+          <div class={"cell"}>
+            {#if c === -1 && r === 0}
+              <div
+                class={c === 0 && r === 0 ? "highlight-title title" : "title"}
+              >
                 {getCountryName($countryDataSet.table, r + 1, c + 1)}
-                <LinkIcon />
               </div>
-            </a>
-          {/if}
-          <div
-            class="chart-container"
-            bind:offsetWidth={width}
-            bind:offsetHeight={height}
-          >
-            {#if selectedIndicator.indicatorCode === "gasban" || selectedIndicator.indicatorCode === "credibility"}
-              <!--No traffic light at EU level-->
-              {#if !(c === 0 && r === 0)}
-                <!--TrafficLightChart
-                  {width}
-                  {height}
-                  countryData={countriesData.find(
-                    (d) =>
-                      d[0] ===
-                      getCountryCode($countryDataSet.table, r + 1, c + 1)
-                  )}
-                  colorScale={colorScales[selectedIndicator.indicatorCode]}
-                /-->
-              {/if}
             {:else}
+              <a
+                href={`/country/${getCountryCode(
+                  $countryDataSet.table,
+                  r + 1,
+                  c + 1
+                )}`}
+              >
+                <div class="title">
+                  {getCountryName($countryDataSet.table, r + 1, c + 1)}
+                  <LinkIcon />
+                </div>
+              </a>
+            {/if}
+            <div
+              class="chart-container"
+              bind:offsetWidth={width}
+              bind:offsetHeight={height}
+            >
               <TrendChart
                 {width}
                 {height}
@@ -131,47 +128,62 @@
                 {freeScales}
                 {yDomain}
               />
-            {/if}
+            </div>
           </div>
-        </div>
-      {:else if r === 0 && c === 6 && (selectedIndicator.indicatorCode === "fec" || selectedIndicator.indicatorCode === "fechh") && displayUnits === "absolute"}
-        <div class="cell border">
-          <div class="title highlight-title">Targets</div>
-          <div
-            class="chart-container"
-            bind:offsetWidth={width}
-            bind:offsetHeight={height}
-          >
-            <TargetsLegend {width} {height} {selectedIndicator} />
+        {:else if r === 0 && c === 6 && (selectedIndicator.indicatorCode === "fec" || selectedIndicator.indicatorCode === "fechh") && displayUnits === "absolute"}
+          <div class="cell border">
+            <div class="title highlight-title">Targets</div>
+            <div
+              class="chart-container"
+              bind:offsetWidth={width}
+              bind:offsetHeight={height}
+            >
+              <TargetsLegend {width} {height} {selectedIndicator} />
+            </div>
           </div>
-        </div>
-      {:else if r === 0 && c === 6 && (selectedIndicator.indicatorCode === "gasban" || selectedIndicator.indicatorCode === "credibility")}
-        <div class="cell">
-          <div class="title">{selectedIndicator.indicatorCode}</div>
-          <div
-            class="chart-container"
-            bind:offsetWidth={width}
-            bind:offsetHeight={height}
-          >
-            <TrafficLightLegend
-              {width}
-              {height}
-              colorScale={colorScales[selectedIndicator.indicatorCode]}
-            />
-          </div>
-        </div>
-      {:else}
-        <div class="cell empty" />
-      {/if}
+        {:else}
+          <div class="cell empty" />
+        {/if}
+      {/each}
     {/each}
-  {/each}
-</div>
+  </div>
+{:else}
+  <div class="chartlist-container">
+    {#each countriesData as cntrData}
+      <div class="tile">
+        <a href={`/country/${cntrData[0]}`}>
+          <div class="title">
+            {getCountryNameFromCode($countryDataSet.table, cntrData[0])}
+            <LinkIcon />
+          </div>
+        </a>
+        <div
+          class="chartlist-chart"
+          bind:offsetWidth={tileWidth}
+          bind:offsetHeight={height}
+        >
+          <TrendChart
+            width={tileWidth}
+            {height}
+            countryData={cntrData}
+            {displayUnits}
+            targetsData={targetsData.find((d) => d[0] === cntrData[0])}
+            {modal}
+            {selectedIndicator}
+            {freeScales}
+            {yDomain}
+          />
+        </div>
+      </div>
+    {/each}
+  </div>
+{/if}
 
 <style>
   .grid-container {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(7, minmax(100px, 1fr));
+    grid-template-columns: repeat(7, minmax(70px, 1fr));
     column-gap: 0.5rem;
     row-gap: 0.5rem;
     background-image: url("../Outline-Map-of-Europe-3-1-10perc.jpg");
@@ -206,5 +218,21 @@
   .border {
     border: 1px solid #1db6c1;
     background-color: rgba(29, 182, 193, 0);
+  }
+  .chartlist-container {
+    width: 100%;
+    /*display: flex;
+    flex-wrap: wrap;*/
+  }
+  .tile {
+    /*flex: 1;*/
+    width: 100%;
+  }
+  .chartlist-container .title {
+    font-size: 1rem;
+  }
+  .chartlist-chart {
+    height: 250px;
+    width: 100%;
   }
 </style>

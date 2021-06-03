@@ -135,15 +135,15 @@
 <style>
   .left {
     border-right: 1px solid #f8f7f7;
-    flex: 100000 0 200px;
+    flex: 100000 1000000 200px;
     position: relative;
     min-height: 300px;
-    max-height: 900px;
+    /*max-height: 900px;*/
     padding: 10px;
     width: 100%;
   }
   .right {
-    flex: 1 10000 300px;
+    flex: 1 0 300px;
     padding: 1rem;
     width: 100%;
   }

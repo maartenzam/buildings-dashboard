@@ -36,9 +36,9 @@
 
   main {
     display: flex;
-    flex-wrap: wrap-reverse;
-    align-items: flex-end;
-    flex: 1;
+    /*flex-wrap: wrap-reverse;*/
+    align-items: flex-start;
+    /*flex: 1000000;*/
     padding: 0;
     margin: 0 auto;
     width: 100%;
