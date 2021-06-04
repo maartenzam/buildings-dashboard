@@ -104,7 +104,9 @@
                   c + 1
                 )}`}
               >
-                <div class="title">
+                <div
+                  class={c === 0 && r === 0 ? "highlight-title title" : "title"}
+                >
                   {getCountryName($countryDataSet.table, r + 1, c + 1)}
                   <LinkIcon />
                 </div>

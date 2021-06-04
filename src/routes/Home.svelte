@@ -96,11 +96,11 @@
       <Treemap {treemapData} {width} {height} />
     </div>
   {/if}
-  {#if selectedIndicator.indicatorSources > 0}
+  {#if selectedIndicator.indicatorSources.length > 0}
     <div class="sources">
       <p>
         {selectedIndicator.indicatorSources.length > 1
-          ? "Data sources:"
+          ? "Data sources"
           : "Data source"}<br />
         {#each selectedIndicator.indicatorSources as source}
           <a href={source.url}>{source.text}</a><br />

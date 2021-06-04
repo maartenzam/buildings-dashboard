@@ -3,11 +3,11 @@ const indicators = [
     indicatorCode: "fec",
     indicatorName: "Final energy consumption (FEC)",
     indicatorExplanation: `
-    <p>This indicator shows the development of total energy end use across all sectors compared to three benchmark levels:</p>
-      <p><span style="border-bottom: 2px dashed steelblue; padding-bottom: 3px; stroke-linecap: round; color: steelblue">The 2020 target</span> set by Member States to contribute to the EU 20% energy efficiency target</p>
-      <p><span style="border-bottom: 2px dashed purple; padding-bottom: 3px; stroke-linecap: round; color: purple">The 2030 national contributions</span> to the EU energy efficiency target of 32.5% as set in National Energy and Climate Plans, leaving a gap of 3.1% points</p>
-      <p><span style="border-bottom: 2px dashed orange; padding-bottom: 3px; stroke-linecap: round; color: orange">The 2030 EU projections</span> for national final energy demand according to the EUCO3232.5 scenario in line with the EU’s energy targets modelled in 2018</p>
-    <p>Final energy consumption is influenced by economic activity. This is why the charts also show energy intensity, which is FEC/GDP.</p>`,
+    <p>This indicator shows the development of <b>total energy end use</b> across all sectors compared to three benchmark levels:</p>
+      <p><span style="border-bottom: 2px dashed steelblue; padding-bottom: 2px; stroke-linecap: round; color: steelblue">The 2020 target</span> set by Member States to contribute to the EU 20% energy efficiency target</p>
+      <p><span style="border-bottom: 2px dashed purple; padding-bottom: 2px; stroke-linecap: round; color: purple">The 2030 national contributions</span> to the EU energy efficiency target of 32.5% as set in National Energy and Climate Plans, leaving a gap of 3.1% points</p>
+      <p><span style="border-bottom: 2px dashed orange; padding-bottom: 2px; stroke-linecap: round; color: orange">The 2030 EU projections</span> for national final energy demand according to the EUCO3232.5 scenario in line with the EU’s energy targets modelled in 2018</p>
+    <p>Final energy consumption is influenced by economic activity. This is why the charts also show <b>energy intensity</b>, which is FEC/GDP.</p>`,
     indicatorUnits: [
       { unitsCode: "absolute", unitsName: "Absolute", unitsShort: "Mtoe/year" },
       {
@@ -31,10 +31,10 @@ const indicators = [
   {
     indicatorCode: "fechh",
     indicatorName: "Final energy consumption (FEC) in households",
-    indicatorExplanation: `<p>FEC in households is a high-level indicator for the impact of renovation strategies on the ground: on average, two-thirds of residential energy demand are used for space heating. Together with water heating, space cooling, cooking and lighting, which are also in the scope of energy renovations, this rises to around 87% of residential energy demand. The remaining 13% are used for electrical appliances (see <a href="https://www.slideshare.net/sustenergy/energy-efficiency-trends-in-buildings-in-the-eu-update">Odyssee-Mure</a>).</p>
-    <p>No specific target for final energy consumption in households is defined. The dashboard therefore refers to figures for energy consumption in residential buildings by 2030 in the <a href="https://ec.europa.eu/energy/sites/ener/files/technical_note_on_the_euco3232_final_14062019.pdf">EUCO3232.5 scenario</a> modelled in 2018 (2030 EU projections EUCO) as a benchmark. However, higher ambition will be needed to align with the new EU climate target.</a>
-    <p>In order to increase accuracy, a climate correction is made, including the weighting of energy demand for heat which differs strongly between buildings located in colder or warmer climates.</p>
-    <p>Furthermore, the climate corrected residential FEC is put in proportion to population, another important external factor influencing energy demand.</p>`,
+    indicatorExplanation: `<p>FEC in households is a high-level indicator for the <b>impact of renovation strategies on the ground</b>: on average, two-thirds of residential energy demand are used for space heating. Together with water heating, space cooling, cooking and lighting, which are also in the scope of energy renovations, this rises to around 87% of residential energy demand. The remaining 13% are used for electrical appliances (see <a href="https://www.slideshare.net/sustenergy/energy-efficiency-trends-in-buildings-in-the-eu-update">Odyssee-Mure</a>).</p>
+    <p>No specific target for final energy consumption in households is defined. The dashboard therefore refers to figures for energy consumption in residential buildings by 2030 in the <a href="https://ec.europa.eu/energy/sites/ener/files/technical_note_on_the_euco3232_final_14062019.pdf">EUCO3232.5 scenario</a> modelled in 2018 (<span style="border-bottom: 2px dashed orange; padding-bottom: 2px; stroke-linecap: round; color: orange">2030 projections</span>) as a <b>benchmark</b>. However, higher ambition will be needed to align with the new EU climate target.</a>
+    <p>In order to increase accuracy, a <b>climate correction</b> is made, including the weighting of energy demand for heat which differs strongly between buildings located in colder or warmer climates.</p>
+    <p>Furthermore, the climate corrected residential FEC is put in proportion to <b>population</b>, another important external factor influencing energy demand.</p>`,
     indicatorUnits: [
       { unitsCode: "absolute", unitsName: "Absolute", unitsShort: "Mtoe/year" },
       {
@@ -54,7 +54,7 @@ const indicators = [
         url: "https://appsso.eurostat.ec.europa.eu/nui/show.do?query=BOOKMARK_DS-1015839_QID_276A989_UID_-3F171EB0&layout=TIME,C,X,0;GEO,L,Y,0;NRG_BAL,L,Z,0;SIEC,L,Z,1;UNIT,L,Z,2;INDICATORS,C,Z,3;&zSelection=DS-1015839INDICATORS,OBS_FLAG;DS-1015839UNIT,KTOE;DS-1015839NRG_BAL,FEC2020-2030;DS-1015839SIEC,TOTAL;&rankName1=SIEC_1_2_-1_2&rankName2=UNIT_1_2_-1_2&rankName3=INDICATORS_1_2_-1_2&rankName4=NRG-BAL_1_2_-1_2&rankName5=TIME_1_0_0_0&rankName6=GEO_1_2_0_1&sortC=ASC_-1_FIRST&rStp=&cStp=&rDCh=&cDCh=&rDM=true&cDM=true&footnes=false&empty=false&wai=false&time_mode=NONE&time_most_recent=false&lang=EN&cfo=%23%23%23%2C%23%23%23.%23%23%23",
       },
       {
-        text: "Eurostat Cooling and heating degree days, [nrg_chdd_a]",
+        text: "Eurostat Cooling and heating degree days [nrg_chdd_a]",
         url: "https://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=nrg_chdd_a&lang=en",
       },
       {
@@ -62,7 +62,7 @@ const indicators = [
         url: "https://appsso.eurostat.ec.europa.eu/nui/show.do?query=BOOKMARK_DS-1167021_QID_-44C4D3AC_UID_-3F171EB0&layout=TIME,C,X,0;GEO,L,Y,0;NRG_BAL,L,Z,0;SIEC,L,Z,1;UNIT,L,Z,2;INDICATORS,C,Z,3;&zSelection=DS-1167021NRG_BAL,FC_OTH_HH_E_SC;DS-1167021INDICATORS,OBS_FLAG;DS-1167021SIEC,TOTAL;DS-1167021UNIT,TJ;&rankName1=SIEC_1_2_-1_2&rankName2=UNIT_1_2_-1_2&rankName3=INDICATORS_1_2_-1_2&rankName4=NRG-BAL_1_2_-1_2&rankName5=TIME_1_0_0_0&rankName6=GEO_1_2_0_1&sortC=ASC_-1_FIRST&rStp=&cStp=&rDCh=&cDCh=&rDM=true&cDM=true&footnes=false&empty=false&wai=false&time_mode=NONE&time_most_recent=false&lang=EN&cfo=%23%23%23%2C%23%23%23.%23%23%23",
       },
       {
-        text: "Eurostat Population on 1 January, [demo_pjan]",
+        text: "Eurostat Population on 1 January [demo_pjan]",
         url: "https://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=demo_pjan&lang=en",
       },
     ],
@@ -71,7 +71,7 @@ const indicators = [
   {
     indicatorCode: "renewables",
     indicatorName: "Renewables share in household FEC",
-    indicatorExplanation: `<p>This indicator can be used as a proxy for buildings specific decarbonisation of the heating systems, as it shows the increase of the share of renewables in final energy consumption in households. The data provided by Eurostat include biomass. As the role of biomass to decarbonise heating is disputed, the second chart shows the renewables share in household FEC without biomass. Concretely, the chart without biomass includes solar thermal, geothermal and ambient heat (heat pumps).</p>
+    indicatorExplanation: `<p>This indicator can be used as a proxy for buildings specific <b>decarbonisation of the heating systems</b>, as it shows the increase of the share of renewables in final energy consumption in households. The data provided by Eurostat include biomass. As the role of biomass to decarbonise heating is disputed, the second chart shows the renewables share in household FEC without biomass. Concretely, the chart without biomass includes solar thermal, geothermal and ambient heat (heat pumps).</p>
     <p>Solar photovoltaic is not applicable in these statistics as defined by Eurostat.</p>
     `,
     indicatorUnits: [
@@ -92,7 +92,7 @@ const indicators = [
   {
     indicatorCode: "housing",
     indicatorName: "Population living in bad housing conditions",
-    indicatorExplanation: `<p>This indicator is used to monitor progress on living in high-energy performing, decent-quality housing, by monitoring the percentage of people living in worst performing houses.</p>
+    indicatorExplanation: `<p>This indicator is used to monitor progress on <b>living in high-energy performing, decent-quality housing</b>, by monitoring the percentage of people living in worst performing houses.</p>
       <p>It displays data from the European Union Statistics on Income and Living Conditions (EU-SILC) project to monitor the development of poverty and social inclusion in the EU. The data collection is based on a survey, which means that indicator values are self-reported. The charts show data from the indicator “Total population living in a dwelling with a leaking roof, damp walls, floors or foundation, or rot in window frames or floor”.
       </p>`,
     indicatorUnits: [
@@ -109,7 +109,7 @@ const indicators = [
     indicatorCode: "poverty",
     indicatorName: "Population unable to keep home warm",
     indicatorExplanation: `
-    <p>This indicator is used to monitor the  risk of energy poverty development.</p>
+    <p>This indicator is used to monitor the <b>risk of energy poverty</b> development.</p>
     <p>It measures the share of “Population who are unable to keep home adequately warm by poverty status”. Data for this indicator are being collected as part of the European Union Statistics on Income and Living Conditions (EU-SILC) project to monitor the development of poverty and social inclusion in the EU. The data collection is based on a survey, which means that indicator values are self-reported.</p>
     <p>Additional information: <a href="https://www.energypoverty.eu/sites/default/files/downloads/publications/20-06/mj0420245enn.en_.pdf">EU Energy Poverty Observatory, Member State Reports on Energy Poverty 2019</a></p>
     `,

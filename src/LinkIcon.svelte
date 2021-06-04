@@ -13,7 +13,7 @@
     </clipPath>
   </defs>
   <g id="custom_1" data-name="custom – 1" clip-path="url(#clip-custom_1)">
-    <rect width="118" height="118" fill="#fff" />
+    <!--rect width="118" height="118" fill="#fff" /-->
     <path
       id="Path_1"
       data-name="Path 1"

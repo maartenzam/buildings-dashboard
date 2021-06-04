@@ -63,7 +63,7 @@
         x={width / 2}
         y={margins.top + (legendHeight / 3) * 2}
         dy={-4}
-        class="target-euco">2030 EU projection EUCO</text
+        class="target-euco">2030 projection</text
       >
     {/if}
   </g>
