@@ -20,6 +20,8 @@
 
   let width;
   let height;
+  let mapWidth;
+  let mapHeight;
 
   let selectedIndicator = indicators[0];
   let selectedUnit = "absolute";
@@ -78,7 +80,13 @@
   </div>
 
   {#if selectedIndicator.indicatorCode === "gasban" || selectedIndicator.indicatorCode === "credibility"}
-    <EUMap {selectedIndicator} />
+    <div
+      class="map-container"
+      bind:offsetWidth={mapWidth}
+      bind:offsetHeight={mapHeight}
+    >
+      <EUMap {selectedIndicator} width={mapWidth} height={mapHeight} />
+    </div>
   {:else}
     <Grid {selectedIndicator} {countriesData} {displayUnits} {modal} />
   {/if}
@@ -121,7 +129,6 @@
     flex: 100000 1000000 200px;
     position: relative;
     min-height: 300px;
-    /*max-height: 900px;*/
     padding: 10px;
     width: 100%;
   }
@@ -143,5 +150,10 @@
   .sources {
     font-size: 0.85rem;
     opacity: 0.7;
+  }
+  .map-container {
+    /*width: 100%;*/
+    height: 100%;
+    max-height: 800px;
   }
 </style>

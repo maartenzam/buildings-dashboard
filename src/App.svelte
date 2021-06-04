@@ -37,8 +37,9 @@
   main {
     display: flex;
     /*flex-wrap: wrap-reverse;*/
-    align-items: flex-start;
+    align-items: stretch;
     /*flex: 1000000;*/
+    flex: 1;
     padding: 0;
     margin: 0 auto;
     width: 100%;

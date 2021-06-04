@@ -11,9 +11,8 @@
   import Tooltip, { Wrapper, Content } from "@smui/tooltip";
 
   export let selectedIndicator;
-
-  let width = 500;
-  let height = 500;
+  export let width = 0;
+  export let height = 0;
 
   $: mapData =
     selectedIndicator.indicatorCode === "gasban"
@@ -93,25 +92,23 @@
   Bubble map
 </label-->
 
-<div class="map-container" bind:offsetWidth={width} bind:offsetHeight={height}>
-  <svg {width} {height}>
-    <rect {width} {height} class="sea" />
-    {#each data as feature}
-      <Wrapper>
-        <path
-          d={path(feature)}
-          class="country"
-          fill={mapData.find((d) => d.name === feature.properties.name) &&
-          !bubble
-            ? colorScale[
-                mapData.find((d) => d.name === feature.properties.name).status
-              ]
-            : "#ffffff"}
-        />
-        {#if selectedIndicator.indicatorCode === "gasban" && mapData.find((d) => d.name === feature.properties.name) !== undefined}
-          <Tooltip rich
-            ><Content
-              >{@html `<b>${feature.properties.name}</b><br />
+<svg {width} {height}>
+  <rect {width} {height} class="sea" />
+  {#each data as feature}
+    <Wrapper>
+      <path
+        d={path(feature)}
+        class="country"
+        fill={mapData.find((d) => d.name === feature.properties.name) && !bubble
+          ? colorScale[
+              mapData.find((d) => d.name === feature.properties.name).status
+            ]
+          : "#ffffff"}
+      />
+      {#if selectedIndicator.indicatorCode === "gasban" && mapData.find((d) => d.name === feature.properties.name) !== undefined}
+        <Tooltip rich
+          ><Content
+            >{@html `<b>${feature.properties.name}</b><br />
                 <b>New buildings:</b>s ${
                   mapData.find((d) => d.name === feature.properties.name)[
                     "new.buildings"
@@ -122,67 +119,62 @@
                       "existing.buildings"
                     ]
                   }`}
-            </Content>
-          </Tooltip>
-        {/if}
-      </Wrapper>
-    {/each}
+          </Content>
+        </Tooltip>
+      {/if}
+    </Wrapper>
+  {/each}
 
-    {#if bubble}
-      {#each $centroidsDataSet.table as bubble}
-        <circle
-          class="bubble"
-          cx={projection([bubble.long, bubble.lat])[0]}
-          cy={projection([bubble.long, bubble.lat])[1]}
-          r={sizeScale(bubble.pop)}
-          fill={colorScale[
-            $gasGridDataSet.table.find((d) => d.geo === bubble.code).status
-          ]}
-        />
-      {/each}
-    {/if}
-    {#each $centroidsDataSet.table as label}
-      <a href={`/country/${label.code}`}>
-        <text
-          class="country-label"
-          x={projection([label.long, label.lat])[0]}
-          y={projection([label.long, label.lat])[1]}>{label.name}</text
-        ></a
-      >
+  {#if bubble}
+    {#each $centroidsDataSet.table as bubble}
+      <circle
+        class="bubble"
+        cx={projection([bubble.long, bubble.lat])[0]}
+        cy={projection([bubble.long, bubble.lat])[1]}
+        r={sizeScale(bubble.pop)}
+        fill={colorScale[
+          $gasGridDataSet.table.find((d) => d.geo === bubble.code).status
+        ]}
+      />
     {/each}
-    {#each Object.entries(colorScale) as legendItem, i}
-      <g
-        class="traffic-light-legend"
-        transform={`translate(${width - legendWidth - margins.right}, ${
-          margins.top
-        })`}
+  {/if}
+  {#each $centroidsDataSet.table as label}
+    <a href={`/country/${label.code}`}>
+      <text
+        class="country-label"
+        x={projection([label.long, label.lat])[0]}
+        y={projection([label.long, label.lat])[1]}>{label.name}</text
+      ></a
+    >
+  {/each}
+  {#each Object.entries(colorScale) as legendItem, i}
+    <g
+      class="traffic-light-legend"
+      transform={`translate(${width - legendWidth - margins.right}, ${
+        margins.top
+      })`}
+    >
+      <rect
+        x={0}
+        y={(legendHeight / 3) * i}
+        width={legendWidth}
+        height={legendHeight / 3}
+        fill={legendItem[1]}
+        stroke="white"
+        stroke-width={1}
+        stroke-opacity={0.5}
+      />
+      <text
+        x={legendWidth / 2}
+        y={(legendHeight / 3) * i + legendHeight / 6}
+        dy={4}>{legendItem[0]}</text
       >
-        <rect
-          x={0}
-          y={(legendHeight / 3) * i}
-          width={legendWidth}
-          height={legendHeight / 3}
-          fill={legendItem[1]}
-          stroke="white"
-          stroke-width={1}
-          stroke-opacity={0.5}
-        />
-        <text
-          x={legendWidth / 2}
-          y={(legendHeight / 3) * i + legendHeight / 6}
-          dy={4}>{legendItem[0]}</text
-        >
-        >
-      </g>
-    {/each}
-  </svg>
-</div>
+      >
+    </g>
+  {/each}
+</svg>
 
 <style>
-  .map-container {
-    width: 100%;
-    height: 100%;
-  }
   svg {
     background-color: "#eeeeee";
   }
