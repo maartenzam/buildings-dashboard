@@ -133,7 +133,7 @@ const indicators = [
   {
     indicatorCode: "credibility",
     indicatorName: "Credibility of renovation strategy",
-    indicatorExplanation: `<p>Member States hat to notify the Commission their <a href="https://ec.europa.eu/energy/topics/energy-efficiency/energy-efficient-buildings/long-term-renovation-strategies_en">national long-term renovation strategies (LTRS)</a> by 10 March 2020. Most LTRS were submitted with delay and some are still not availble.</p>
+    indicatorExplanation: `<p>Member States had to notify the Commission their <a href="https://ec.europa.eu/energy/topics/energy-efficiency/energy-efficient-buildings/long-term-renovation-strategies_en">national long-term renovation strategies (LTRS)</a> by 10 March 2020. Most LTRS were submitted with delay and some are still not availble.</p>
     <p>This section of the Dashboard will be updated once all LTRS are submitted and assessed.<p> 
     <p>Already available information:</p>
     <p><a href="https://ec.europa.eu/energy/sites/default/files/swd_commission_preliminary_analysis_of_member_state_ltrss.pdf">Preliminary analysis of the LTRS of 13 Member States</a>: In March 2021, the European Commission published a Staff Working Document assessing the LTRS that were availble in November 2020.</p>
