@@ -8,7 +8,7 @@
     gasGridDataSet,
     credibilityDataSet,
   } from "./data/DataStore.js";
-  import Tooltip, { Wrapper } from "@smui/tooltip";
+  import Tooltip, { Wrapper, Content } from "@smui/tooltip";
 
   export let selectedIndicator;
 
@@ -25,13 +25,13 @@
   const colorScales = {
     gasban: {
       adopted: trafficLightColors[0],
-      announced: trafficLightColors[1],
+      //announced: trafficLightColors[1],
       "no policy": trafficLightColors[2],
     },
     credibility: {
-      credible: trafficLightColors[0],
-      "partly credible": trafficLightColors[1],
-      "not credible": trafficLightColors[2],
+      "not submitted": trafficLightColors[0],
+      "submitted / not yet assessed": trafficLightColors[1],
+      "submitted / assessed": trafficLightColors[2],
     },
   };
 
@@ -85,7 +85,7 @@
 
   const margins = { top: 10, left: 0, right: 10, bottom: 0 };
   const legendHeight = 100 - margins.top - margins.bottom;
-  const legendWidth = 120;
+  const legendWidth = 200;
 </script>
 
 <!--label>
@@ -109,15 +109,21 @@
             : "#ffffff"}
         />
         {#if selectedIndicator.indicatorCode === "gasban" && mapData.find((d) => d.name === feature.properties.name) !== undefined}
-          <Tooltip
-            >{mapData.find((d) => d.name === feature.properties.name)[
-              "new.buildings"
-            ] !== "NA"
-              ? mapData.find((d) => d.name === feature.properties.name)[
-                  "new.buildings"
-                ]
-              : "No ban"}</Tooltip
-          >
+          <Tooltip rich
+            ><Content
+              >{@html `<b>${feature.properties.name}</b><br />
+                <b>New buildings:</b>s ${
+                  mapData.find((d) => d.name === feature.properties.name)[
+                    "new.buildings"
+                  ]
+                }<br />
+                  <b>Existing buildings:</b> ${
+                    mapData.find((d) => d.name === feature.properties.name)[
+                      "existing.buildings"
+                    ]
+                  }`}
+            </Content>
+          </Tooltip>
         {/if}
       </Wrapper>
     {/each}

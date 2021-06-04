@@ -57,21 +57,6 @@
     },
   };
 
-  const trafficLightColors = ["#387E90", "#F5B944", "#E34C27"];
-
-  const colorScales = {
-    gasban: {
-      adopted: trafficLightColors[0],
-      announced: trafficLightColors[1],
-      "no policy": trafficLightColors[2],
-    },
-    credibility: {
-      credible: trafficLightColors[0],
-      "partly credible": trafficLightColors[1],
-      "not credible": trafficLightColors[2],
-    },
-  };
-
   $: countriesData = dataMap[selectedIndicator.indicatorCode].data;
   $: displayUnits = dataMap[selectedIndicator.indicatorCode][selectedUnit];
 
@@ -95,13 +80,7 @@
   {#if selectedIndicator.indicatorCode === "gasban" || selectedIndicator.indicatorCode === "credibility"}
     <EUMap {selectedIndicator} />
   {:else}
-    <Grid
-      {selectedIndicator}
-      {countriesData}
-      {displayUnits}
-      {colorScales}
-      {modal}
-    />
+    <Grid {selectedIndicator} {countriesData} {displayUnits} {modal} />
   {/if}
 </div>
 <div class="right">
