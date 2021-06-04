@@ -178,8 +178,8 @@
         <p>
           {countryName} has {$allCountryData.gasgrid[1][0].status == "no policy"
             ? "no policty"
-            : $allCountryData.gasgrid[1][0].status + " legislation"} to ban the connection
-          of buildings to the gas grid.
+            : $allCountryData.gasgrid[1][0].status + " legislation"} to ban fossil
+          fuels from heating houses.
         </p>
         <ul>
           {#if $allCountryData.gasgrid[1][0]["new.buildings"] != "NA"}
@@ -195,9 +195,9 @@
         </ul>
         <p>
           The national renovation strategy is {$allCountryData.credibility[1][0]
-            .status} based on the following criteria:
+            .status}
         </p>
-        <ul>
+        <!--ul>
           <li>
             Effective energy efficiency promotion: {$allCountryData
               .credibility[1][0]["effective.ee.promotion"]}
@@ -211,7 +211,7 @@
             Measures tackling energy poverty: {$allCountryData
               .credibility[1][0]["energy.poverty"]}
           </li>
-        </ul>
+        </ul-->
       {/if}
     </div>
   </div>

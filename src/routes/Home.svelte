@@ -117,16 +117,18 @@
       <Treemap {treemapData} {width} {height} />
     </div>
   {/if}
-  <div class="sources">
-    <p>
-      {selectedIndicator.indicatorSources.length > 1
-        ? "Data sources:"
-        : "Data source"}<br />
-      {#each selectedIndicator.indicatorSources as source}
-        <a href={source.url}>{source.text}</a><br />
-      {/each}
-    </p>
-  </div>
+  {#if selectedIndicator.indicatorSources > 0}
+    <div class="sources">
+      <p>
+        {selectedIndicator.indicatorSources.length > 1
+          ? "Data sources:"
+          : "Data source"}<br />
+        {#each selectedIndicator.indicatorSources as source}
+          <a href={source.url}>{source.text}</a><br />
+        {/each}
+      </p>
+    </div>
+  {/if}
 </div>
 <Modal bind:this={modal} {selectedIndicator} {displayUnits}>
   <button on:click={() => modal.hide()}>Close</button>

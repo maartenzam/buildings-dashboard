@@ -125,36 +125,22 @@ const indicators = [
   },
   {
     indicatorCode: "gasban",
-    indicatorName: "Ban to connect new houses to the gas grid",
-    indicatorExplanation:
-      "Ban to connect new houses to the gas grid explanation",
+    indicatorName: "Ban of gas grid connection",
+    indicatorExplanation: `<p>To get on track to achieve a decarbonised heating systems, Member States are adopting legislation to phase out fossil fuel boilers step by step, mostly starting with a ban of oil boilers in new and then in existing houses and eventually banning to connect buildings to the gas grid.</p>`,
     indicatorUnits: [],
-    indicatorSources: [
-      {
-        text: "Eurostat FEC (Europe 2020-2030) [nrg_bal_c]",
-        url: "https://appsso.eurostat.ec.europa.eu/nui/show.do?query=BOOKMARK_DS-1015839_QID_276A989_UID_-3F171EB0&layout=TIME,C,X,0;GEO,L,Y,0;NRG_BAL,L,Z,0;SIEC,L,Z,1;UNIT,L,Z,2;INDICATORS,C,Z,3;&zSelection=DS-1015839INDICATORS,OBS_FLAG;DS-1015839UNIT,KTOE;DS-1015839NRG_BAL,FEC2020-2030;DS-1015839SIEC,TOTAL;&rankName1=SIEC_1_2_-1_2&rankName2=UNIT_1_2_-1_2&rankName3=INDICATORS_1_2_-1_2&rankName4=NRG-BAL_1_2_-1_2&rankName5=TIME_1_0_0_0&rankName6=GEO_1_2_0_1&sortC=ASC_-1_FIRST&rStp=&cStp=&rDCh=&cDCh=&rDM=true&cDM=true&footnes=false&empty=false&wai=false&time_mode=NONE&time_most_recent=false&lang=EN&cfo=%23%23%23%2C%23%23%23.%23%23%23",
-      },
-      {
-        text: "Eurostat GDP [nama_10_gdp]",
-        url: "https://appsso.eurostat.ec.europa.eu/nui/submitViewTableAction.do",
-      },
-    ],
+    indicatorSources: [],
   },
   {
     indicatorCode: "credibility",
     indicatorName: "Credibility of renovation strategy",
-    indicatorExplanation: "Credibility of renovation strategy explanation",
+    indicatorExplanation: `<p>Member States hat to notify the Commission their <a href="https://ec.europa.eu/energy/topics/energy-efficiency/energy-efficient-buildings/long-term-renovation-strategies_en">national long-term renovation strategies (LTRS)</a> by 10 March 2020. Most LTRS were submitted with delay and some are still not availble.</p>
+    <p>This section of the Dashboard will be updated once all LTRS are submitted and assessed.<p> 
+    <p>Already available information:</p>
+    <p><a href="https://ec.europa.eu/energy/sites/default/files/swd_commission_preliminary_analysis_of_member_state_ltrss.pdf">Preliminary analysis of the LTRS of 13 Member States</a>: In March 2020, the European Commission published a Staff Working Document assessing the LTRS that were availble in November 2020.</p>
+    <p><a href="https://www.bpie.eu/publication/the-road-to-climate-neutrality-are-national-long-term-renovation-strategies-fit-for-2050/">The road to climate-neutrality</a>: In March 2021, BPIE published an analysis of 8 LTRS whether they are in line with 2030 decarbonisation requirements and on a path towards total decarbonisation of the building stock by 2050.</p>
+    <p>The <a href="https://www.greenrecoverytracker.org/">Green Recovery Tracker</a> assessed the Recovery and Resilience Plans. The Tracker provides an assessment of measures and allocation of funds in the buildings sector. It is continuously updated.</p>`,
     indicatorUnits: [],
-    indicatorSources: [
-      {
-        text: "Eurostat FEC (Europe 2020-2030) [nrg_bal_c]",
-        url: "https://appsso.eurostat.ec.europa.eu/nui/show.do?query=BOOKMARK_DS-1015839_QID_276A989_UID_-3F171EB0&layout=TIME,C,X,0;GEO,L,Y,0;NRG_BAL,L,Z,0;SIEC,L,Z,1;UNIT,L,Z,2;INDICATORS,C,Z,3;&zSelection=DS-1015839INDICATORS,OBS_FLAG;DS-1015839UNIT,KTOE;DS-1015839NRG_BAL,FEC2020-2030;DS-1015839SIEC,TOTAL;&rankName1=SIEC_1_2_-1_2&rankName2=UNIT_1_2_-1_2&rankName3=INDICATORS_1_2_-1_2&rankName4=NRG-BAL_1_2_-1_2&rankName5=TIME_1_0_0_0&rankName6=GEO_1_2_0_1&sortC=ASC_-1_FIRST&rStp=&cStp=&rDCh=&cDCh=&rDM=true&cDM=true&footnes=false&empty=false&wai=false&time_mode=NONE&time_most_recent=false&lang=EN&cfo=%23%23%23%2C%23%23%23.%23%23%23",
-      },
-      {
-        text: "Eurostat GDP [nama_10_gdp]",
-        url: "https://appsso.eurostat.ec.europa.eu/nui/submitViewTableAction.do",
-      },
-    ],
+    indicatorSources: [],
   },
 ];
 
