@@ -135,16 +135,20 @@
             </div>
           </div>
         {:else if r === 0 && c === 6 && (selectedIndicator.indicatorCode === "fec" || selectedIndicator.indicatorCode === "fechh") && displayUnits === "absolute"}
-          <div class="cell border">
-            <div class="title highlight-title">Targets</div>
-            <div
-              class="chart-container"
-              bind:offsetWidth={width}
-              bind:offsetHeight={height}
-            >
-              <TargetsLegend {width} {height} {selectedIndicator} />
+          {#if windowWidth > 1100}
+            <div class="cell border">
+              <div class="title highlight-title">Targets</div>
+              <div
+                class="chart-container"
+                bind:offsetWidth={width}
+                bind:offsetHeight={height}
+              >
+                <TargetsLegend {width} {height} {selectedIndicator} />
+              </div>
             </div>
-          </div>
+          {:else}
+            <div class="cell empty" />
+          {/if}
         {:else}
           <div class="cell empty" />
         {/if}

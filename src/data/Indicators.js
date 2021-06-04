@@ -4,9 +4,9 @@ const indicators = [
     indicatorName: "Final energy consumption (FEC)",
     indicatorExplanation: `
     <p>This indicator shows the development of total energy end use across all sectors compared to three benchmark levels:</p>
-      <p><span style="border-bottom: 2px dashed steelblue; padding-bottom: 3px; stroke-linecap: round; color: steelblue">The 2020 target</span> set by Member States to contribute to the EU 20% energy efficiency target (2020 target)</p>
-      <p><span style="border-bottom: 2px dashed purple; padding-bottom: 3px; stroke-linecap: round; color: purple">The 2030 national contributions</span> to the EU energy efficiency target of 32.5% as set in National Energy and Climate Plans (2030 NECP), leaving a gap of 3.1% points</p>
-      <p><span style="border-bottom: 2px dashed orange; padding-bottom: 3px; stroke-linecap: round; color: orange">The 2030 EU projections</span> for national final energy demand according to the EUCO3232.5 scenario in line with the EU’s energy targets modelled in 2018 (2030 EUCO 3232.5)</p>
+      <p><span style="border-bottom: 2px dashed steelblue; padding-bottom: 3px; stroke-linecap: round; color: steelblue">The 2020 target</span> set by Member States to contribute to the EU 20% energy efficiency target</p>
+      <p><span style="border-bottom: 2px dashed purple; padding-bottom: 3px; stroke-linecap: round; color: purple">The 2030 national contributions</span> to the EU energy efficiency target of 32.5% as set in National Energy and Climate Plans, leaving a gap of 3.1% points</p>
+      <p><span style="border-bottom: 2px dashed orange; padding-bottom: 3px; stroke-linecap: round; color: orange">The 2030 EU projections</span> for national final energy demand according to the EUCO3232.5 scenario in line with the EU’s energy targets modelled in 2018</p>
     <p>Final energy consumption is influenced by economic activity. This is why the charts also show energy intensity, which is FEC/GDP.</p>`,
     indicatorUnits: [
       { unitsCode: "absolute", unitsName: "Absolute", unitsShort: "Mtoe/year" },

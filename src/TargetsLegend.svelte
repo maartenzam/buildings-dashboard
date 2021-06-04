@@ -7,12 +7,12 @@
   $: legendHeight = height - margins.top - margins.bottom;
 </script>
 
-<svg {width} {height}>
+<svg width={width - 2} {height}>
   <rect {width} {height} class="background" />
   <g class="target-lines">
     {#if selectedIndicator.indicatorCode === "fec"}
       <line
-        class="target-necp"
+        class="target-2020"
         x1={margins.left}
         x2={width - margins.right}
         y1={margins.top + legendHeight / 3}
@@ -22,10 +22,10 @@
         x={width / 2}
         y={margins.top + legendHeight / 3}
         dy={-4}
-        class="target-necp">Target 2030 NECP</text
+        class="target-2020">2020 target</text
       >
       <line
-        class="target-euco"
+        class="target-necp"
         x1={margins.left}
         x2={width - margins.right}
         y1={margins.top + (legendHeight / 3) * 2}
@@ -35,20 +35,20 @@
         x={width / 2}
         y={margins.top + (legendHeight / 3) * 2}
         dy={-4}
-        class="target-euco">2030 EU projection EUCO</text
+        class="target-necp">2030 contribution</text
       >
       <line
-        class="target-2020"
+        class="target-euco"
         x1={margins.left}
         x2={width - margins.right}
-        y1={margins.top + legendHeight}
-        y2={margins.top + legendHeight}
+        y1={margins.top + (legendHeight / 3) * 3}
+        y2={margins.top + (legendHeight / 3) * 3}
       />
       <text
         x={width / 2}
-        y={margins.top + legendHeight}
+        y={margins.top + (legendHeight / 3) * 3}
         dy={-4}
-        class="target-2020">Target 2020</text
+        class="target-euco">2030 projection</text
       >
     {/if}
     {#if selectedIndicator.indicatorCode === "fechh"}
