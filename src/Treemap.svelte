@@ -35,23 +35,23 @@
         width={node.x1 - node.x0}
         height={node.y1 - node.y0}
       />
-      {#if node.y1 - node.y0 > 12 && node.x1 - node.x0 > 40}
-        <text class="treemap-label" x={node.x0 + 2} y={node.y0 + 12}
-          >{`${node.id}: ${format(".2s")(
-            Math.round(node.value * 10) / 10
-          )}`}</text
-        >
-      {:else if node.y1 - node.y0 > 12 && node.x1 - node.x0 <= 40}
-        <text class="treemap-label" x={node.x0 + 2} y={node.y0 + 12}
-          >{`${node.id}`}</text
-        >
-      {/if}
       <Tooltip xPos="start" yPos="above"
         >{`${node.id}: ${format(",")(
           Math.round(node.value * 10) / 10
         )}`}</Tooltip
       >
     </Wrapper>
+    {#if node.y1 - node.y0 > 12 && node.x1 - node.x0 > 40}
+      <text class="treemap-label" x={node.x0 + 2} y={node.y0 + 12}
+        >{`${node.id}: ${format(".2s")(
+          Math.round(node.value * 10) / 10
+        )}`}</text
+      >
+    {:else if node.y1 - node.y0 > 12 && node.x1 - node.x0 <= 40}
+      <text class="treemap-label" x={node.x0 + 2} y={node.y0 + 12}
+        >{`${node.id}`}</text
+      >
+    {/if}
   {/each}
 </svg>
 

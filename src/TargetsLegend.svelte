@@ -1,5 +1,5 @@
 <script>
-  export let width = 0;
+  export let width = 2;
   export let height = 0;
   export let selectedIndicator;
 

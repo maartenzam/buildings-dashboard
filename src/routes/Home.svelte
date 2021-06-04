@@ -87,7 +87,9 @@
   <h2>{selectedIndicator.indicatorName}</h2>
   <div>{@html selectedIndicator.indicatorExplanation}</div>
   {#if displayUnits === "absolute"}
-    <h3>{selectedIndicator.treeMapTitle}</h3>
+    <div class="treemap-title">
+      {`${selectedIndicator.treeMapTitle} (${$fecGdpDataSet.latestYear})`}
+    </div>
     <div
       class="treemap-container"
       bind:offsetWidth={width}
@@ -134,6 +136,9 @@
   .treemap-container {
     width: 100%;
     height: 400px;
+  }
+  .treemap-title {
+    font-weight: bold;
   }
   .sources {
     font-size: 0.85rem;

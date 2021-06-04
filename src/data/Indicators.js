@@ -3,10 +3,10 @@ const indicators = [
     indicatorCode: "fec",
     indicatorName: "Final energy consumption (FEC)",
     indicatorExplanation: `
-    <p>This indicator shows the development of <b>total energy end use</b> across all sectors compared to three benchmark levels:</p>
-      <p>The <span style="border-bottom: 2px dashed steelblue; padding-bottom: 2px; stroke-linecap: round; color: steelblue">2020 target</span> set by Member States to contribute to the EU 20% energy efficiency target</p>
-      <p>The <span style="border-bottom: 2px dashed purple; padding-bottom: 2px; stroke-linecap: round; color: purple">2030 national contributions</span> to the EU energy efficiency target of 32.5% as set in National Energy and Climate Plans, leaving a gap of 3.1% points</p>
-      <p>The <span style="border-bottom: 2px dashed orange; padding-bottom: 2px; stroke-linecap: round; color: orange">2030 EU projections</span> for national final energy demand according to the EUCO3232.5 scenario in line with the EU’s energy targets modelled in 2018</p>
+    <p>This indicator shows the development of <b>total energy end use</b> across all sectors compared to three benchmark levels.</p>
+      <p>The <span style="border-bottom: 2px dashed steelblue; padding-bottom: 2px; stroke-linecap: round; color: steelblue">2020 target</span> set by Member States to contribute to the EU 20% energy efficiency target.</p>
+      <p>The <span style="border-bottom: 2px dashed purple; padding-bottom: 2px; stroke-linecap: round; color: purple">2030 national contributions</span> to the EU energy efficiency target of 32.5% as set in National Energy and Climate Plans, leaving a gap of 3.1% points.</p>
+      <p>The <span style="border-bottom: 2px dashed orange; padding-bottom: 2px; stroke-linecap: round; color: orange">2030 EU projections</span> for national final energy demand according to the EUCO3232.5 scenario in line with the EU’s energy targets modelled in 2018.</p>
     <p>Final energy consumption is influenced by economic activity. This is why the charts also show <b>energy intensity</b>, which is FEC/GDP.</p>`,
     indicatorUnits: [
       { unitsCode: "absolute", unitsName: "Absolute", unitsShort: "Mtoe/year" },
@@ -26,7 +26,7 @@ const indicators = [
         url: "https://appsso.eurostat.ec.europa.eu/nui/submitViewTableAction.do",
       },
     ],
-    treeMapTitle: "FEC (Mtoe) by Members State (2019)",
+    treeMapTitle: "FEC (Mtoe) by Members State",
   },
   {
     indicatorCode: "fechh",
@@ -66,12 +66,12 @@ const indicators = [
         url: "https://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=demo_pjan&lang=en",
       },
     ],
-    treeMapTitle: "FEC (Mtoe) in households by Members State (2019)",
+    treeMapTitle: "FEC (Mtoe) in households by Members State",
   },
   {
     indicatorCode: "renewables",
     indicatorName: "Renewables share in household FEC",
-    indicatorExplanation: `<p>This indicator can be used as a proxy for buildings specific <b>decarbonisation of the heating systems</b>, as it shows the increase of the share of renewables in final energy consumption in households. The data provided by Eurostat include biomass. As the role of biomass to decarbonise heating is disputed, the second chart shows the renewables share in household FEC without biomass. Concretely, the chart without biomass includes solar thermal, geothermal and ambient heat (heat pumps).</p>
+    indicatorExplanation: `<p>This indicator can be used as a proxy for buildings specific <b>decarbonisation of the heating systems</b>, as it shows the increase of the share of renewables in final energy consumption in households. The data provided by Eurostat <b>include biomass</b>. As the role of biomass to decarbonise heating is disputed, the second chart shows the renewables share in household FEC <b>without biomass</b>. Concretely, the chart without biomass includes solar thermal, geothermal and ambient heat (heat pumps).</p>
     <p>Solar photovoltaic is not applicable in these statistics as defined by Eurostat.</p>
     `,
     indicatorUnits: [
@@ -136,7 +136,7 @@ const indicators = [
     indicatorExplanation: `<p>Member States hat to notify the Commission their <a href="https://ec.europa.eu/energy/topics/energy-efficiency/energy-efficient-buildings/long-term-renovation-strategies_en">national long-term renovation strategies (LTRS)</a> by 10 March 2020. Most LTRS were submitted with delay and some are still not availble.</p>
     <p>This section of the Dashboard will be updated once all LTRS are submitted and assessed.<p> 
     <p>Already available information:</p>
-    <p><a href="https://ec.europa.eu/energy/sites/default/files/swd_commission_preliminary_analysis_of_member_state_ltrss.pdf">Preliminary analysis of the LTRS of 13 Member States</a>: In March 2020, the European Commission published a Staff Working Document assessing the LTRS that were availble in November 2020.</p>
+    <p><a href="https://ec.europa.eu/energy/sites/default/files/swd_commission_preliminary_analysis_of_member_state_ltrss.pdf">Preliminary analysis of the LTRS of 13 Member States</a>: In March 2021, the European Commission published a Staff Working Document assessing the LTRS that were availble in November 2020.</p>
     <p><a href="https://www.bpie.eu/publication/the-road-to-climate-neutrality-are-national-long-term-renovation-strategies-fit-for-2050/">The road to climate-neutrality</a>: In March 2021, BPIE published an analysis of 8 LTRS whether they are in line with 2030 decarbonisation requirements and on a path towards total decarbonisation of the building stock by 2050.</p>
     <p>The <a href="https://www.greenrecoverytracker.org/">Green Recovery Tracker</a> assessed the Recovery and Resilience Plans. The Tracker provides an assessment of measures and allocation of funds in the buildings sector. It is continuously updated.</p>`,
     indicatorUnits: [],

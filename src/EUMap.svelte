@@ -29,9 +29,9 @@
       "no policy": trafficLightColors[2],
     },
     credibility: {
-      "not submitted": trafficLightColors[0],
+      "submitted / assessed": trafficLightColors[0],
       "submitted / not yet assessed": trafficLightColors[1],
-      "submitted / assessed": trafficLightColors[2],
+      "not submitted": trafficLightColors[2],
     },
   };
 

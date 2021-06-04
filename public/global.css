@@ -72,6 +72,10 @@ button:focus {
   border-color: #666;
 }
 
+.mdc-tooltip {
+  pointer-events: none;
+}
+
 .mdc-tooltip__surface .mdc-tooltip__content,
 .mdc-tooltip__surface .mdc-tooltip__title {
   color: white;

@@ -1,20 +1,24 @@
 <script>
   import TopAppBar, { Row, Section, Title } from "@smui/top-app-bar";
+  let windowWidth;
 </script>
 
+<svelte:window bind:innerWidth={windowWidth} />
 <nav class="top-app-bar-container">
   <TopAppBar variant="static" color="primary" dense>
     <Row>
       <Section>
-        <a href="/">
-          <Title>Dashboard on building renovations - ECF</Title>
-        </a>
+        {#if windowWidth > 501}
+          <a href="/">
+            <Title>Dashboard on building renovations</Title>
+          </a>
+        {/if}
       </Section>
       <Section align="end">
         <a href="/about" style={"color: white; margin-right: 12px;"}>About</a>
-        <a href="/guide" style={"color: white; margin-right: 12px;"}
+        <!--a href="/guide" style={"color: white; margin-right: 12px;"}
           >How to use</a
-        >
+        -->
         <img src="./ecf-logo-white.png" alt="ECF logo" height="100%" />
       </Section>
     </Row>

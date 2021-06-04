@@ -57,11 +57,11 @@
     >
     <span
       style="border-bottom: 2px dashed orange; padding-bottom: 3px; stroke-linecap: round; color: orange; margin-right: 20px;"
-      >2030 EU projection EUCO</span
+      >2030 EU projection</span
     >
     <span
       style="border-bottom: 2px dashed purple; padding-bottom: 3px; stroke-linecap: round; color: purple"
-      >Target 2030 NECP</span
+      >2030 national contribution</span
     >
   </div>
   <div class="row">

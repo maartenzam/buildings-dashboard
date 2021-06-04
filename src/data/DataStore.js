@@ -25,16 +25,24 @@ export const centroidsDataSet = readable({ table: [] }, (set) => {
   return () => {};
 });
 
-export const fecGdpDataSet = readable({ table: [], byCountry: [] }, (set) => {
-  Promise.all([csv(fecGdpDataURL, autoType)]).then(([table]) => {
-    const byCountry = groups(table, (d) => d.geo);
-    set({
-      table,
-      byCountry,
+export const fecGdpDataSet = readable(
+  { table: [], byCountry: [], latestYear: 0 },
+  (set) => {
+    Promise.all([csv(fecGdpDataURL, autoType)]).then(([table]) => {
+      const byCountry = groups(table, (d) => d.geo);
+      const latestYear = Math.max.apply(
+        null,
+        table.map((d) => d.time.getFullYear())
+      );
+      set({
+        table,
+        byCountry,
+        latestYear,
+      });
     });
-  });
-  return () => {};
-});
+    return () => {};
+  }
+);
 
 export const fecHhDataSet = readable({ table: [], byCountry: [] }, (set) => {
   Promise.all([csv(fecHhDataURL, autoType)]).then(([table]) => {
