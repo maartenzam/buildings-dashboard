@@ -58,7 +58,8 @@
             {height}
             countryData={$allCountryData[selectedIndicator.indicatorCode]}
             {displayUnits}
-            targetsData={selectedIndicator.indicatorCode !== "fec"
+            targetsData={selectedIndicator.indicatorCode !== "fec" &&
+            selectedIndicator.indicatorCode !== "fechh"
               ? undefined
               : $allCountryData.targets}
             freeScales={true}

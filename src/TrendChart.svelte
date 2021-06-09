@@ -162,23 +162,8 @@
         />
       {/each}
     </g>
-    {#if targetsData !== undefined && displayUnits === "absolute" && selectedIndicator.indicatorCode === "fec"}
-      <g class="target-lines">
-        <!-- svelte-ignore component-name-lowercase -->
-        <line
-          class="target-necp"
-          x1={xScale(xDomain[0])}
-          x2={xScale(xDomain[1])}
-          y1={yScale(targetsData[1][0]["target.necp"])}
-          y2={yScale(targetsData[1][0]["target.necp"])}
-        />
-        {#if width > 600}
-          <text
-            x={xScale(xDomain[0]) + 4}
-            y={yScale(targetsData[1][0]["target.necp"]) - 6}
-            class="target-necp">2030 national contribution</text
-          >
-        {/if}
+    <g class="target-lines">
+      {#if targetsData !== undefined && displayUnits === "absolute" && selectedIndicator.indicatorCode === "fec"}
         <!-- svelte-ignore component-name-lowercase -->
         <line
           class="target-euco"
@@ -196,6 +181,21 @@
         {/if}
         <!-- svelte-ignore component-name-lowercase -->
         <line
+          class="target-necp"
+          x1={xScale(xDomain[0])}
+          x2={xScale(xDomain[1])}
+          y1={yScale(targetsData[1][0]["target.necp"])}
+          y2={yScale(targetsData[1][0]["target.necp"])}
+        />
+        {#if width > 600}
+          <text
+            x={xScale(xDomain[0]) + 4}
+            y={yScale(targetsData[1][0]["target.necp"]) - 6}
+            class="target-necp">2030 national contribution</text
+          >
+        {/if}
+        <!-- svelte-ignore component-name-lowercase -->
+        <line
           class="target-2020"
           x1={xScale(xDomain[0])}
           x2={xScale(xDomain[1])}
@@ -209,10 +209,8 @@
             class="target-2020">2020 target</text
           >
         {/if}
-      </g>
-    {/if}
-    {#if targetsData !== undefined && displayUnits === "absolute" && selectedIndicator.indicatorCode === "fechh"}
-      <g class="target-lines">
+      {/if}
+      {#if targetsData !== undefined && displayUnits === "absolute" && selectedIndicator.indicatorCode === "fechh"}
         <!-- svelte-ignore component-name-lowercase -->
         <line
           class="target-euco"
@@ -224,12 +222,13 @@
         {#if width > 600}
           <text
             x={xScale(xDomain[0]) + 4}
-            y={yScale(targetsData[1][0]["target.euco"]) - 6}
+            y={yScale(targetsData[1][0]["target.fechh"]) - 6}
             class="target-euco">2030 EU projection</text
           >
         {/if}
-      </g>
-    {/if}
+      {/if}
+    </g>
+
     {#each countryDataPoints as point}
       <Wrapper>
         <circle
