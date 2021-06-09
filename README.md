@@ -10,14 +10,35 @@ The repository contains:
 
 # Data
 
-_Note that you will need to have [Node.js](https://nodejs.org) installed._
+All source data and data processing code lives in [data](data).
+The [buildings-dashboard-dataprocessing.R](/data/buildings-dashboard-dataprocessing.R) script:
 
-## Get started
+- loads all the source data files
+- downloads data from the relevant Eurostat databases
+- transforms the data and calculates derived values
+- writes csv files to [public/data](public/data) to be used by the dashboard
+- writes an Excel file with all the data, that is written to the [public](public) folder
 
-Install the dependencies...
+## Data update
+
+Updating the dashboard data requires:
+
+- updating any source data that has new or edited data
+- run the [buildings-dashboard-dataprocessing.R](/data/buildings-dashboard-dataprocessing.R) script. This will load the newest data from Eurostat and update all the data for the dashboard
+- the generated Excel file with all the data has a date stamp at the end of its name. This date stamp needs to be adjusted in the text of the About page, which lives in [src/data/AboutText.js](src/data/AboutText.js)
+- the dashboard nees to be rebuild with `npm run build` (see further)
+- after that, the dashboard needs to be redeployed
+
+# Front end
+
+The front end is developed in [Svelte](https://svelte.dev/).
+
+## Getting started
+
+First, clone this repository. Then install the dependencies (you should have [Node](https://nodejs.org/en/) installed):
 
 ```bash
-cd svelte-app
+cd buildings-dashboard
 npm install
 ```
 
@@ -27,74 +48,20 @@ npm install
 npm run dev
 ```
 
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
-
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
+Navigate to [localhost:5000](http://localhost:5000). You should see the dashboard running. It is hot reloading, so if you change any file in `src`, the page should automatically refresh.
 
 If you're using [Visual Studio Code](https://code.visualstudio.com/) we recommend installing the official extension [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode). If you are using other editors you may need to install a plugin in order to get syntax highlighting and intellisense.
 
 ## Building and running in production mode
 
-To create an optimised version of the app:
+To create an optimised version of the dashboard:
 
 ```bash
 npm run build
 ```
 
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
-
-## Single-page app mode
-
-By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
-
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for _any_ path. You can make it so by editing the `"start"` command in package.json:
-
-```js
-"start": "sirv public --single"
-```
-
-## Using TypeScript
-
-This template comes with a script to set up a TypeScript development environment, you can run it immediately after cloning the template with:
-
-```bash
-node scripts/setupTypeScript.js
-```
-
-Or remove the script via:
-
-```bash
-rm scripts/setupTypeScript.js
-```
+You can run the newly built dashboard with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
 
 ## Deploying to the web
 
-### With [Vercel](https://vercel.com)
-
-Install `vercel` if you haven't already:
-
-```bash
-npm install -g vercel
-```
-
-Then, from within your project folder:
-
-```bash
-cd public
-vercel deploy --name my-project
-```
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public my-project.surge.sh
-```
+To deploy, upload the content of the [public](public) folder after running `npm run build` to the root of a webserver.
