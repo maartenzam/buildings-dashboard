@@ -23,7 +23,7 @@ const indicators = [
       },
       {
         text: "Eurostat GDP [nama_10_gdp]",
-        url: "https://appsso.eurostat.ec.europa.eu/nui/submitViewTableAction.do",
+        url: "https://appsso.eurostat.ec.europa.eu/nui/show.do?query=BOOKMARK_DS-406763_QID_-31605D26_UID_-3F171EB0&layout=TIME,C,X,0;GEO,L,Y,0;UNIT,L,Z,0;NA_ITEM,L,Z,1;INDICATORS,C,Z,2;&zSelection=DS-406763INDICATORS,OBS_FLAG;DS-406763UNIT,CLV10_MEUR;DS-406763NA_ITEM,B1GQ;&rankName1=NA-ITEM_1_2_-1_2&rankName2=UNIT_1_2_-1_2&rankName3=INDICATORS_1_2_-1_2&rankName4=TIME_1_0_0_0&rankName5=GEO_1_2_0_1&sortC=ASC_-1_FIRST&rStp=&cStp=&rDCh=&cDCh=&rDM=true&cDM=true&footnes=false&empty=false&wai=false&time_mode=NONE&time_most_recent=false&lang=EN&cfo=%23%23%23%2C%23%23%23.%23%23%23",
       },
     ],
     treeMapTitle: "FEC (Mtoe) by Members State",
@@ -85,7 +85,7 @@ const indicators = [
     indicatorSources: [
       {
         text: "Eurostat Complete energy balances [nrg_bal_c]",
-        url: "https://appsso.eurostat.ec.europa.eu/nui/show.do?query=BOOKMARK_DS-1015839_QID_-64FF9FFF_UID_-3F171EB0&layout=TIME,C,X,0;GEO,L,Y,0;NRG_BAL,L,Z,0;SIEC,L,Z,1;UNIT,L,Z,2;INDICATORS,C,Z,3;&zSelection=DS-1015839INDICATORS,OBS_FLAG;DS-1015839UNIT,KTOE;DS-1015839NRG_BAL,FC_OTH_HH_E;DS-1015839SIEC,RA100;&rankName1=SIEC_1_2_-1_2&rankName2=UNIT_1_2_-1_2&rankName3=INDICATORS_1_2_-1_2&rankName4=NRG-BAL_1_2_-1_2&rankName5=TIME_1_0_0_0&rankName6=GEO_1_2_0_1&sortC=ASC_-1_FIRST&rStp=&cStp=&rDCh=&cDCh=&rDM=true&cDM=true&footnes=false&empty=false&wai=false&time_mode=FIXED&time_most_recent=false&lang=EN&cfo=%23%23%23%2C%23%23%23.%23%23%23",
+        url: "https://appsso.eurostat.ec.europa.eu/nui/show.do?query=BOOKMARK_DS-1015839_QID_448969_UID_-3F171EB0&layout=TIME,C,X,0;GEO,L,Y,0;NRG_BAL,L,Z,0;SIEC,L,Z,1;UNIT,L,Z,2;INDICATORS,C,Z,3;&zSelection=DS-1015839INDICATORS,OBS_FLAG;DS-1015839UNIT,KTOE;DS-1015839NRG_BAL,FC_OTH_HH_E;DS-1015839SIEC,RA000;&rankName1=SIEC_1_2_-1_2&rankName2=UNIT_1_2_-1_2&rankName3=INDICATORS_1_2_-1_2&rankName4=NRG-BAL_1_2_-1_2&rankName5=TIME_1_0_0_0&rankName6=GEO_1_2_0_1&sortC=ASC_-1_FIRST&rStp=&cStp=&rDCh=&cDCh=&rDM=true&cDM=true&footnes=false&empty=false&wai=false&time_mode=NONE&time_most_recent=false&lang=EN&cfo=%23%23%23%2C%23%23%23.%23%23%23",
       },
     ],
   },
