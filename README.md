@@ -65,3 +65,46 @@ You can run the newly built dashboard with `npm run start`. This uses [sirv](htt
 ## Deploying to the web
 
 To deploy, upload the content of the [public](public) folder after running `npm run build` to the root of a webserver.
+
+# Copy and data
+
+The copy (indicator explanations and about page) are stored in [src/data/AboutText.js](src/data/AboutText.js) and [src/data/Indicators.js](src/data/Indicators).
+
+The csv files for the dashboard are loaded and provided to all pages and components through readable and writabe Svelte stores in [src/data/DataStore.js].
+
+The data for the indicators and units dropdowns is stored in [src/data/Indicators.js](src/data/Indicators.js).
+
+# Pages
+
+The dashboard uses [tinro](https://github.com/AlexxNB/tinro) for routing. The components for the routes are in [src/routes](src/routes):
+
+- Home.svelte is the homepage (/)
+- About.svelte is the about page (/about). It's content is loaded from [src/data/AboutText.js]
+- Country.svelte are the country pages (/country/{ID})
+- Guide.svelte and Map.svelte are currently not used
+
+# Components
+
+The main component is [App.svelte](src/App.svelte), which is mounted into [public/index.html](public/index.html) through [src/main.js]. It contains the routing logic, the top bar and the footer.
+
+All subcomponents are in `src`:
+
+- TopBar.svelte is the top navigation bar
+- Footer.svelte is the footer
+- Grid.svelte is the grid of charts on the homepage
+- TrendChart.svelte is the chart to show the trends in the dashboard data. It is used both on the homepage, in the modals and on the country pages.
+- CharAxis.svelte is a helper component for TrendChart.svelte
+- TargetsLegend.svelte is the legend for the targets on the homepage (only shown on wide screens)
+- Modal.svelte is the modal that opens a bigger version of a chart when it is clicked on the homepage
+- EUMap.svelte is the map for the gasban and credibility indicators
+- IndicatorSelector.svelte is the dropdown to select an indicator on the homepage
+- UnitSelector.svelte is the dropdown to select a different unit on the homepage and on the country pages
+- Treemap.svelte is the treemap for the absolute units of the fec and fechh indicators
+
+TrafficLightChart.svelte and TrafficLightLegend.svelte are unused.
+
+# Styling
+
+Global styling can be applied in [public/global.css](public/global.css).
+
+The tooltips are making use of [Svelte Material UI tooltips](https://sveltematerialui.com/demo/tooltip/). The [Easy styling mode](https://sveltematerialui.com/SASS.md#easy-styling-method) is used, so updates to the styling, or styling of new SMUI components require `npm run prepare` to be run.

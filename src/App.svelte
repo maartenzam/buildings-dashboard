@@ -20,9 +20,9 @@
     <Route path="/about">
       <About />
     </Route>
-    <Route path="/guide">
+    <!--Route path="/guide">
       <Guide />
-    </Route>
+    </Route-->
   </main>
   <Footer />
 </div>
