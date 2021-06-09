@@ -100,8 +100,9 @@ All subcomponents are in `src`:
 - IndicatorSelector.svelte is the dropdown to select an indicator on the homepage
 - UnitSelector.svelte is the dropdown to select a different unit on the homepage and on the country pages
 - Treemap.svelte is the treemap for the absolute units of the fec and fechh indicators
+- LinkIcon.svelte is the svg code for the external link icon next to the country names on the homepage
 
-TrafficLightChart.svelte and TrafficLightLegend.svelte are unused.
+TrafficLightChart.svelte and TrafficLightLegend.svelte are unused for now.
 
 # Styling
 
