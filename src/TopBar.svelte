@@ -8,9 +8,12 @@
   <TopAppBar variant="static" color="primary" dense>
     <Row>
       <Section>
-        {#if windowWidth > 501}
+        {#if windowWidth > 900}
           <a href="/">
-            <Title>Dashboard on building renovations</Title>
+            <Title
+              >Dashboard on progress of Europe's buildings towards climate
+              neutrality</Title
+            >
           </a>
         {/if}
       </Section>
