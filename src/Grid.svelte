@@ -89,29 +89,21 @@
       {#each Array(7) as _, c}
         <!--Only charts where there is a country-->
         {#if $countryDataSet.table.filter((d) => d.col === c + 1 && d.row === r + 1).length > 0}
-          <div class={"cell"}>
-            {#if c === -1 && r === 0}
+          <div class={c === 0 && r === 0 ? "cell border" : "cell"}>
+            <a
+              href={`/country/${getCountryCode(
+                $countryDataSet.table,
+                r + 1,
+                c + 1
+              )}`}
+            >
               <div
                 class={c === 0 && r === 0 ? "highlight-title title" : "title"}
               >
                 {getCountryName($countryDataSet.table, r + 1, c + 1)}
+                <LinkIcon />
               </div>
-            {:else}
-              <a
-                href={`/country/${getCountryCode(
-                  $countryDataSet.table,
-                  r + 1,
-                  c + 1
-                )}`}
-              >
-                <div
-                  class={c === 0 && r === 0 ? "highlight-title title" : "title"}
-                >
-                  {getCountryName($countryDataSet.table, r + 1, c + 1)}
-                  <LinkIcon />
-                </div>
-              </a>
-            {/if}
+            </a>
             <div
               class="chart-container"
               bind:offsetWidth={width}
