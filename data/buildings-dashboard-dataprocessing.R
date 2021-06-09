@@ -252,7 +252,9 @@ centroids.EU <- left_join(centroids.EU, pop.20, by = c("iso_a2" = "geo")) %>%
   mutate(long = ifelse(code == "FI", 25.275255, long)) %>%
   mutate(lat = ifelse(code == "FI", 62.30821528, lat)) %>%
   mutate(long = ifelse(code == "SE", 14.686196, long)) %>%
-  mutate(lat = ifelse(code == "SE", 59.4432748, lat))
+  mutate(lat = ifelse(code == "SE", 59.4432748, lat)) %>%
+  mutate(lat = ifelse(code == "MT", 35, lat)) %>%
+  mutate(lat = ifelse(code == "CY", 34, lat))
 
 # Write everything to Excel
 ## Time stamped file name, to be changed in src/data/AboutText.js
