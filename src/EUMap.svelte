@@ -22,12 +22,14 @@
       : $credibilityDataSet.table;
 
   const trafficLightColors = ["#387E90", "#F5B944", "#E34C27"];
+  //const policyColors = ["#1878d6", "#90b8e0", "#CCCCCC"];
+  const policyColors = ["#1db6c1", "#93e7ed", "#AAAAAA"];
 
   const colorScales = {
     gasban: {
-      adopted: trafficLightColors[0],
-      prepared: trafficLightColors[1],
-      "no policy": trafficLightColors[2],
+      adopted: policyColors[0],
+      prepared: policyColors[1],
+      "no policy": policyColors[2],
     },
     credibility: {
       "submitted / assessed": trafficLightColors[0],
@@ -240,7 +242,7 @@
     font-size: 12px;
     text-anchor: middle;
     fill: #ffffff;
-    opacity: 0.8;
+    opacity: 0.95;
   }
   /*label {
     position: absolute;
