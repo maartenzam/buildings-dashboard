@@ -109,7 +109,7 @@
         <Tooltip rich
           ><Content
             >{@html `<b>${feature.properties.name}</b><br />
-                <b>New buildings:</b>s ${
+                <b>New buildings:</b> ${
                   mapData.find((d) => d.name === feature.properties.name)[
                     "new.buildings"
                   ]
