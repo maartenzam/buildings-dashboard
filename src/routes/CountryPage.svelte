@@ -66,7 +66,7 @@
   </div>
   <div class="row">
     <div class="cell">
-      <h3>Final energy consumption</h3>
+      <h3>Final energy consumption (FEC)</h3>
       <UnitSelector selectedIndicator={indicators[0]} bind:selectedUnit />
       <div
         class="chart-container"
@@ -85,7 +85,7 @@
       </div>
     </div>
     <div class="cell">
-      <h3>Final energy consumption households</h3>
+      <h3>Final energy consumption (FEC) in households</h3>
       <UnitSelector
         selectedIndicator={indicators[1]}
         bind:selectedUnit={hhSelectedUnit}
@@ -107,7 +107,7 @@
       </div>
     </div>
     <div class="cell">
-      <h3>Renewables in FEC in households</h3>
+      <h3>Renewables share in household FEC</h3>
       <UnitSelector
         selectedIndicator={indicators[2]}
         bind:selectedUnit={renewSelectedUnit}
@@ -130,7 +130,7 @@
   </div>
   <div class="row">
     <div class="cell">
-      <h3>Population with bad housing condition</h3>
+      <h3>Population living in bad housing conditions</h3>
       <UnitSelector
         selectedIndicator={indicators[3]}
         bind:housingSelectedUnit
@@ -176,26 +176,45 @@
       {#if $country !== "EU27_2020"}
         <h3>Further indicators</h3>
         <p>
-          {countryName} has {$allCountryData.gasgrid[1][0].status == "no policy"
-            ? "no policty"
-            : $allCountryData.gasgrid[1][0].status + " legislation"} to ban fossil
-          fuels from heating houses.
+          {countryName} has {$allCountryData.gasgrid[1][0].existing ==
+          "no policy"
+            ? "no policy"
+            : $allCountryData.gasgrid[1][0].existing + " legislation"} to ban fossil
+          fuels from heating <b>existing houses</b>.
         </p>
         <ul>
-          {#if $allCountryData.gasgrid[1][0]["new.buildings"] != "NA"}
+          {#if $allCountryData.gasgrid[1][0]["existing"] != "no policy"}
             <li>
-              {`New buildings: ${$allCountryData.gasgrid[1][0]["new.buildings"]}`}
+              {`Oil: ${$allCountryData.gasgrid[1][0]["oil.existing"]}`}
             </li>
           {/if}
-          {#if $allCountryData.gasgrid[1][0]["existing.buildings"] != "NA"}
+          {#if $allCountryData.gasgrid[1][0]["existing"] != "no policy"}
             <li>
-              {`Existing buildings: ${$allCountryData.gasgrid[1][0]["existing.buildings"]}`}
+              {`Gas: ${$allCountryData.gasgrid[1][0]["gas.existing"]}`}
+            </li>
+          {/if}
+        </ul>
+        <p>
+          It has {$allCountryData.gasgrid[1][0].new == "no policy"
+            ? "no policy"
+            : $allCountryData.gasgrid[1][0].existing + " legislation"} to ban fossil
+          fuels from heating <b>new houses</b>.
+        </p>
+        <ul>
+          {#if $allCountryData.gasgrid[1][0]["new"] != "no policy"}
+            <li>
+              {`Oil: ${$allCountryData.gasgrid[1][0]["oil.new"]}`}
+            </li>
+          {/if}
+          {#if $allCountryData.gasgrid[1][0]["new"] != "no policy"}
+            <li>
+              {`Gas: ${$allCountryData.gasgrid[1][0]["gas.new"]}`}
             </li>
           {/if}
         </ul>
         <p>
           The national renovation strategy is {$allCountryData.credibility[1][0]
-            .status}
+            .status}.
         </p>
         <!--ul>
           <li>

@@ -294,7 +294,4 @@
   text.target-2020 {
     fill: steelblue;
   }
-  line.target-fechh {
-    stroke: red;
-  }
 </style>
