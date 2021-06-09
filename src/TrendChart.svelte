@@ -171,6 +171,13 @@
           y1={yScale(targetsData[1][0]["target.necp"])}
           y2={yScale(targetsData[1][0]["target.necp"])}
         />
+        {#if width > 600}
+          <text
+            x={xScale(xDomain[0]) + 4}
+            y={yScale(targetsData[1][0]["target.necp"]) - 6}
+            class="target-necp">2030 national contribution</text
+          >
+        {/if}
         <!-- svelte-ignore component-name-lowercase -->
         <line
           class="target-euco"
@@ -179,6 +186,13 @@
           y1={yScale(targetsData[1][0]["target.euco"])}
           y2={yScale(targetsData[1][0]["target.euco"])}
         />
+        {#if width > 600}
+          <text
+            x={xScale(xDomain[0]) + 4}
+            y={yScale(targetsData[1][0]["target.euco"]) - 6}
+            class="target-euco">2030 EU projection</text
+          >
+        {/if}
         <!-- svelte-ignore component-name-lowercase -->
         <line
           class="target-2020"
@@ -187,6 +201,13 @@
           y1={yScale(targetsData[1][0]["target.2020"])}
           y2={yScale(targetsData[1][0]["target.2020"])}
         />
+        {#if width > 600}
+          <text
+            x={xScale(xDomain[0]) + 4}
+            y={yScale(targetsData[1][0]["target.2020"]) - 6}
+            class="target-2020">2020 target</text
+          >
+        {/if}
       </g>
     {/if}
     {#if targetsData !== undefined && displayUnits === "absolute" && selectedIndicator.indicatorCode === "fechh"}
@@ -199,6 +220,13 @@
           y1={yScale(targetsData[1][0]["target.fechh"])}
           y2={yScale(targetsData[1][0]["target.fechh"])}
         />
+        {#if width > 600}
+          <text
+            x={xScale(xDomain[0]) + 4}
+            y={yScale(targetsData[1][0]["target.euco"]) - 6}
+            class="target-euco">2030 EU projection</text
+          >
+        {/if}
       </g>
     {/if}
     {#each countryDataPoints as point}
@@ -250,11 +278,20 @@
   line.target-necp {
     stroke: purple;
   }
+  text.target-necp {
+    fill: purple;
+  }
   line.target-euco {
     stroke: orange;
   }
+  text.target-euco {
+    fill: orange;
+  }
   line.target-2020 {
     stroke: steelblue;
+  }
+  text.target-2020 {
+    fill: steelblue;
   }
   line.target-fechh {
     stroke: red;
