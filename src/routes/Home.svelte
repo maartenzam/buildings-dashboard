@@ -53,9 +53,12 @@
     },
     gasban: {
       data: $gasGridDataSet.byCountry,
+      existing: "existing",
+      new: "new",
     },
     credibility: {
       data: $credibilityDataSet.byCountry,
+      credibility: "status",
     },
   };
 
@@ -85,7 +88,12 @@
       bind:offsetWidth={mapWidth}
       bind:offsetHeight={mapHeight}
     >
-      <EUMap {selectedIndicator} width={mapWidth} height={mapHeight} />
+      <EUMap
+        {selectedIndicator}
+        {displayUnits}
+        width={mapWidth}
+        height={mapHeight}
+      />
     </div>
   {:else}
     <Grid {selectedIndicator} {countriesData} {displayUnits} {modal} />

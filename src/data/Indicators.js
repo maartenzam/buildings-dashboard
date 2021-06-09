@@ -125,9 +125,20 @@ const indicators = [
   },
   {
     indicatorCode: "gasban",
-    indicatorName: "Ban of gas grid connection",
-    indicatorExplanation: `<p>To get on track to achieve a decarbonised heating systems, Member States are adopting legislation to phase out fossil fuel boilers step by step, mostly starting with a ban of oil boilers in new and then in existing houses and eventually banning to connect buildings to the gas grid.</p>`,
-    indicatorUnits: [],
+    indicatorName: "Limiting use of fossil fuels in buildings",
+    indicatorExplanation: `<p>To get on track to achieve a decarbonised heating systems, Member States are adopting legislation to limit the use of fossil fuels in buildings. Phasing out starts mostly by banning fossil fuel boilers and/or the connection to the gas grid for <b>new buildings</b>. Legislation on <b>existing buildings</b> allows longer time limits.</p>`,
+    indicatorUnits: [
+      {
+        unitsCode: "existing",
+        unitsName: "Existing buildings",
+        unitsShort: "legislation status",
+      },
+      {
+        unitsCode: "new",
+        unitsName: "New buildings",
+        unitsShort: "legislation status",
+      },
+    ],
     indicatorSources: [],
   },
   {
@@ -139,7 +150,13 @@ const indicators = [
     <p><a href="https://ec.europa.eu/energy/sites/default/files/swd_commission_preliminary_analysis_of_member_state_ltrss.pdf">Preliminary analysis of the LTRS of 13 Member States</a>: In March 2021, the European Commission published a Staff Working Document assessing the LTRS that were availble in November 2020.</p>
     <p><a href="https://www.bpie.eu/publication/the-road-to-climate-neutrality-are-national-long-term-renovation-strategies-fit-for-2050/">The road to climate-neutrality</a>: In March 2021, BPIE published an analysis of 8 LTRS whether they are in line with 2030 decarbonisation requirements and on a path towards total decarbonisation of the building stock by 2050.</p>
     <p>The <a href="https://www.greenrecoverytracker.org/">Green Recovery Tracker</a> assessed the Recovery and Resilience Plans. The Tracker provides an assessment of measures and allocation of funds in the buildings sector. It is continuously updated.</p>`,
-    indicatorUnits: [],
+    indicatorUnits: [
+      {
+        unitsCode: "credibility",
+        unitsName: "LTRS",
+        unitsShort: "status",
+      },
+    ],
     indicatorSources: [],
   },
 ];

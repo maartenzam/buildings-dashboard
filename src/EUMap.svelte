@@ -11,6 +11,8 @@
   import Tooltip, { Wrapper, Content } from "@smui/tooltip";
 
   export let selectedIndicator;
+  export let displayUnits;
+
   export let width = 0;
   export let height = 0;
 
@@ -24,7 +26,7 @@
   const colorScales = {
     gasban: {
       adopted: trafficLightColors[0],
-      //announced: trafficLightColors[1],
+      prepared: trafficLightColors[1],
       "no policy": trafficLightColors[2],
     },
     credibility: {
@@ -101,7 +103,9 @@
         class="country"
         fill={mapData.find((d) => d.name === feature.properties.name) && !bubble
           ? colorScale[
-              mapData.find((d) => d.name === feature.properties.name).status
+              mapData.find((d) => d.name === feature.properties.name)[
+                displayUnits
+              ]
             ]
           : "#ffffff"}
       />
@@ -109,14 +113,24 @@
         <Tooltip rich
           ><Content
             >{@html `<b>${feature.properties.name}</b><br />
-                <b>New buildings:</b> ${
+            <b>${
+              displayUnits == "existing"
+                ? "Existing buildings"
+                : "New buildings"
+            }</b><br />
+                <b>Oil:</b> ${
                   mapData.find((d) => d.name === feature.properties.name)[
-                    "new.buildings"
+                    "oil." + displayUnits
                   ]
                 }<br />
-                  <b>Existing buildings:</b> ${
+                  <b>Gas:</b> ${
                     mapData.find((d) => d.name === feature.properties.name)[
-                      "existing.buildings"
+                      "gas." + displayUnits
+                    ]
+                  }<br />
+                  <b>Reference: </b>${
+                    mapData.find((d) => d.name === feature.properties.name)[
+                      "reference." + displayUnits
                     ]
                   }`}
           </Content>
@@ -151,14 +165,20 @@
         <Tooltip rich
           ><Content
             >{@html `<b>${label.name}</b><br />
-                <b>New buildings:</b> ${
-                  mapData.find((d) => d.geo === label.code)["new.buildings"]
-                }<br />
-                  <b>Existing buildings:</b> ${
-                    mapData.find((d) => d.geo === label.code)[
-                      "existing.buildings"
-                    ]
-                  }`}
+        <b>${
+          displayUnits == "existing" ? "Existing buildings" : "New buildings"
+        }</b><br />
+            <b>Oil:</b> ${
+              mapData.find((d) => d.geo === label.code)["oil." + displayUnits]
+            }<br />
+              <b>Gas:</b> ${
+                mapData.find((d) => d.geo === label.code)["gas." + displayUnits]
+              }<br />
+              <b>Reference: </b>${
+                mapData.find((d) => d.geo === label.code)[
+                  "reference." + displayUnits
+                ]
+              }`}
           </Content>
         </Tooltip>
       {/if}
