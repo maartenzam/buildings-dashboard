@@ -92,7 +92,7 @@ const indicators = [
   {
     indicatorCode: "housing",
     indicatorName: "Population living in bad housing conditions",
-    indicatorExplanation: `<p>This indicator is used to monitor progress on <b>living in high-energy performing, decent-quality housing</b>, by monitoring the percentage of people living in worst performing houses.</p>
+    indicatorExplanation: `<p>This indicator is used to monitor progress on <b>high-energy performing, decent-quality housing</b>, by monitoring the percentage of people living in worst performing houses.</p>
       <p>It displays data from the European Union Statistics on Income and Living Conditions (EU-SILC) project to monitor the development of poverty and social inclusion in the EU. The data collection is based on a survey, which means that indicator values are self-reported. The charts show data from the indicator “Total population living in a dwelling with a leaking roof, damp walls, floors or foundation, or rot in window frames or floor”.
       </p>`,
     indicatorUnits: [
