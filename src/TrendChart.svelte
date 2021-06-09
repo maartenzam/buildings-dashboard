@@ -106,7 +106,7 @@
   $: loessRegression = regressionLoess()
     .x((d) => d.time)
     .y((d) => d[displayUnits])
-    .bandwidth(0.4);
+    .bandwidth(0.3);
 
   $: lineLoess = line()
     .x((d) => xScale(new Date(d[0])))
