@@ -113,7 +113,7 @@
           ? "Data sources"
           : "Data source"}<br />
         {#each selectedIndicator.indicatorSources as source}
-          <a href={source.url}>{source.text}</a><br />
+          <a href={source.url} target="_blank">{source.text}</a><br />
         {/each}
       </p>
     </div>
