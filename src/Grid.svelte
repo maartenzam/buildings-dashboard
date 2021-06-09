@@ -42,7 +42,11 @@
           }
         });
       });
-      return [min, max];
+      if (units === "share") {
+        return [0, max];
+      } else {
+        return [min, max];
+      }
     } else {
       return [0, 1];
     }

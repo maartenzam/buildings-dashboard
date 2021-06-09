@@ -29,6 +29,7 @@
     }
   };
 
+  // Responsive settings
   $: chartConfig = {
     compact: {
       circleRadius: 2,
