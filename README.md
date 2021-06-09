@@ -85,15 +85,15 @@ The dashboard uses [tinro](https://github.com/AlexxNB/tinro) for routing. The co
 
 # Components
 
-The main component is [App.svelte](src/App.svelte), which is mounted into [public/index.html](public/index.html) through [src/main.js]. It contains the routing logic, the top bar and the footer.
+The main component is [App.svelte](src/App.svelte), which is mounted into [public/index.html](public/index.html) through [src/main.js](src/main.js). It contains the routing logic, the top bar and the footer.
 
-All subcomponents are in `src`:
+All subcomponents are in [src](src):
 
 - TopBar.svelte is the top navigation bar
 - Footer.svelte is the footer
 - Grid.svelte is the grid of charts on the homepage
 - TrendChart.svelte is the chart to show the trends in the dashboard data. It is used both on the homepage, in the modals and on the country pages.
-- CharAxis.svelte is a helper component for TrendChart.svelte
+- ChartAxis.svelte is a helper component for TrendChart.svelte
 - TargetsLegend.svelte is the legend for the targets on the homepage (only shown on wide screens)
 - Modal.svelte is the modal that opens a bigger version of a chart when it is clicked on the homepage
 - EUMap.svelte is the map for the gasban and credibility indicators
