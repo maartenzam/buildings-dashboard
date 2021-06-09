@@ -218,7 +218,7 @@
     background-color: "#eeeeee";
   }
   .country {
-    stroke: #444444;
+    stroke: #eeeeee;
     stroke-width: 0.5;
   }
   .country-label {
