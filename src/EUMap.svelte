@@ -139,13 +139,30 @@
     {/each}
   {/if}
   {#each $centroidsDataSet.table as label}
-    <a href={`/country/${label.code}`}>
-      <text
-        class="country-label"
-        x={projection([label.long, label.lat])[0]}
-        y={projection([label.long, label.lat])[1]}>{label.name}</text
-      ></a
-    >
+    <Wrapper>
+      <a href={`/country/${label.code}`}>
+        <text
+          class="country-label"
+          x={projection([label.long, label.lat])[0]}
+          y={projection([label.long, label.lat])[1]}>{label.name}</text
+        ></a
+      >
+      {#if selectedIndicator.indicatorCode === "gasban" && mapData.find((d) => d.geo === label.code) !== undefined}
+        <Tooltip rich
+          ><Content
+            >{@html `<b>${label.name}</b><br />
+                <b>New buildings:</b> ${
+                  mapData.find((d) => d.geo === label.code)["new.buildings"]
+                }<br />
+                  <b>Existing buildings:</b> ${
+                    mapData.find((d) => d.geo === label.code)[
+                      "existing.buildings"
+                    ]
+                  }`}
+          </Content>
+        </Tooltip>
+      {/if}
+    </Wrapper>
   {/each}
   {#each Object.entries(colorScale) as legendItem, i}
     <g
