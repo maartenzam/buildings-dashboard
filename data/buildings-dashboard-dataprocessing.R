@@ -244,25 +244,6 @@ EU27 <- mutate(EU27, code = ifelse(code == "UK", "EU27_2020", code)) %>%
   mutate(row = ifelse(name == "Ireland", 2, row)) %>%
   mutate(row = ifelse(name == "EU27", 1, row))
 
-# Country centroids
-centroids <- read.csv("country_centroids_az8.csv", stringsAsFactors = F)
-centroids.EU <- mutate(centroids, iso_a2 = ifelse(iso_a2 == "GR", "EL", iso_a2)) %>%
-  filter(iso_a2 %in% EU27$code) %>%
-  select(iso_a2, sovereignt, Longitude, Latitude)
-
-pop.20 <- filter(pop, time == "2020-01-01") %>% select(-time)
-
-centroids.EU <- left_join(centroids.EU, pop.20, by = c("iso_a2" = "geo")) %>%
-  rename(code = iso_a2, name = sovereignt, long = Longitude, lat = Latitude) %>%
-  mutate(long = ifelse(code == "FR", 2.2781109, long)) %>%
-  mutate(lat = ifelse(code == "FR", 47.2012479, lat)) %>%
-  mutate(long = ifelse(code == "FI", 25.275255, long)) %>%
-  mutate(lat = ifelse(code == "FI", 62.30821528, lat)) %>%
-  mutate(long = ifelse(code == "SE", 14.686196, long)) %>%
-  mutate(lat = ifelse(code == "SE", 59.4432748, lat)) %>%
-  mutate(lat = ifelse(code == "MT", 35, lat)) %>%
-  mutate(lat = ifelse(code == "CY", 34, lat))
-
 # Write everything to Excel
 excel.name <- "../public/EFC-buildings-dashboard-data.xlsx"
 # Delete the file if it exists, to make sure to recreate it
@@ -288,4 +269,3 @@ write.csv(fossils, file = "../public/data/fossils.csv", row.names = FALSE)
 write.csv(credibility, file = "../public/data/credibility.csv", row.names = FALSE)
 write.csv(EU27, file = "../public/data/EU27.csv", row.names = FALSE)
 write.csv(targets, file = "../public/data/targets.csv", row.names = FALSE)
-write.csv(centroids.EU, file = "../public/data/centroids.csv", row.names = FALSE)
