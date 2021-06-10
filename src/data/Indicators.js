@@ -129,14 +129,24 @@ const indicators = [
     indicatorExplanation: `<p>To get on track to achieve a decarbonised heating systems, Member States are adopting legislation to limit the use of fossil fuels in buildings. Phasing out starts mostly by banning fossil fuel boilers and/or the connection to the gas grid for <b>new buildings</b>. Legislation on <b>existing buildings</b> allows longer time limits.</p>`,
     indicatorUnits: [
       {
-        unitsCode: "new",
+        unitsCode: "newgas",
         unitsName: "New buildings",
-        unitsShort: "legislation status",
+        unitsShort: "legislation to ban use of gas",
       },
       {
-        unitsCode: "existing",
+        unitsCode: "newoil",
+        unitsName: "New buildings",
+        unitsShort: "legislation to ban use of oil",
+      },
+      {
+        unitsCode: "existinggas",
         unitsName: "Existing buildings",
-        unitsShort: "legislation status",
+        unitsShort: "legislation to ban use of gas",
+      },
+      {
+        unitsCode: "existingoil",
+        unitsName: "Existing buildings",
+        unitsShort: "legislation to ban use of gas",
       },
     ],
     indicatorSources: [],

@@ -225,16 +225,13 @@ poverty <- filter(poverty.raw,
   select(geo, time, share)
 
 # Ternary data
-#gas.grid <- read_excel("traffic_light_indicators_data-2021-06-04.xlsx", sheet = "ban_gas_grid")
-#gas.grid$name <- countrycode(gas.grid$geo, origin = "eurostat", destination = "country.name")
-#gas.grid[is.na(gas.grid)] <- "No policies"
-fossils <- read_excel("traffic_light_indicators_data-2021-06-09.xlsx", sheet = "limit_fossil_fuels_buildings")
+fossils <- read_excel("traffic_light_indicators_data.xlsx", sheet = "limit_fossil_fuels_buildings")
 fossils$name <- countrycode(fossils$geo, origin = "eurostat", destination = "country.name")
-fossils[is.na(fossils)] <- "No policies"
+fossils[is.na(fossils)] <- "No policy"
 
-credibility = read_excel("traffic_light_indicators_data-2021-06-09.xlsx", sheet = "credibility_renovation_strategy")
+credibility = read_excel("traffic_light_indicators_data.xlsx", sheet = "credibility_renovation_strategy")
 credibility$name <- countrycode(credibility$geo, origin = "eurostat", destination = "country.name")
-credibility <- credibility %>% rename(status = LTRS)
+credibility <- credibility %>% rename(credibility.status = LTRS)
 
 # Country codes
 EU27 <- eu_grid1

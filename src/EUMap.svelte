@@ -106,7 +106,7 @@
         fill={mapData.find((d) => d.name === feature.properties.name) && !bubble
           ? colorScale[
               mapData.find((d) => d.name === feature.properties.name)[
-                displayUnits
+                displayUnits + ".status"
               ]
             ]
           : "#ffffff"}
@@ -116,23 +116,22 @@
           ><Content
             >{@html `<b>${feature.properties.name}</b><br />
             <b>${
-              displayUnits == "existing"
+              displayUnits == "oil.existing" || displayUnits == "gas.existing"
                 ? "Existing buildings"
                 : "New buildings"
+            } - ${
+              displayUnits == "oil.existing" || displayUnits == "oil.new"
+                ? "oil"
+                : "gas"
             }</b><br />
-                <b>Oil:</b> ${
+                ${
                   mapData.find((d) => d.name === feature.properties.name)[
-                    "oil." + displayUnits
+                    displayUnits
                   ]
                 }<br />
-                  <b>Gas:</b> ${
-                    mapData.find((d) => d.name === feature.properties.name)[
-                      "gas." + displayUnits
-                    ]
-                  }<br />
                   <b>Reference: </b>${
                     mapData.find((d) => d.name === feature.properties.name)[
-                      "reference." + displayUnits
+                      displayUnits + ".reference"
                     ]
                   }`}
           </Content>
@@ -168,17 +167,18 @@
           ><Content
             >{@html `<b>${label.name}</b><br />
         <b>${
-          displayUnits == "existing" ? "Existing buildings" : "New buildings"
-        }</b><br />
-            <b>Oil:</b> ${
-              mapData.find((d) => d.geo === label.code)["oil." + displayUnits]
-            }<br />
-              <b>Gas:</b> ${
-                mapData.find((d) => d.geo === label.code)["gas." + displayUnits]
-              }<br />
+          displayUnits == "oil.existing" || displayUnits == "gas.existing"
+            ? "Existing buildings"
+            : "New buildings"
+        } - ${
+              displayUnits == "oil.existing" || displayUnits == "oil.new"
+                ? "oil"
+                : "gas"
+            }</b><br />
+            ${mapData.find((d) => d.geo === label.code)[displayUnits]}<br />
               <b>Reference: </b>${
                 mapData.find((d) => d.geo === label.code)[
-                  "reference." + displayUnits
+                  displayUnits + ".reference"
                 ]
               }`}
           </Content>

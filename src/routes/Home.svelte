@@ -26,6 +26,7 @@
   let selectedIndicator = indicators[0];
   let selectedUnit = "absolute";
 
+  // Get the data and map the columns in the data to the selected units
   $: dataMap = {
     fec: {
       data: $fecGdpDataSet.byCountry,
@@ -53,12 +54,14 @@
     },
     gasban: {
       data: $gasGridDataSet.byCountry,
-      existing: "existing",
-      new: "new",
+      newoil: "oil.new",
+      newgas: "gas.new",
+      existingoil: "oil.existing",
+      existinggas: "gas.existing",
     },
     credibility: {
       data: $credibilityDataSet.byCountry,
-      credibility: "status",
+      credibility: "credibility",
     },
   };
 
