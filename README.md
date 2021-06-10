@@ -1,6 +1,6 @@
 # ECF buildings dashboard
 
-The European Climate Buildings dashboard [buildingsdashboard.eu](http://buildingsdashboard.eu) monitors the climate performance of buildings and related policies in the EU and its member states. It is developed by [Stefan Scheuer Consulting](https://www.stefanscheuer.eu/) and [Maarten Lambrechts](https://www.maartenlambrechts.com/).
+The European Climate Buildings dashboard at [buildingsdashboard.eu](http://buildingsdashboard.eu) monitors the climate performance of buildings and related policies in the EU and its member states. It is developed by [Stefan Scheuer Consulting](https://www.stefanscheuer.eu/) and [Maarten Lambrechts](https://www.maartenlambrechts.com/) for the [European Climate Foundation](https://europeanclimate.org/).
 
 The repository contains:
 
@@ -17,20 +17,20 @@ The [buildings-dashboard-dataprocessing.R](/data/buildings-dashboard-dataprocess
 - downloads data from the relevant Eurostat databases
 - transforms the data and calculates derived values
 - writes csv files to [public/data](public/data) to be used by the dashboard
-- writes an Excel file with all the data, that is written to the [public](public) folder
+- generates an Excel file with all the data, that is written to the [public](public) folder
 
 ## Data update
 
 Updating the dashboard data requires:
 
-- updating any source data (Excel files in [src/data](src/data) that in has new or edited data (make sure not to change column names)
+- updating any source data (Excel files in [src/data](src/data)) that has new or edited data (make sure not to change column names)
 - run the [buildings-dashboard-dataprocessing.R](/data/buildings-dashboard-dataprocessing.R) script. This will load the newest data from Eurostat and update all the data for the dashboard. If you are running the R script outside of the repository, then you should have a folder called "public" as a sibling folder to the one you are running the script in. Inside the "public" folder, there should be a "data" folder.
 - after the script is run, the Excel file with all the data is in the "public" folder, the csv files are in the "public/data" folder.
-- The updated data need to be uploaded to the webserver where the dashboard is deployed, and overwrite the existing files on the dashboard. For reasons of precaution, it is best to download the data from the server as a backup before overwriting the files.
+- The updated data needs to be uploaded to the webserver where the dashboard is deployed, and overwrite the existing files on the dashboard. For reasons of precaution, it is best to download the data from the server as a backup before overwriting the files.
 
 # Front end
 
-The front end is developed in [Svelte](https://svelte.dev/).
+The front end is developed in [Svelte](https://svelte.dev/). You can edit, build and deploy following the below instructions.
 
 ## Getting started
 
@@ -67,19 +67,19 @@ To deploy, upload the content of the [public](public) folder after running `npm 
 
 # Copy and data
 
-The copy (indicator explanations and about page) are stored in [src/data/AboutText.js](src/data/AboutText.js) and [src/data/Indicators.js](src/data/Indicators). To update the copy of the dashboard, update these files, run `run npm dev` to check if everything is ok, then run `npm run build` and redeploy the content of the [public](public) folder to the server.
+The copy (the content of the indicator explanations and the about page) are stored in [src/data/AboutText.js](src/data/AboutText.js) and in [src/data/Indicators.js](src/data/Indicators). To update the copy of the dashboard, update these files, run `run npm dev` to check if everything is ok, then run `npm run build` and redeploy the content of the [public](public) folder to the server.
 
 The data for the indicators and units dropdowns is stored in [src/data/Indicators.js](src/data/Indicators.js).
 
-The csv files for the dashboard are loaded and provided to all pages and components through readable and writabe Svelte stores in [src/data/DataStore.js].
+The csv files for the dashboard are loaded and provided to all pages and components through readable and writabe Svelte stores in [src/data/DataStore.js](src/data/DataStore.js).
 
 # Pages
 
 The dashboard uses [tinro](https://github.com/AlexxNB/tinro) for routing. The components for the routes are in [src/routes](src/routes):
 
 - Home.svelte is the homepage (/)
-- About.svelte is the about page (/about). It's content is loaded from [src/data/AboutText.js]
-- Country.svelte are the country pages (/country/{ID})
+- About.svelte is the about page (/about). It's content is loaded from [src/data/AboutText.js](src/data/AboutText.js)
+- Country.svelte are the country pages (/country/{countryID})
 - Guide.svelte and Map.svelte are currently not used
 
 # Components
@@ -95,13 +95,11 @@ All subcomponents are in [src](src):
 - ChartAxis.svelte is a helper component for TrendChart.svelte
 - TargetsLegend.svelte is the legend for the targets on the homepage (only shown on wide screens)
 - Modal.svelte is the modal that opens a bigger version of a chart when it is clicked on the homepage
-- EUMap.svelte is the map for the gasban and credibility indicators
+- EUMap.svelte is the map for the fossil fuels use for heating and credibility indicators
 - IndicatorSelector.svelte is the dropdown to select an indicator on the homepage
 - UnitSelector.svelte is the dropdown to select a different unit on the homepage and on the country pages
 - Treemap.svelte is the treemap for the absolute units of the fec and fechh indicators
 - LinkIcon.svelte is the svg code for the external link icon next to the country names on the homepage
-
-TrafficLightChart.svelte and TrafficLightLegend.svelte are unused for now.
 
 # Styling
 
