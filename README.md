@@ -121,3 +121,5 @@ For example, to capture a chart when it is opened in big format (after clicking 
 Similarly to capture the grid of charts on the homepage, click right on the title of the "EU27" chart, select the <div class="grid-container ..."> node and execute steps 3 and 4 described above.
 
 To capture the content of a country page: click right on the country dropdown, select "Inspect", find the <div class="country-page-wrapper ..."> node and execute steps 3 and 4.
+
+[Description of this feature on the developer.chrome.com blog](https://developer.chrome.com/blog/new-in-devtools-62/#node-screenshots)
