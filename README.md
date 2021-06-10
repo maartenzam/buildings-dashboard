@@ -23,11 +23,10 @@ The [buildings-dashboard-dataprocessing.R](/data/buildings-dashboard-dataprocess
 
 Updating the dashboard data requires:
 
-- updating any source data that has new or edited data
-- run the [buildings-dashboard-dataprocessing.R](/data/buildings-dashboard-dataprocessing.R) script. This will load the newest data from Eurostat and update all the data for the dashboard
-- the generated Excel file with all the data has a date stamp at the end of its name. This date stamp needs to be adjusted in the text of the About page, which lives in [src/data/AboutText.js](src/data/AboutText.js)
-- the dashboard nees to be rebuild with `npm run build` (see further)
-- after that, the dashboard needs to be redeployed
+- updating any source data (Excel files in [src/data](src/data) that in has new or edited data (make sure not to change column names)
+- run the [buildings-dashboard-dataprocessing.R](/data/buildings-dashboard-dataprocessing.R) script. This will load the newest data from Eurostat and update all the data for the dashboard. If you are running the R script outside of the repository, then you should have a folder called "public" as a sibling folder to the one you are running the script in. Inside the "public" folder, there should be a "data" folder.
+- after the script is run, the Excel file with all the data is in the "public" folder, the csv files are in the "public/data" folder.
+- The updated data need to be uploaded to the webserver where the dashboard is deployed, and overwrite the existing files on the dashboard. For reasons of precaution, it is best to download the data from the server as a backup before overwriting the files.
 
 # Front end
 
@@ -68,11 +67,11 @@ To deploy, upload the content of the [public](public) folder after running `npm 
 
 # Copy and data
 
-The copy (indicator explanations and about page) are stored in [src/data/AboutText.js](src/data/AboutText.js) and [src/data/Indicators.js](src/data/Indicators).
-
-The csv files for the dashboard are loaded and provided to all pages and components through readable and writabe Svelte stores in [src/data/DataStore.js].
+The copy (indicator explanations and about page) are stored in [src/data/AboutText.js](src/data/AboutText.js) and [src/data/Indicators.js](src/data/Indicators). To update the copy of the dashboard, update these files, run `run npm dev` to check if everything is ok, then run `npm run build` and redeploy the content of the [public](public) folder to the server.
 
 The data for the indicators and units dropdowns is stored in [src/data/Indicators.js](src/data/Indicators.js).
+
+The csv files for the dashboard are loaded and provided to all pages and components through readable and writabe Svelte stores in [src/data/DataStore.js].
 
 # Pages
 

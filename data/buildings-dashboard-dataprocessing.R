@@ -44,27 +44,30 @@ fec.gdp <- left_join(fec, gdp, by = c("geo", "time")) %>%
   rename(absolute = values) %>%
   select(geo, time, absolute, relative)
 
+targets <- read_excel("all_benchmarks.xlsx")
+
+## OLD CODE TO GET ALL THE BENCHMARKS, REPLACED BY THE CONSOLIDATED XLSX FILE ABOVE
 # Read the targets from the Excel file
-targets.raw <- read_excel("20210210 dashboard indicators_tests.xlsx", sheet = "indicator 1", range = "A35:M63")
-targets <- select(targets.raw, 1, 11,13)
-colnames(targets) <- c("country", "target.necp", "target.euco")
-targets <- mutate(targets, country = ifelse(country == "Germany (until 1990 former territory of the FRG)", "Germany", country))
-# Add targets from https://ec.europa.eu/energy/topics/energy-efficiency/targets-directive-and-rules/eu-targets-energy-efficiency_en#2020-targets
-targets.2020 <- read_excel("fec_targets_2020.xlsx")
-
-targets <- left_join(targets, targets.2020, by = "country")
-
-# Country names to country codes
-targets$geo <- countrycode(targets$country, origin = "country.name", destination = "eurostat")
-targets <- mutate(targets, geo = ifelse(is.na(geo), "EU27_2020", geo)) %>%
-  mutate(country = ifelse(country == "EU27_2020", "EU27", country)) %>%
-  select(geo, target.necp, target.euco, target.2020)
-
-# Additional target for fechh
-target.fechh <- read_excel("dashboard-data_bon.xlsx", sheet = "targets") %>%
-  select(geo, target.fechh)
-
-targets <- left_join(targets, target.fechh, by = "geo")
+# targets.raw <- read_excel("20210210 dashboard indicators_tests.xlsx", sheet = "indicator 1", range = "A35:M63")
+# targets <- select(targets.raw, 1, 11,13)
+# colnames(targets) <- c("country", "target.necp", "target.euco")
+# targets <- mutate(targets, country = ifelse(country == "Germany (until 1990 former territory of the FRG)", "Germany", country))
+# # Add targets from https://ec.europa.eu/energy/topics/energy-efficiency/targets-directive-and-rules/eu-targets-energy-efficiency_en#2020-targets
+# targets.2020 <- read_excel("fec_targets_2020.xlsx")
+# 
+# targets <- left_join(targets, targets.2020, by = "country")
+# 
+# # Country names to country codes
+# targets$geo <- countrycode(targets$country, origin = "country.name", destination = "eurostat")
+# targets <- mutate(targets, geo = ifelse(is.na(geo), "EU27_2020", geo)) %>%
+#   mutate(country = ifelse(country == "EU27_2020", "EU27", country)) %>%
+#   select(geo, target.necp, target.euco, target.2020)
+# 
+# # Additional target for fechh
+# target.fechh <- read_excel("dashboard-data_bon.xlsx", sheet = "targets") %>%
+#   select(geo, target.fechh)
+# 
+# targets <- left_join(targets, target.fechh, by = "geo")
 
 # 3b. Impact of renovation strategies on the built environment
 # Get heat demand data from Eurostat
@@ -222,10 +225,14 @@ poverty <- filter(poverty.raw,
   select(geo, time, share)
 
 # Ternary data
-gas.grid <- read_excel("traffic_light_indicators_data-2021-06-04.xlsx", sheet = "ban_gas_grid")
-gas.grid$name <- countrycode(gas.grid$geo, origin = "eurostat", destination = "country.name")
-gas.grid[is.na(gas.grid)] <- "No policies"
-credibility = read_excel("traffic_light_indicators_data-2021-06-04.xlsx", sheet = "credibility_renovation_strategy")
+#gas.grid <- read_excel("traffic_light_indicators_data-2021-06-04.xlsx", sheet = "ban_gas_grid")
+#gas.grid$name <- countrycode(gas.grid$geo, origin = "eurostat", destination = "country.name")
+#gas.grid[is.na(gas.grid)] <- "No policies"
+fossils <- read_excel("traffic_light_indicators_data-2021-06-09.xlsx", sheet = "limit_fossil_fuels_buildings")
+fossils$name <- countrycode(fossils$geo, origin = "eurostat", destination = "country.name")
+fossils[is.na(fossils)] <- "No policies"
+
+credibility = read_excel("traffic_light_indicators_data-2021-06-09.xlsx", sheet = "credibility_renovation_strategy")
 credibility$name <- countrycode(credibility$geo, origin = "eurostat", destination = "country.name")
 credibility <- credibility %>% rename(status = LTRS)
 
@@ -257,26 +264,27 @@ centroids.EU <- left_join(centroids.EU, pop.20, by = c("iso_a2" = "geo")) %>%
   mutate(lat = ifelse(code == "CY", 34, lat))
 
 # Write everything to Excel
-## Time stamped file name, to be changed in src/data/AboutText.js
-excel.name <- paste ("../public/EFC-buildings-dashboard-data-", Sys.Date(), ".xlsx", sep="")
+excel.name <- "../public/EFC-buildings-dashboard-data.xlsx"
+# Delete the file if it exists, to make sure to recreate it
+if (file.exists(excel.name)) {
+  file.remove(excel.name)
+}
 write.xlsx2(fec.gdp, excel.name, sheetName = "fec.gdp")
 write.xlsx2(targets, excel.name, sheetName = "targets", append = TRUE)
 write.xlsx2(hh.all, excel.name, sheetName = "fec.households", append = TRUE)
 write.xlsx2(hh.renew.wide, excel.name, sheetName = "fec.households.renewables", append = TRUE)
-#write.xlsx2(fuels.bm, "dashboard-data.xlsx", sheetName = "renewables", append = TRUE)
 write.xlsx2(housing, excel.name, sheetName = "housing", append = TRUE)
 write.xlsx2(poverty, excel.name, sheetName = "poverty", append = TRUE)
-write.xlsx2(gas.grid, excel.name, sheetName = "gas.grid", append = TRUE)
+write.xlsx2(fossils, excel.name, sheetName = "limit.fossils", append = TRUE)
 write.xlsx2(credibility, excel.name, sheetName = "credibility", append = TRUE)
-write.xlsx2(EU27, "dashboard-data.xlsx", sheetName = "countries", append = TRUE)
 
-# Write everything for dashboard
+# Write all the csv files for the dashboard
 write.csv(fec.gdp, file = "../public/data/fec-gdp.csv", row.names = FALSE)
 write.csv(hh.all, file = "../public/data/fec-hh.csv", row.names = FALSE)
 write.csv(hh.renew.wide, file = "../public/data/renew-hh.csv", row.names = FALSE)
 write.csv(housing, file = "../public/data/housing.csv", row.names = FALSE)
 write.csv(poverty, file = "../public/data/poverty.csv", row.names = FALSE)
-write.csv(gas.grid, file = "../public/data/gas-grid.csv", row.names = FALSE)
+write.csv(fossils, file = "../public/data/fossils.csv", row.names = FALSE)
 write.csv(credibility, file = "../public/data/credibility.csv", row.names = FALSE)
 write.csv(EU27, file = "../public/data/EU27.csv", row.names = FALSE)
 write.csv(targets, file = "../public/data/targets.csv", row.names = FALSE)
