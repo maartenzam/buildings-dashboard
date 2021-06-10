@@ -83,6 +83,9 @@
   <div class="select-container">
     <IndicatorSelector bind:selectedIndicator bind:selectedUnit />
     <UnitSelector bind:selectedUnit {selectedIndicator} />
+    <div class="countrypage-link">
+      <a href="/country/EU27_2020">Country page view</a>
+    </div>
   </div>
 
   {#if selectedIndicator.indicatorCode === "gasban" || selectedIndicator.indicatorCode === "credibility"}
@@ -142,6 +145,9 @@
     min-height: 300px;
     padding: 10px;
     width: 100%;
+  }
+  .countrypage-link {
+    float: right;
   }
   .right {
     flex: 1 0 300px;
