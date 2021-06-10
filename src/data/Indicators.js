@@ -146,7 +146,7 @@ const indicators = [
       {
         unitsCode: "existingoil",
         unitsName: "Existing buildings",
-        unitsShort: "legislation to ban use of gas",
+        unitsShort: "legislation to ban use of oil",
       },
     ],
     indicatorSources: [],

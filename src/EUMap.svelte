@@ -132,7 +132,11 @@
                   <b>Reference: </b>${
                     mapData.find((d) => d.name === feature.properties.name)[
                       displayUnits + ".reference"
-                    ]
+                    ] === "No policy"
+                      ? "-"
+                      : mapData.find((d) => d.name === feature.properties.name)[
+                          displayUnits + ".reference"
+                        ]
                   }`}
           </Content>
         </Tooltip>
@@ -179,7 +183,11 @@
               <b>Reference: </b>${
                 mapData.find((d) => d.geo === label.code)[
                   displayUnits + ".reference"
-                ]
+                ] === "No policy"
+                  ? "-"
+                  : mapData.find((d) => d.geo === label.code)[
+                      displayUnits + ".reference"
+                    ]
               }`}
           </Content>
         </Tooltip>
