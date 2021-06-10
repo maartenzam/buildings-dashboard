@@ -114,7 +114,7 @@ In a few steps, high quality screen captures of charts and other elements can be
 For example, to capture a chart when it is opened in big format (after clicking on a chart on the homepage):
 
 1. Click right on the title of the chart and select "Inspect". This will open the Chrome development tools.
-2. A "<h2>" element containing the title of the chart is selected in the Elements tab. Find the "<div class="modal ...">" a few lines above the h2 element and click it to select it.
+2. A <h2> element containing the title of the chart is selected in the Elements tab. Find the <div class="modal ..."> a few lines above the h2 element and click it to select it.
 3. Click the 3 dot-icon in the top right corner of the development tools, next to the "x" to close it. (or click command-shift-p (on Mac) or control-shift-p (on Windows). This opens the command menu.
 4. Type "screenshot" in the menu and click 'Capture node screenshot'. This will capture the selected node (in this case the <div class="modal ..."> node) and download it.
 
