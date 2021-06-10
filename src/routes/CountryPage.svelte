@@ -175,62 +175,51 @@
     <div class="cell">
       {#if $country !== "EU27_2020"}
         <h3>Further indicators</h3>
+        <h4>Limiting the use of fossil fuels in buildings</h4>
         <p>
-          {countryName} has {$allCountryData.gasgrid[1][0].existing ==
-          "no policy"
-            ? "no policy"
-            : $allCountryData.gasgrid[1][0].existing + " legislation"} to ban fossil
-          fuels from heating <b>existing houses</b>.
+          {countryName} has the following legislation for banning fossil fuels for
+          heating <b>new buildings</b>:
         </p>
         <ul>
-          {#if $allCountryData.gasgrid[1][0]["existing"] != "no policy"}
-            <li>
-              {`Oil: ${$allCountryData.gasgrid[1][0]["oil.existing"]}`}
-            </li>
-          {/if}
-          {#if $allCountryData.gasgrid[1][0]["existing"] != "no policy"}
-            <li>
-              {`Gas: ${$allCountryData.gasgrid[1][0]["gas.existing"]}`}
-            </li>
-          {/if}
+          <li>
+            {`Oil: ${$allCountryData.gasgrid[1][0]["oil.new.status"]}${
+              $allCountryData.gasgrid[1][0]["oil.new"] != "No policy"
+                ? ", " + $allCountryData.gasgrid[1][0]["oil.new"]
+                : ""
+            }`}
+          </li>
+          <li>
+            {`Gas: ${$allCountryData.gasgrid[1][0]["gas.new.status"]}${
+              $allCountryData.gasgrid[1][0]["gas.new"] != "No policy"
+                ? ", " + $allCountryData.gasgrid[1][0]["gas.new"]
+                : ""
+            }`}
+          </li>
         </ul>
         <p>
-          It has {$allCountryData.gasgrid[1][0].new == "no policy"
-            ? "no policy"
-            : $allCountryData.gasgrid[1][0].existing + " legislation"} to ban fossil
-          fuels from heating <b>new houses</b>.
+          And for <b>existing buildgins</b>.
         </p>
         <ul>
-          {#if $allCountryData.gasgrid[1][0]["new"] != "no policy"}
-            <li>
-              {`Oil: ${$allCountryData.gasgrid[1][0]["oil.new"]}`}
-            </li>
-          {/if}
-          {#if $allCountryData.gasgrid[1][0]["new"] != "no policy"}
-            <li>
-              {`Gas: ${$allCountryData.gasgrid[1][0]["gas.new"]}`}
-            </li>
-          {/if}
+          <li>
+            {`Oil: ${$allCountryData.gasgrid[1][0]["oil.existing.status"]}${
+              $allCountryData.gasgrid[1][0]["oil.existing"] != "No policy"
+                ? ", " + $allCountryData.gasgrid[1][0]["oil.existing"]
+                : ""
+            }`}
+          </li>
+          <li>
+            {`Gas: ${$allCountryData.gasgrid[1][0]["gas.existing.status"]}${
+              $allCountryData.gasgrid[1][0]["gas.existing"] != "No policy"
+                ? ", " + $allCountryData.gasgrid[1][0]["gas.existing"]
+                : ""
+            }`}
+          </li>
         </ul>
+        <h4>Credibility of renovation strategy (placeholder)</h4>
         <p>
-          The national renovation strategy is {$allCountryData.credibility[1][0]
-            .status}.
+          The national long-term renovation strategy is {$allCountryData
+            .credibility[1][0]["credibility.status"]}.
         </p>
-        <!--ul>
-          <li>
-            Effective energy efficiency promotion: {$allCountryData
-              .credibility[1][0]["effective.ee.promotion"]}
-          </li>
-          <li>
-            Appropriate financing: {$allCountryData.credibility[1][0][
-              "financing"
-            ]}
-          </li>
-          <li>
-            Measures tackling energy poverty: {$allCountryData
-              .credibility[1][0]["energy.poverty"]}
-          </li>
-        </ul-->
       {/if}
     </div>
   </div>

@@ -153,7 +153,7 @@ const indicators = [
   },
   {
     indicatorCode: "credibility",
-    indicatorName: "Credibility of renovation strategy",
+    indicatorName: "Credibility of renovation strategy (placeholder)",
     indicatorExplanation: `<p>Member States had to notify the Commission their <a href="https://ec.europa.eu/energy/topics/energy-efficiency/energy-efficient-buildings/long-term-renovation-strategies_en">national long-term renovation strategies (LTRS)</a> by 10 March 2020. Most LTRS were submitted with delay and some are still not availble.</p>
     <p>This section of the Dashboard will be updated once all LTRS are submitted and assessed. Also the Recovery and Resilience Plans (to be submitted by April 2021) will provide an element for assessing the credibility of the national renovation strategies. The criteria for the assessment will include the targets set for 2030 and 2050, the financial framework and measures to support vulnerable households.</p>
     <p>Already available information:</p>
