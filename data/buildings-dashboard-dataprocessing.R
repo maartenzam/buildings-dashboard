@@ -242,7 +242,7 @@ EU27 <- mutate(EU27, code = ifelse(code == "UK", "EU27_2020", code)) %>%
   mutate(row = ifelse(name == "EU27", 1, row))
 
 # Write everything to Excel
-excel.name <- "../public/EFC-buildings-dashboard-data.xlsx"
+excel.name <- "../public/ECF-buildings-dashboard-data.xlsx"
 # Delete the file if it exists, to make sure to recreate it
 if (file.exists(excel.name)) {
   file.remove(excel.name)
