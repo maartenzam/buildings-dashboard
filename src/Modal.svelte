@@ -1,7 +1,9 @@
 <script>
   export let selectedIndicator;
   export let displayUnits;
-  import { country, allCountryData, countryDataSet } from "./data/DataStore.js";
+  import {
+    allCountryData /*, country, countryDataSet*/,
+  } from "./data/DataStore.js";
   import TrendChart from "./TrendChart.svelte";
   import { fade } from "svelte/transition";
   import { downloadPng } from "svg-crowbar";
@@ -9,7 +11,7 @@
   let width;
   let height;
 
-  $: countryName = $countryDataSet.table.find((d) => d.code === $country).name;
+  //$: countryName = $countryDataSet.table.find((d) => d.code === $country).name;
 
   let shown = false;
   export function show() {
@@ -55,7 +57,7 @@
             height={32}
           /></span
         >
-        <h2>
+        <!--h2>
           {`${countryName}, ${selectedIndicator.indicatorName}`}
         </h2>
         <p>
@@ -68,7 +70,7 @@
               (d) => d.unitsCode === displayUnits
             ).unitsShort
           })`}
-        </p>
+        </p-->
       </div>
       <div class="modal-content">
         <div

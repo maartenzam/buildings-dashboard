@@ -8,7 +8,7 @@
   import { regressionLoess } from "d3-regression";
   import { line } from "d3-shape";
   import Tooltip, { Wrapper } from "@smui/tooltip";
-  import { country } from "./data/DataStore.js";
+  import { country, countryDataSet } from "./data/DataStore.js";
 
   export let countryData;
   export let width = 0;
@@ -20,6 +20,8 @@
   export let yDomain = [0, 1];
   export let freeScales;
   export let shown;
+
+  $: countryName = $countryDataSet.table.find((d) => d.code === $country).name;
 
   const formatBigNumber = (x) => {
     if (x < 1) {
@@ -48,7 +50,16 @@
       circleRadius: 6,
       lineWidth: 3,
       margins: { top: 20, left: 40, right: 20, bottom: 40 },
-      axisLabels: 14,
+      axisLabels: 16,
+      yAxisOffset: 6,
+      yearFormat: timeFormat("%Y"),
+      numberFormat: format(","),
+    },
+    inModal: {
+      circleRadius: 6,
+      lineWidth: 3,
+      margins: { top: 80, left: 40, right: 20, bottom: 40 },
+      axisLabels: 16,
       yAxisOffset: 6,
       yearFormat: timeFormat("%Y"),
       numberFormat: format(","),
@@ -60,7 +71,10 @@
   $: chartWidth = width - margins.left - margins.right;
   $: chartHeight = height - margins.top - margins.bottom;
 
-  $: sizing = chartConfig[width > 600 ? "generous" : "compact"];
+  let size = width > 600 ? "generous" : "compact";
+  size = shown ? "inModal" : size;
+
+  $: sizing = chartConfig[size];
   $: margins = sizing.margins;
 
   $: xDomain = extent(countryDataPoints, (d) => d.time);
@@ -158,7 +172,7 @@
           translate="translate({xScale(tick)},0)"
           y1={yScale(yChartDomain[0])}
           y2={yScale(yChartDomain[1])}
-          y={height - margins.bottom}
+          y={chartHeight + sizing.axisLabels}
           text={sizing.yearFormat(tick)}
           {sizing}
         />
@@ -251,6 +265,27 @@
       stroke-width={sizing.lineWidth}
     /></g
   >
+  {#if shown}
+    <text
+      x={margins.left}
+      y={20}
+      text-anchor={"start"}
+      font-size={"22px"}
+      font-weight={"bold"}
+      >{`${countryName}, ${selectedIndicator.indicatorName}`}</text
+    >
+    <text x={margins.left} y={48} text-anchor={"start"} font-size={"16px"}
+      >{`${
+        selectedIndicator.indicatorUnits.find(
+          (d) => d.unitsCode === displayUnits
+        ).unitsName
+      } (${
+        selectedIndicator.indicatorUnits.find(
+          (d) => d.unitsCode === displayUnits
+        ).unitsShort
+      })`}</text
+    >
+  {/if}
 </svg>
 
 <style>
