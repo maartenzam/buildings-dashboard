@@ -19,6 +19,7 @@
   export let selectedIndicator;
   export let yDomain = [0, 1];
   export let freeScales;
+  export let shown;
 
   const formatBigNumber = (x) => {
     if (x < 1) {
@@ -132,6 +133,7 @@
     }
   }}
   class={modal ? "clickable" : ""}
+  id={shown ? "downloadable" : ""}
 >
   <!--rect {width} {height} fill={"#ffffff"} /-->
   <g transform={`translate(${margins.left}, ${margins.top})`}>

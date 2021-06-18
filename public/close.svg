@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <clipPath id="clip-custom_1">
+      <rect width="256" height="256"/>
+    </clipPath>
+  </defs>
+  <g id="custom_1" data-name="custom – 1" clip-path="url(#clip-custom_1)">
+    <rect width="256" height="256" fill="#fff"/>
+    <line id="Line_2" data-name="Line 2" x2="123" transform="translate(84.513 85.013) rotate(45)" fill="none" stroke="#707070" stroke-linecap="round" stroke-width="20"/>
+    <line id="Line_5" data-name="Line 5" x2="123" transform="translate(84.513 171.987) rotate(-45)" fill="none" stroke="#707070" stroke-linecap="round" stroke-width="20"/>
+  </g>
+</svg>

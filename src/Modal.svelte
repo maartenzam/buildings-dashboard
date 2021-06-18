@@ -4,6 +4,7 @@
   import { country, allCountryData, countryDataSet } from "./data/DataStore.js";
   import TrendChart from "./TrendChart.svelte";
   import { fade } from "svelte/transition";
+  import { downloadPng } from "svg-crowbar";
 
   let width;
   let height;
@@ -16,6 +17,13 @@
   }
   export function hide() {
     shown = false;
+  }
+
+  function downloadChart() {
+    downloadPng(
+      document.querySelector("#downloadable"),
+      "buildings_dashboard_chart"
+    );
   }
 </script>
 
@@ -31,7 +39,22 @@
   <div class="modal-wrapper" on:click={() => hide()} transition:fade>
     <div class="modal">
       <div class="modal-header">
-        <span class="close" on:click={() => hide()}>&times;</span>
+        <span class="close" on:click={() => hide()}
+          ><img
+            src="./close.svg"
+            alt="Close modal"
+            width={32}
+            height={32}
+          /></span
+        >
+        <span class="download" on:click={downloadChart}
+          ><img
+            src="./download.svg"
+            alt="Download chart"
+            width={32}
+            height={32}
+          /></span
+        >
         <h2>
           {`${countryName}, ${selectedIndicator.indicatorName}`}
         </h2>
@@ -64,6 +87,7 @@
               : $allCountryData.targets}
             freeScales={true}
             {selectedIndicator}
+            {shown}
           />
         </div>
       </div>
@@ -95,12 +119,16 @@
     flex: 1;
     max-height: 500px;
   }
-  .close {
+  .close,
+  .download {
     float: right;
     cursor: pointer;
   }
-  .close:hover {
-    font-weight: bold;
+  .download {
+    margin-right: 10px;
+  }
+  .download:hover {
+    stroke: "black";
   }
   .chart-container {
     height: 100%;

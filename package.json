@@ -42,6 +42,7 @@
     "install": "^0.13.0",
     "npm": "^7.12.1",
     "sirv-cli": "^1.0.0",
+    "svg-crowbar": "^0.6.5",
     "topojson": "^3.0.2"
   }
 }
