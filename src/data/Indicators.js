@@ -31,8 +31,8 @@ const indicators = [
   {
     indicatorCode: "fechh",
     indicatorName: "Final energy consumption (FEC) in households",
-    indicatorExplanation: `<p>FEC in households is a high-level indicator for the <b>impact of renovation strategies on the ground</b>: on average, two-thirds of residential energy demand are used for space heating. Together with water heating, space cooling, cooking and lighting, which are also in the scope of energy renovations, this rises to around 87% of residential energy demand. The remaining 13% are used for electrical appliances (see <a href="https://www.slideshare.net/sustenergy/energy-efficiency-trends-in-buildings-in-the-eu-update">Odyssee-Mure</a>).</p>
-    <p>No specific target for final energy consumption in households is defined. The dashboard therefore refers to figures for energy consumption in residential buildings by 2030 in the <a href="https://ec.europa.eu/energy/sites/ener/files/technical_note_on_the_euco3232_final_14062019.pdf">EUCO3232.5 scenario</a> modelled in 2018 (<span style="border-bottom: 2px dashed orange; padding-bottom: 2px; stroke-linecap: round; color: orange">2030 EU projection</span>) as a <b>benchmark</b>. However, higher ambition will be needed to align with the new EU climate target of 55% by 2030.</a>
+    indicatorExplanation: `<p>FEC in households is a high-level indicator for the <b>impact of renovation strategies on the ground</b>: on average, two-thirds of residential energy demand is used for space heating. Together with water heating, space cooling, cooking and lighting, which are also in the scope of energy renovations, this rises to around 87% of residential energy demand. The remaining 13% are used for electrical appliances (see <a href="https://www.slideshare.net/sustenergy/energy-efficiency-trends-in-buildings-in-the-eu-update" target="_blank">Odyssee-Mure</a>).</p>
+    <p>No specific target for final energy consumption in households is defined. As a <b>benchmark</b>, the dashboard therefore refers to figures for energy consumption in residential buildings by 2030 in the <a href="https://ec.europa.eu/energy/sites/ener/files/technical_note_on_the_euco3232_final_14062019.pdf" target="_blank">EUCO3232.5 scenario</a> modelled in 2018 (<span style="border-bottom: 2px dashed orange; padding-bottom: 2px; stroke-linecap: round; color: orange">2030 EU projection</span>). However, higher ambition will be needed to align with the new EU climate target of 55% by 2030.</a>
     <p>In order to increase accuracy, a <b>climate correction</b> is made, including the weighting of energy demand for heat which differs strongly between buildings located in colder or warmer climates.</p>
     <p>Furthermore, the climate corrected residential FEC is put in proportion to <b>population</b>, another important external factor influencing energy demand.</p>`,
     indicatorUnits: [
@@ -93,7 +93,7 @@ const indicators = [
     indicatorCode: "housing",
     indicatorName: "Population living in bad housing conditions",
     indicatorExplanation: `<p>This indicator is used to monitor progress on <b>high-energy performing, decent-quality housing</b>, by monitoring the percentage of people living in worst performing houses.</p>
-      <p>It displays data from the European Union Statistics on Income and Living Conditions (EU-SILC) project to monitor the development of poverty and social inclusion in the EU. The data collection is based on a survey, which means that indicator values are self-reported. The charts show data from the indicator “Total population living in a dwelling with a leaking roof, damp walls, floors or foundation, or rot in window frames or floor”.
+      <p>It displays data from the "European Union Statistics on Income and Living Conditions (EU-SILC)" project to monitor the development of poverty and social inclusion in the EU. The data collection is based on a survey, which means that indicator values are self-reported. The charts show data from the indicator “Total population living in a dwelling with a leaking roof, damp walls, floors or foundation, or rot in window frames or floor”.
       </p>`,
     indicatorUnits: [
       { unitsCode: "share", unitsName: "Share", unitsShort: "percent" },
@@ -110,8 +110,8 @@ const indicators = [
     indicatorName: "Population unable to keep home warm",
     indicatorExplanation: `
     <p>This indicator is used to monitor the <b>risk of energy poverty</b> development.</p>
-    <p>It measures the share of “Population who are unable to keep home adequately warm by poverty status”. Data for this indicator are being collected as part of the European Union Statistics on Income and Living Conditions (EU-SILC) project to monitor the development of poverty and social inclusion in the EU. The data collection is based on a survey, which means that indicator values are self-reported.</p>
-    <p>Additional information: <a href="https://www.energypoverty.eu/sites/default/files/downloads/publications/20-06/mj0420245enn.en_.pdf">EU Energy Poverty Observatory, Member State Reports on Energy Poverty 2019</a></p>
+    <p>It measures the share of “Population who are unable to keep home adequately warm by poverty status”. Data for this indicator are being collected as part of the "European Union Statistics on Income and Living Conditions (EU-SILC)" project to monitor the development of poverty and social inclusion in the EU. The data collection is based on a survey, which means that indicator values are self-reported.</p>
+    <p>Additional information: <a href="https://www.energypoverty.eu/sites/default/files/downloads/publications/20-06/mj0420245enn.en_.pdf" target="_blank">EU Energy Poverty Observatory, Member State Reports on Energy Poverty 2019</a></p>
     `,
     indicatorUnits: [
       { unitsCode: "share", unitsName: "Share", unitsShort: "percent" },
@@ -154,12 +154,12 @@ const indicators = [
   {
     indicatorCode: "credibility",
     indicatorName: "Credibility of renovation strategy (placeholder)",
-    indicatorExplanation: `<p>Member States had to notify the Commission their <a href="https://ec.europa.eu/energy/topics/energy-efficiency/energy-efficient-buildings/long-term-renovation-strategies_en">national long-term renovation strategies (LTRS)</a> by 10 March 2020. Most LTRS were submitted with delay and some are still not availble.</p>
+    indicatorExplanation: `<p>Member States had to notify the Commission their <a href="https://ec.europa.eu/energy/topics/energy-efficiency/energy-efficient-buildings/long-term-renovation-strategies_en" target="_blank">national Long-Term Renovation Strategies (LTRS)</a> by 10 March 2020. Most LTRS were submitted with delay and some are still not availble.</p>
     <p><b>This section of the Dashboard will be updated once all LTRS are submitted and assessed</b>. Also the Recovery and Resilience Plans (to be submitted by April 2021) will provide an element for assessing the credibility of the national renovation strategies. The criteria for the assessment will include the targets set for 2030 and 2050, the financial framework and measures to support vulnerable households.</p>
     <p>Already available information:</p>
-    <p><a href="https://ec.europa.eu/energy/sites/default/files/swd_commission_preliminary_analysis_of_member_state_ltrss.pdf">Preliminary analysis of the LTRS of 13 Member States</a>: In March 2021, the European Commission published a Staff Working Document assessing the LTRS that were availble in November 2020.</p>
-    <p><a href="https://www.bpie.eu/publication/the-road-to-climate-neutrality-are-national-long-term-renovation-strategies-fit-for-2050/">The road to climate-neutrality</a>: In March 2021, BPIE published an analysis of 8 LTRS whether they are in line with 2030 decarbonisation requirements and on a path towards total decarbonisation of the building stock by 2050.</p>
-    <p>The <a href="https://www.greenrecoverytracker.org/">Green Recovery Tracker</a> assessed the Recovery and Resilience Plans. The Tracker provides an assessment of measures and allocation of funds in the buildings sector. It is continuously updated.</p>`,
+    <p><a href="https://ec.europa.eu/energy/sites/default/files/swd_commission_preliminary_analysis_of_member_state_ltrss.pdf" target="_blank">Preliminary analysis of the LTRS of 13 Member States</a>: In March 2021, the European Commission published a Staff Working Document assessing the LTRS that were availble in November 2020.</p>
+    <p><a href="https://www.bpie.eu/publication/the-road-to-climate-neutrality-are-national-long-term-renovation-strategies-fit-for-2050/" target="_blank">The road to climate-neutrality</a>: In March 2021, BPIE published an analysis of 8 LTRS whether they are in line with 2030 decarbonisation requirements and on a path towards total decarbonisation of the building stock by 2050.</p>
+    <p>The <a href="https://www.greenrecoverytracker.org/" target="_blank">Green Recovery Tracker</a> assessed the Recovery and Resilience Plans. The Tracker provides an assessment of measures and allocation of funds in the buildings sector. It is continuously updated.</p>`,
     indicatorUnits: [
       {
         unitsCode: "credibility",
