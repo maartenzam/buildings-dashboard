@@ -19,10 +19,7 @@
       </Section>
       <Section align="end">
         <a href="/about" style={"color: white; margin-right: 12px;"}>About</a>
-        <!--a href="/guide" style={"color: white; margin-right: 12px;"}
-          >How to use</a
-        -->
-        <img src="./ecf-logo-white.png" alt="ECF logo" height="100%" />
+        <!--img src="./ecf-logo-white.png" alt="ECF logo" height="100%" /-->
       </Section>
     </Row>
   </TopAppBar>

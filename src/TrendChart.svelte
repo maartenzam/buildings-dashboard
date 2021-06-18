@@ -294,8 +294,10 @@
   }
   circle {
     stroke-width: 0.5px;
-    stroke: #1db6c1;
-    fill: #1db6c1;
+    /*stroke: #1db6c1;
+    fill: #1db6c1;*/
+    stroke: #1dc38c;
+    fill: #1dc38c;
     fill-opacity: 0.5;
     stroke-opacity: 1;
   }
@@ -304,7 +306,8 @@
   }
   .regression-line {
     fill: none;
-    stroke: #1db6c1;
+    /*stroke: #1db6c1;*/
+    stroke: #1dc38c;
     stroke-linecap: round;
   }
   .target-lines line {

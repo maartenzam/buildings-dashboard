@@ -23,7 +23,7 @@
 
   const trafficLightColors = ["#387E90", "#F5B944", "#E34C27"];
   //const policyColors = ["#1878d6", "#90b8e0", "#CCCCCC"];
-  const policyColors = ["#1db6c1", "#93e7ed", "#AAAAAA"];
+  const policyColors = ["#4f927b", "#1dc38c", "#AAAAAA"];
 
   const colorScales = {
     gasban: {

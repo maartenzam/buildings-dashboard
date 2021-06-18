@@ -129,6 +129,7 @@
                 {selectedIndicator}
                 {freeScales}
                 {yDomain}
+                shown={false}
               />
             </div>
           </div>
@@ -217,12 +218,13 @@
     background-color: white;
   }
   .highlight-title {
-    background-color: rgba(29, 182, 193, 1);
+    background-color: #1dc38c;
     color: white;
     font-weight: bold;
   }
   .border {
-    border: 1px solid #1db6c1;
+    /*border: 1px solid #1db6c1;*/
+    border: 1px solid #1dc38c;
     background-color: rgba(29, 182, 193, 0);
   }
   .chartlist-container {
