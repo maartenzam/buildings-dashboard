@@ -8,7 +8,7 @@ The repository contains:
 - R code to download and process Eurostat data
 - frontend code to build the dashboard
 
-# Data
+# Source data processing
 
 All source data and data processing code lives in [data](data).
 The [buildings-dashboard-dataprocessing.R](/data/buildings-dashboard-dataprocessing.R) script:
@@ -17,15 +17,15 @@ The [buildings-dashboard-dataprocessing.R](/data/buildings-dashboard-dataprocess
 - downloads data from the relevant Eurostat databases
 - transforms the data and calculates derived values
 - writes csv files to [public/data](public/data) to be used by the dashboard
-- generates an Excel file with all the data, that is written to the [public](public) folder
+- generates an Excel file with all the dashboard data, that is written to the [public](public) folder
 
 ## Data update
 
 Updating the dashboard data requires:
 
-- updating any source data (Excel files in [data](data)) that has new or edited data (make sure not to change column names)
+- updating any source data (benchmark and traffic light indicator Excel files in [data](data)) that has new or edited data (make sure not to change column names)
 - run the [buildings-dashboard-dataprocessing.R](/data/buildings-dashboard-dataprocessing.R) script. This will load the newest data from Eurostat and update all the data for the dashboard. If you are running the R script outside of the repository, then you should have a folder called "public" as a sibling folder to the one you are running the script in. Inside the "public" folder, there should be a "data" folder.
-- after the script is run, the Excel file with all the data is in the "public" folder, the csv files are in the "public/data" folder.
+- after the script is run, the Excel file with all data is in the "public" folder, the csv files are in the "public/data" folder.
 - The updated data needs to be uploaded to the webserver where the dashboard is deployed, and overwrite the existing files on the dashboard. For reasons of precaution, it is best to download the data from the server as a backup before overwriting the files.
 
 # Front end
@@ -65,7 +65,7 @@ You can run the newly built dashboard with `npm run start`. This uses [sirv](htt
 
 To deploy, upload the content of the [public](public) folder after running `npm run build` to the root of a webserver.
 
-# Copy and data
+# Dashboard copy and data
 
 The copy (the content of the indicator explanations and the about page) are stored in [src/data/AboutText.js](src/data/AboutText.js) and in [src/data/Indicators.js](src/data/Indicators). To update the copy of the dashboard, update these files, run `run npm dev` to check if everything is ok, then run `npm run build` and redeploy the content of the [public](public) folder to the server.
 
@@ -109,7 +109,9 @@ The tooltips are making use of [Svelte Material UI tooltips](https://sveltemater
 
 # Generate screen capture of charts
 
-In a few steps, high quality screen captures of charts and other elements can be generated in Google Chrome.
+When a chart is displayed in large format in a modal (when the small charts in the overview are clicked), it can be downloaded by clicking the icon in the top right corner of the modal.
+
+Alternatively, high quality screen captures of charts and other elements of the dashboard can be generated in Google Chrome.
 
 For example, to capture a chart when it is opened in big format (after clicking on a chart on the homepage):
 
