@@ -149,7 +149,12 @@ const indicators = [
         unitsShort: "legislation to ban use of oil",
       },
     ],
-    indicatorSources: [],
+    indicatorSources: [
+      {
+        text: "ECOS, publication of report expected early July 2021",
+        url: "https://ecostandard.org/",
+      },
+    ],
   },
   {
     indicatorCode: "credibility",
