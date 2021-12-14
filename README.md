@@ -125,3 +125,31 @@ Similarly to capture the grid of charts on the homepage, click right on the titl
 To capture the content of a country page: click right on the country dropdown, select "Inspect", find the `<div class="country-page-wrapper ...">` node and execute steps 3 and 4.
 
 [Description of this feature on the developer.chrome.com blog](https://developer.chrome.com/blog/new-in-devtools-62/#node-screenshots)
+
+# Detailed steps to update the dashboard text and source Excel files
+
+1. Before anything, you should make sure to start from the latest master branch. In Github Desktop, select "master" to be the current branch, and click "Fetch origin".
+
+2. Open the folder with the dashboard code in VS Code.
+
+3. In VS Code, click "Terminal" from the menu and click "New terminal".
+
+4. In the terminal, type "npm run start" and hit enter.
+
+5. Open http://localhost:5000 in your browser.
+
+6. Make a new branch: in VS code, click "master" in the bottom left corner of the window, then click "Create new branch" and give the new branch a name (lower case, no spaces).
+
+7. Make the necesarry edits to the copy of the dashboard, most likely in [src/data/AboutText.js](src/data/AboutText.js) and in [src/data/Indicators.js](src/data/Indicators.js). In [src/data/Indicators.js](src/data/Indicators.js), you should only edit the `indicatorExplanation` and the links in `indicatorSources`.
+
+8. If needed, make changes to the [data/traffic_light_indicators_data.xlsx](data/traffic_light_indicators_data.xlsx) file.
+
+9. Save the file(s) you edited.
+
+10. Check if all your edits are reflected in the local version of the dashboard at http://localhost:5000
+
+11. Commit the changes by clicking the Source Control icon in the VS Code side bar (the 3 dots connected with lines), writing a commit message, and clicking the check mark.
+
+12. If needed, repeat making changes, checking them in the browser and commiting them.
+
+13. When you are done making edits, publish the branch to Github: in Github Desktop click "Publish branch to Github" (if the branch hasn't been published yet), or "Push to origin" if you want to update an already published branch.
