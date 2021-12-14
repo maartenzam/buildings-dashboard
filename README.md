@@ -152,4 +152,4 @@ To capture the content of a country page: click right on the country dropdown, s
 
 12. If needed, repeat making changes, checking them in the browser and commiting them.
 
-13. When you are done making edits, publish the branch to Github: in Github Desktop click "Publish branch" (if the branch hasn't been published yet), or "Push to origin" if you want to update an already published branch.
+13. When you are done making edits, publish the branch to Github: in Github Desktop click "Publish branch" (if the branch hasn't been published yet), or "Push origin" if you want to update an already published branch.
