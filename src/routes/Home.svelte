@@ -120,6 +120,9 @@
       <Treemap {treemapData} {width} {height} />
     </div>
   {/if}
+  <div class="updated">
+    <p>Last update: {selectedIndicator.indicatorUpdateDate}</p>
+  </div>
   {#if selectedIndicator.indicatorSources.length > 0}
     <div class="sources">
       <p>
@@ -164,7 +167,8 @@
   .treemap-title {
     font-weight: bold;
   }
-  .sources {
+  .sources,
+  .updated {
     font-size: 0.85rem;
     opacity: 0.7;
   }
