@@ -23,7 +23,15 @@ const AboutText = [
   `,
   `<u>Imprint</u>`,
   `The <b>Dashboard on progress of Europe’s buildings towards climate neutrality</b> is developed by <a href="https://www.stefanscheuer.eu/" target="_blank">Stefan Scheuer Consulting</a> and <a href="https://www.maartenlambrechts.com" target="_blank">Maarten Lambrechts</a> for the <a href="https://europeanclimate.org/" target="_blank">European Climate Foundation</a> and published in June 2021.
-  `,
+  `
+  `<u>Contact for feedback and questions:</u>
+  `
+  `Almut Bonhage
+  `Stefan Scheuer Consulting
+  `almut.bonhage@stefanscheuer.eu
+  `T +32 2 235 20 12
+  `M +32 474 76 22 74  
+  ,
 ];
 
 export default AboutText;
