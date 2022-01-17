@@ -6,7 +6,7 @@ library(dplyr)
 library(readxl)
 library(countrycode)
 library(tidyr)
-library(xlsx)
+library(openxlsx)
 library(geofacet)
 library(zoo)
 
@@ -247,14 +247,28 @@ excel.name <- "../public/ECF-buildings-dashboard-data.xlsx"
 if (file.exists(excel.name)) {
   file.remove(excel.name)
 }
-write.xlsx2(fec.gdp, excel.name, sheetName = "fec.gdp")
-write.xlsx2(targets, excel.name, sheetName = "targets", append = TRUE)
-write.xlsx2(hh.all, excel.name, sheetName = "fec.households", append = TRUE)
-write.xlsx2(hh.renew.wide, excel.name, sheetName = "fec.households.renewables", append = TRUE)
-write.xlsx2(housing, excel.name, sheetName = "housing", append = TRUE)
-write.xlsx2(poverty, excel.name, sheetName = "poverty", append = TRUE)
-write.xlsx2(fossils, excel.name, sheetName = "limit.fossils", append = TRUE)
-write.xlsx2(credibility, excel.name, sheetName = "credibility", append = TRUE)
+
+excelSheets <- list(
+  "fec.gdp" = fec.gdp, 
+  "targets" = targets,
+  "fec.households" = hh.all,
+  "fec.households.renewables" = hh.renew.wide,
+  "housing" = housing,
+  "poverty" = poverty,
+  "limit.fossils" = fossils,
+  "credibility" = credibility
+  )
+write.xlsx(excelSheets, excel.name)
+
+# Old code, with the xlsx package
+# write.xlsx2(fec.gdp, excel.name, sheetName = "fec.gdp")
+# write.xlsx2(targets, excel.name, sheetName = "targets", append = TRUE)
+# write.xlsx2(hh.all, excel.name, sheetName = "fec.households", append = TRUE)
+# write.xlsx2(hh.renew.wide, excel.name, sheetName = "fec.households.renewables", append = TRUE)
+# write.xlsx2(housing, excel.name, sheetName = "housing", append = TRUE)
+# write.xlsx2(poverty, excel.name, sheetName = "poverty", append = TRUE)
+# write.xlsx2(fossils, excel.name, sheetName = "limit.fossils", append = TRUE)
+# write.xlsx2(credibility, excel.name, sheetName = "credibility", append = TRUE)
 
 # Write all the csv files for the dashboard
 write.csv(fec.gdp, file = "../public/data/fec-gdp.csv", row.names = FALSE)
