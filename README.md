@@ -134,7 +134,7 @@ To capture the content of a country page: click right on the country dropdown, s
 
 3. In VS Code, click "Terminal" from the menu and click "New terminal".
 
-4. In the terminal, type "npm run start" and hit enter.
+4. In the terminal, type "npm run dev" and hit enter.
 
 5. Open http://localhost:5000 in your browser.
 
