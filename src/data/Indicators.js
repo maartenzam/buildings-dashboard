@@ -20,11 +20,11 @@ const indicators = [
     indicatorSources: [
       {
         text: "Eurostat FEC (Europe 2020-2030) [nrg_bal_c]",
-        url: "https://appsso.eurostat.ec.europa.eu/nui/show.do?query=BOOKMARK_DS-1015839_QID_276A989_UID_-3F171EB0&layout=TIME,C,X,0;GEO,L,Y,0;NRG_BAL,L,Z,0;SIEC,L,Z,1;UNIT,L,Z,2;INDICATORS,C,Z,3;&zSelection=DS-1015839INDICATORS,OBS_FLAG;DS-1015839UNIT,KTOE;DS-1015839NRG_BAL,FEC2020-2030;DS-1015839SIEC,TOTAL;&rankName1=SIEC_1_2_-1_2&rankName2=UNIT_1_2_-1_2&rankName3=INDICATORS_1_2_-1_2&rankName4=NRG-BAL_1_2_-1_2&rankName5=TIME_1_0_0_0&rankName6=GEO_1_2_0_1&sortC=ASC_-1_FIRST&rStp=&cStp=&rDCh=&cDCh=&rDM=true&cDM=true&footnes=false&empty=false&wai=false&time_mode=NONE&time_most_recent=false&lang=EN&cfo=%23%23%23%2C%23%23%23.%23%23%23",
+        url: "https://appsso.eurostat.ec.europa.eu/nui/show.do?query=BOOKMARK_DS-1015839_QID_-24AF4327_UID_-3F171EB0&layout=TIME,C,X,0;GEO,L,Y,0;NRG_BAL,L,Z,0;SIEC,L,Z,1;UNIT,L,Z,2;INDICATORS,C,Z,3;&zSelection=DS-1015839INDICATORS,OBS_FLAG;DS-1015839UNIT,KTOE;DS-1015839NRG_BAL,FEC2020-2030;DS-1015839SIEC,TOTAL;&rankName1=SIEC_1_2_-1_2&rankName2=UNIT_1_2_-1_2&rankName3=INDICATORS_1_2_-1_2&rankName4=NRG-BAL_1_2_-1_2&rankName5=TIME_1_0_0_0&rankName6=GEO_1_2_0_1&sortC=ASC_-1_FIRST&rStp=&cStp=&rDCh=&cDCh=&rDM=true&cDM=true&footnes=false&empty=false&wai=false&time_mode=ROLLING&time_most_recent=false&lang=EN&cfo=%23%23%23%2C%23%23%23.%23%23%23",
       },
       {
         text: "Eurostat GDP [nama_10_gdp]",
-        url: "https://appsso.eurostat.ec.europa.eu/nui/show.do?query=BOOKMARK_DS-406763_QID_-31605D26_UID_-3F171EB0&layout=TIME,C,X,0;GEO,L,Y,0;UNIT,L,Z,0;NA_ITEM,L,Z,1;INDICATORS,C,Z,2;&zSelection=DS-406763INDICATORS,OBS_FLAG;DS-406763UNIT,CLV10_MEUR;DS-406763NA_ITEM,B1GQ;&rankName1=NA-ITEM_1_2_-1_2&rankName2=UNIT_1_2_-1_2&rankName3=INDICATORS_1_2_-1_2&rankName4=TIME_1_0_0_0&rankName5=GEO_1_2_0_1&sortC=ASC_-1_FIRST&rStp=&cStp=&rDCh=&cDCh=&rDM=true&cDM=true&footnes=false&empty=false&wai=false&time_mode=NONE&time_most_recent=false&lang=EN&cfo=%23%23%23%2C%23%23%23.%23%23%23",
+        url: "https://appsso.eurostat.ec.europa.eu/nui/show.do?query=BOOKMARK_DS-406763_QID_21D2AEB1_UID_-3F171EB0&layout=TIME,C,X,0;GEO,L,Y,0;UNIT,L,Z,0;NA_ITEM,L,Z,1;INDICATORS,C,Z,2;&zSelection=DS-406763INDICATORS,OBS_FLAG;DS-406763UNIT,CLV10_MEUR;DS-406763NA_ITEM,B1GQ;&rankName1=NA-ITEM_1_2_-1_2&rankName2=UNIT_1_2_-1_2&rankName3=INDICATORS_1_2_-1_2&rankName4=TIME_1_0_0_0&rankName5=GEO_1_2_0_1&sortC=ASC_-1_FIRST&rStp=&cStp=&rDCh=&cDCh=&rDM=true&cDM=true&footnes=false&empty=false&wai=false&time_mode=ROLLING&time_most_recent=false&lang=EN&cfo=%23%23%23%2C%23%23%23.%23%23%23",
       },
     ],
     treeMapTitle: "FEC (Mtoe) by Members State",
@@ -53,7 +53,7 @@ const indicators = [
     indicatorSources: [
       {
         text: "Eurostat FEC in households [nrg_bal_c]",
-        url: "https://appsso.eurostat.ec.europa.eu/nui/show.do?query=BOOKMARK_DS-1015839_QID_276A989_UID_-3F171EB0&layout=TIME,C,X,0;GEO,L,Y,0;NRG_BAL,L,Z,0;SIEC,L,Z,1;UNIT,L,Z,2;INDICATORS,C,Z,3;&zSelection=DS-1015839INDICATORS,OBS_FLAG;DS-1015839UNIT,KTOE;DS-1015839NRG_BAL,FEC2020-2030;DS-1015839SIEC,TOTAL;&rankName1=SIEC_1_2_-1_2&rankName2=UNIT_1_2_-1_2&rankName3=INDICATORS_1_2_-1_2&rankName4=NRG-BAL_1_2_-1_2&rankName5=TIME_1_0_0_0&rankName6=GEO_1_2_0_1&sortC=ASC_-1_FIRST&rStp=&cStp=&rDCh=&cDCh=&rDM=true&cDM=true&footnes=false&empty=false&wai=false&time_mode=NONE&time_most_recent=false&lang=EN&cfo=%23%23%23%2C%23%23%23.%23%23%23",
+        url: "https://appsso.eurostat.ec.europa.eu/nui/show.do?query=BOOKMARK_DS-1015839_QID_-11C28DC8_UID_-3F171EB0&layout=TIME,C,X,0;GEO,L,Y,0;NRG_BAL,L,Z,0;SIEC,L,Z,1;UNIT,L,Z,2;INDICATORS,C,Z,3;&zSelection=DS-1015839INDICATORS,OBS_FLAG;DS-1015839UNIT,KTOE;DS-1015839NRG_BAL,FEC2020-2030;DS-1015839SIEC,TOTAL;&rankName1=SIEC_1_2_-1_2&rankName2=UNIT_1_2_-1_2&rankName3=INDICATORS_1_2_-1_2&rankName4=NRG-BAL_1_2_-1_2&rankName5=TIME_1_0_0_0&rankName6=GEO_1_2_0_1&sortC=ASC_-1_FIRST&rStp=&cStp=&rDCh=&cDCh=&rDM=true&cDM=true&footnes=false&empty=false&wai=false&time_mode=ROLLING&time_most_recent=false&lang=EN&cfo=%23%23%23%2C%23%23%23.%23%23%23",
       },
       {
         text: "Eurostat Cooling and heating degree days [nrg_chdd_a]",
@@ -61,7 +61,7 @@ const indicators = [
       },
       {
         text: "Eurostat Disaggregated FEC in households [nrg_d_hhq]",
-        url: "https://appsso.eurostat.ec.europa.eu/nui/show.do?query=BOOKMARK_DS-1167021_QID_-44C4D3AC_UID_-3F171EB0&layout=TIME,C,X,0;GEO,L,Y,0;NRG_BAL,L,Z,0;SIEC,L,Z,1;UNIT,L,Z,2;INDICATORS,C,Z,3;&zSelection=DS-1167021NRG_BAL,FC_OTH_HH_E_SC;DS-1167021INDICATORS,OBS_FLAG;DS-1167021SIEC,TOTAL;DS-1167021UNIT,TJ;&rankName1=SIEC_1_2_-1_2&rankName2=UNIT_1_2_-1_2&rankName3=INDICATORS_1_2_-1_2&rankName4=NRG-BAL_1_2_-1_2&rankName5=TIME_1_0_0_0&rankName6=GEO_1_2_0_1&sortC=ASC_-1_FIRST&rStp=&cStp=&rDCh=&cDCh=&rDM=true&cDM=true&footnes=false&empty=false&wai=false&time_mode=NONE&time_most_recent=false&lang=EN&cfo=%23%23%23%2C%23%23%23.%23%23%23",
+        url: "https://appsso.eurostat.ec.europa.eu/nui/show.do?query=BOOKMARK_DS-1167021_QID_-2FA34126_UID_-3F171EB0&layout=TIME,C,X,0;GEO,L,Y,0;NRG_BAL,L,Z,0;SIEC,L,Z,1;UNIT,L,Z,2;INDICATORS,C,Z,3;&zSelection=DS-1167021NRG_BAL,FC_OTH_HH_E;DS-1167021INDICATORS,OBS_FLAG;DS-1167021SIEC,TOTAL;DS-1167021UNIT,TJ;&rankName1=SIEC_1_2_-1_2&rankName2=UNIT_1_2_-1_2&rankName3=INDICATORS_1_2_-1_2&rankName4=NRG-BAL_1_2_-1_2&rankName5=TIME_1_0_0_0&rankName6=GEO_1_2_0_1&sortC=ASC_-1_FIRST&rStp=&cStp=&rDCh=&cDCh=&rDM=true&cDM=true&footnes=false&empty=false&wai=false&time_mode=ROLLING&time_most_recent=false&lang=EN&cfo=%23%23%23%2C%23%23%23.%23%23%23",
       },
       {
         text: "Eurostat Population on 1 January [demo_pjan]",
@@ -88,7 +88,7 @@ const indicators = [
     indicatorSources: [
       {
         text: "Eurostat Complete energy balances [nrg_bal_c]",
-        url: "https://appsso.eurostat.ec.europa.eu/nui/show.do?query=BOOKMARK_DS-1015839_QID_448969_UID_-3F171EB0&layout=TIME,C,X,0;GEO,L,Y,0;NRG_BAL,L,Z,0;SIEC,L,Z,1;UNIT,L,Z,2;INDICATORS,C,Z,3;&zSelection=DS-1015839INDICATORS,OBS_FLAG;DS-1015839UNIT,KTOE;DS-1015839NRG_BAL,FC_OTH_HH_E;DS-1015839SIEC,RA000;&rankName1=SIEC_1_2_-1_2&rankName2=UNIT_1_2_-1_2&rankName3=INDICATORS_1_2_-1_2&rankName4=NRG-BAL_1_2_-1_2&rankName5=TIME_1_0_0_0&rankName6=GEO_1_2_0_1&sortC=ASC_-1_FIRST&rStp=&cStp=&rDCh=&cDCh=&rDM=true&cDM=true&footnes=false&empty=false&wai=false&time_mode=NONE&time_most_recent=false&lang=EN&cfo=%23%23%23%2C%23%23%23.%23%23%23",
+        url: "https://appsso.eurostat.ec.europa.eu/nui/show.do?query=BOOKMARK_DS-1015839_QID_-5D358863_UID_-3F171EB0&layout=TIME,C,X,0;GEO,L,Y,0;NRG_BAL,L,Z,0;SIEC,L,Z,1;UNIT,L,Z,2;INDICATORS,C,Z,3;&zSelection=DS-1015839INDICATORS,OBS_FLAG;DS-1015839UNIT,KTOE;DS-1015839NRG_BAL,FC_OTH_HH_E;DS-1015839SIEC,RA000;&rankName1=SIEC_1_2_-1_2&rankName2=UNIT_1_2_-1_2&rankName3=INDICATORS_1_2_-1_2&rankName4=NRG-BAL_1_2_-1_2&rankName5=TIME_1_0_0_0&rankName6=GEO_1_2_0_1&sortC=ASC_-1_FIRST&rStp=&cStp=&rDCh=&cDCh=&rDM=true&cDM=true&footnes=false&empty=false&wai=false&time_mode=ROLLING&time_most_recent=false&lang=EN&cfo=%23%23%23%2C%23%23%23.%23%23%23",
       },
     ],
   },
