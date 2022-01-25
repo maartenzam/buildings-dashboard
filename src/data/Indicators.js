@@ -16,7 +16,7 @@ const indicators = [
         unitsShort: "toe/million € GDP",
       },
     ],
-    indicatorUpdateDate: "17 December 2021",
+    indicatorUpdateDate: "17 January 2022",
     indicatorSources: [
       {
         text: "Eurostat FEC (Europe 2020-2030) [nrg_bal_c]",
@@ -49,7 +49,7 @@ const indicators = [
         unitsShort: "kg/cap/year",
       },
     ],
-    indicatorUpdateDate: "17 December 2021",
+    indicatorUpdateDate: "17 January 2022",
     indicatorSources: [
       {
         text: "Eurostat FEC in households [nrg_bal_c]",
@@ -84,7 +84,7 @@ const indicators = [
         unitsShort: "percent",
       },
     ],
-    indicatorUpdateDate: "17 December 2021",
+    indicatorUpdateDate: "17 January 2022",
     indicatorSources: [
       {
         text: "Eurostat Complete energy balances [nrg_bal_c]",
@@ -101,7 +101,7 @@ const indicators = [
     indicatorUnits: [
       { unitsCode: "share", unitsName: "Share", unitsShort: "percent" },
     ],
-    indicatorUpdateDate: "17 December 2021",
+    indicatorUpdateDate: "17 January 2022",
     indicatorSources: [
       {
         text: "Eurostat EU-SILC Total population living in a dwelling with a leaking roof, damp walls, floors or foundation, or rot in window frames or floor [ilc_mdho01]",
@@ -120,7 +120,7 @@ const indicators = [
     indicatorUnits: [
       { unitsCode: "share", unitsName: "Share", unitsShort: "percent" },
     ],
-    indicatorUpdateDate: "17 December 2021",
+    indicatorUpdateDate: "17 January 2022",
     indicatorSources: [
       {
         text: "Eurostat EU-SILC Population unable to keep home adequately warm by poverty status, total [sdg_07_60] ",
@@ -154,7 +154,7 @@ const indicators = [
         unitsShort: "legislation to ban use of oil",
       },
     ],
-    indicatorUpdateDate: "17 December 2021",
+    indicatorUpdateDate: "17 January 2022",
     indicatorSources: [
       {
         text: "ECOS, Member States’ ambition to phase out fossil-fuel heating – an analysis, Background briefing, July 2021",
@@ -183,7 +183,7 @@ const indicators = [
         unitsShort: "status",
       },
     ],
-    indicatorUpdateDate: "17 December 2021",
+    indicatorUpdateDate: "17 January 2022",
     indicatorSources: [],
   },
 ];
