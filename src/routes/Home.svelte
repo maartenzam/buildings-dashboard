@@ -70,11 +70,14 @@
 
   $: treemapData = countriesData.map((d) => {
     const country = d[0];
-    const absolute = d[1].slice(-1)[0].absolute;
+    const years = d[1].map(d => d.time)
+    const mostRecentDate = years.reduce(function (a, b) { return a > b ? a : b; });
+    const absolute = d[1].find(d => d.time === mostRecentDate).absolute;
     return {
       parent: "root",
       country: country,
       absolute: absolute,
+      time: mostRecentDate
     };
   });
 </script>
