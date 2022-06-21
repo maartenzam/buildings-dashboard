@@ -233,6 +233,10 @@ credibility = read_excel("traffic_light_indicators_data.xlsx", sheet = "credibil
 credibility$name <- countrycode(credibility$geo, origin = "eurostat", destination = "country.name")
 credibility <- credibility %>% rename(credibility.status = LTRS)
 
+ambition <- read_excel("traffic_light_indicators_data.xlsx", sheet = "ambition_NECP_EE_FEC")
+ambition$name <- countrycode(credibility$geo, origin = "eurostat", destination = "country.name")
+ambition <- select(ambition, -url)
+
 # Country codes
 EU27 <- eu_grid1
 # Replace UK with EU27, and swap Ireland with EU27, so the latter is on top
@@ -257,6 +261,7 @@ excelSheets <- list(
   "poverty" = poverty,
   "limit.fossils" = fossils,
   "credibility" = credibility
+  "ambition" = ambition
   )
 write.xlsx(excelSheets, excel.name)
 
@@ -278,5 +283,6 @@ write.csv(housing, file = "../public/data/housing.csv", row.names = FALSE)
 write.csv(poverty, file = "../public/data/poverty.csv", row.names = FALSE)
 write.csv(fossils, file = "../public/data/fossils.csv", row.names = FALSE)
 write.csv(credibility, file = "../public/data/credibility.csv", row.names = FALSE)
+write.csv(ambition, file = "../public/data/ambition.csv", row.names = FALSE)
 write.csv(EU27, file = "../public/data/EU27.csv", row.names = FALSE)
 write.csv(targets, file = "../public/data/targets.csv", row.names = FALSE)
