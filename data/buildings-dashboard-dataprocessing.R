@@ -260,7 +260,7 @@ excelSheets <- list(
   "housing" = housing,
   "poverty" = poverty,
   "limit.fossils" = fossils,
-  "credibility" = credibility
+  "credibility" = credibility,
   "ambition" = ambition
   )
 write.xlsx(excelSheets, excel.name)
