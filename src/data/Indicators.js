@@ -154,7 +154,7 @@ const indicators = [
         unitsShort: "legislation to ban use of oil",
       },
     ],
-    indicatorUpdateDate: "17 January 2022",
+    indicatorUpdateDate: "30 June 2022",
     indicatorSources: [
       {
         text: "ECOS, Member States’ ambition to phase out fossil-fuel heating – an analysis, Background briefing, July 2021",
@@ -169,9 +169,9 @@ const indicators = [
   {
     indicatorCode: "credibility",
     indicatorName: "Credibility of renovation strategy (placeholder)",
-    indicatorExplanation: `<p><b>This section of the Dashboard will be updated early 2022</b>. For now, it reflects the availability of LTRSs. </p>
-    <p>Member States had to notify the Commission their <a href="https://ec.europa.eu/energy/topics/energy-efficiency/energy-efficient-buildings/long-term-renovation-strategies_en" target="_blank">national Long-Term Renovation Strategies (LTRS)</a> by 10 March 2020. Most LTRSs were submitted with delay. The LTRS of Poland is still not availble.</p>
-    <p>Already available information:</p>
+    indicatorExplanation: `<p>In absence of a credibility assessment of renovation strategies, this section of the Dashboard reflects the availability of LTRSs. </p>
+    <p>Member States had to notify the Commission their <a href="https://ec.europa.eu/energy/topics/energy-efficiency/energy-efficient-buildings/long-term-renovation-strategies_en" target="_blank">national Long-Term Renovation Strategies (LTRS)</a> by 10 March 2020. Most LTRSs were submitted with delay. </p>
+    <p>Available information:</p>
     <p><a href="https://ec.europa.eu/energy/sites/default/files/swd-on-national-long-term-renovation-strategies.pdf" target="_blank">Analysis of the LTRSs</a>: On 15 December 2021, the European Commission published a Staff Working Document assessing the 26 LTRSs submitted. </p>
     <p><a href="https://www.renovate-europe.eu/renovate2recover-how-transformational-are-the-national-recovery-plans-for-buildings-renovation/" target="_blank">Renovate Europe Campaign/E3G, Renovate2Recover: How transformational are the National Recovery Plans for Buildings Renovation?</a> In October 2021, Renovate Europe published a study assessing the NRRPs of 15 Members States.</p>
     <p><a href="https://www.bpie.eu/publication/the-road-to-climate-neutrality-are-national-long-term-renovation-strategies-fit-for-2050/" target="_blank">The road to climate-neutrality</a>: In March 2021, BPIE published an analysis of 8 LTRSs whether they are in line with 2030 decarbonisation requirements and on a path towards total decarbonisation of the building stock by 2050.</p>
@@ -183,7 +183,7 @@ const indicators = [
         unitsShort: "status",
       },
     ],
-    indicatorUpdateDate: "17 January 2022",
+    indicatorUpdateDate: "30 June 2022",
     indicatorSources: [],
   },
 ];
