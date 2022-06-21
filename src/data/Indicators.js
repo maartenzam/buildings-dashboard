@@ -46,7 +46,7 @@ const indicators = [
       {
         unitsCode: "climatecapita",
         unitsName: "Climate corrected, per capita",
-        unitsShort: "kg/cap/year",
+        unitsShort: "toe/cap/year",
       },
     ],
     indicatorUpdateDate: "17 January 2022",
