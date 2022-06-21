@@ -10,6 +10,7 @@ const povertyDataURL = "/data/poverty.csv";
 const housingDataURL = "/data/housing.csv";
 const gasGridDataURL = "/data/fossils.csv";
 const credibilityDataURL = "/data/credibility.csv";
+const ambitionDataURL = "/data/ambition.csv";
 const countryDataURL = "/data/EU27.csv";
 const targetsDataURL = "/data/targets.csv";
 const centroidsDataURL = "/data/centroids.csv";
@@ -101,6 +102,20 @@ export const credibilityDataSet = readable(
   { table: [], byCountry: [] },
   (set) => {
     Promise.all([csv(credibilityDataURL, autoType)]).then(([table]) => {
+      const byCountry = groups(table, (d) => d.geo);
+      set({
+        table,
+        byCountry,
+      });
+    });
+    return () => {};
+  }
+);
+
+export const ambitionDataSet = readable(
+  { table: [], byCountry: [] },
+  (set) => {
+    Promise.all([csv(ambitionDataURL, autoType)]).then(([table]) => {
       const byCountry = groups(table, (d) => d.geo);
       set({
         table,

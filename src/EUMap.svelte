@@ -7,6 +7,7 @@
     centroidsDataSet,
     gasGridDataSet,
     credibilityDataSet,
+    ambitionDataSet
   } from "./data/DataStore.js";
   import Tooltip, { Wrapper, Content } from "@smui/tooltip";
 
@@ -19,11 +20,13 @@
   $: mapData =
     selectedIndicator.indicatorCode === "gasban"
       ? $gasGridDataSet.table
-      : $credibilityDataSet.table;
+      : selectedIndicator.indicatorCode === "credibility"
+        ? $credibilityDataSet.table
+        : $ambitionDataSet.table
 
   const trafficLightColors = ["#387E90", "#F5B944", "#E34C27"];
-  //const policyColors = ["#1878d6", "#90b8e0", "#CCCCCC"];
   const policyColors = ["#4f927b", "#1dc38c", "#AAAAAA"];
+  const ambitionColors = ["#E34C27", "#F5B944", "#A3C1E3", "#4f927b"]
 
   const colorScales = {
     gasban: {
@@ -36,9 +39,24 @@
       "submitted / not yet assessed": trafficLightColors[1],
       "not submitted": trafficLightColors[2],
     },
+    ambitionNECP: {
+      sufficient: ambitionColors[3],
+      modest: ambitionColors[2],
+      low: ambitionColors[1],
+      "very low": ambitionColors[0],
+    },
+    ambitionRecast: {
+      "more ambition": ambitionColors[3],
+      "no position": policyColors[2],
+      "less ambition": ambitionColors[0]
+    }
   };
 
-  $: colorScale = colorScales[selectedIndicator.indicatorCode];
+  $: colorScale = selectedIndicator.indicatorCode == "gasban" || selectedIndicator.indicatorCode == "credibility" 
+    ? colorScales[selectedIndicator.indicatorCode]
+    : displayUnits == "ee.fec.necp"
+      ? colorScales["ambitionNECP"]
+      : colorScales["ambitionRecast"]
 
   const sizeScale = scaleSqrt().domain([0, 85000000]).range([0, 36]);
 
@@ -84,17 +102,10 @@
     data = land.features;
   });
 
-  let bubble = false;
-
   const margins = { top: 10, left: 0, right: 10, bottom: 0 };
   const legendHeight = 100 - margins.top - margins.bottom;
   const legendWidth = 200;
 </script>
-
-<!--label>
-  <input type="checkbox" bind:checked={bubble} />
-  Bubble map
-</label-->
 
 <svg {width} {height}>
   <rect {width} {height} class="sea" />
@@ -103,13 +114,17 @@
       <path
         d={path(feature)}
         class="country"
-        fill={mapData.find((d) => d.name === feature.properties.name) && !bubble
+        fill={mapData.find((d) => d.name === feature.properties.name) && selectedIndicator.indicatorCode != "ambition"
           ? colorScale[
               mapData.find((d) => d.name === feature.properties.name)[
                 displayUnits + ".status"
               ]
             ]
-          : "#ffffff"}
+          : mapData.find((d) => d.name === feature.properties.name) && selectedIndicator.indicatorCode == "ambition"
+            ? colorScale[
+              mapData.find((d) => d.name === feature.properties.name)[displayUnits]
+            ]
+            : "#ffffff"}
       />
       {#if selectedIndicator.indicatorCode === "gasban" && mapData.find((d) => d.name === feature.properties.name) !== undefined}
         <Tooltip rich
@@ -144,19 +159,6 @@
     </Wrapper>
   {/each}
 
-  {#if bubble}
-    {#each $centroidsDataSet.table as bubble}
-      <circle
-        class="bubble"
-        cx={projection([bubble.long, bubble.lat])[0]}
-        cy={projection([bubble.long, bubble.lat])[1]}
-        r={sizeScale(bubble.pop)}
-        fill={colorScale[
-          $gasGridDataSet.table.find((d) => d.geo === bubble.code).status
-        ]}
-      />
-    {/each}
-  {/if}
   {#each $centroidsDataSet.table as label}
     <Wrapper>
       <a href={`/country/${label.code}`}>
@@ -241,21 +243,10 @@
     fill: #55b4bf;
     opacity: 0.2;
   }
-  .bubble {
-    stroke: white;
-    stroke-width: 1px;
-    opacity: 0.9;
-  }
   .traffic-light-legend text {
     font-size: 12px;
     text-anchor: middle;
     fill: #ffffff;
     opacity: 0.95;
   }
-  /*label {
-    position: absolute;
-    left: 10px;
-    top: 80px;
-    z-index: 10;
-  }*/
 </style>

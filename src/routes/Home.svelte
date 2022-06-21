@@ -10,6 +10,7 @@
     housingDataSet,
     gasGridDataSet,
     credibilityDataSet,
+    ambitionDataSet
   } from "./../data/DataStore.js";
   import indicators from "./../data/Indicators.js";
   import Modal from "./../Modal.svelte";
@@ -63,6 +64,11 @@
       data: $credibilityDataSet.byCountry,
       credibility: "credibility",
     },
+    ambition: {
+      data: $ambitionDataSet.byCountry,
+      fecnecp: "ee.fec.necp",
+      recast: "eed.recast"
+    }
   };
 
   $: countriesData = dataMap[selectedIndicator.indicatorCode].data;
@@ -91,7 +97,7 @@
     </div>
   </div>
 
-  {#if selectedIndicator.indicatorCode === "gasban" || selectedIndicator.indicatorCode === "credibility"}
+  {#if selectedIndicator.indicatorCode === "gasban" || selectedIndicator.indicatorCode === "credibility" || selectedIndicator.indicatorCode === "ambition"}
     <div
       class="map-container"
       bind:offsetWidth={mapWidth}
