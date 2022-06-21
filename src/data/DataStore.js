@@ -161,6 +161,7 @@ export const allCountryData = derived(
     povertyDataSet,
     gasGridDataSet,
     credibilityDataSet,
+    ambitionDataSet,
     targetsDataSet,
     country,
   ],
@@ -172,6 +173,7 @@ export const allCountryData = derived(
     $povertyDataSet,
     $gasGridDataSet,
     $credibilityDataSet,
+    $ambitionDataSet,
     $targetsDataSet,
     $country,
   ]) => {
@@ -185,8 +187,8 @@ export const allCountryData = derived(
     const povertyData = $povertyDataSet.byCountry.filter(countryFilter)[0];
     const housingData = $housingDataSet.byCountry.filter(countryFilter)[0];
     const gasGridData = $gasGridDataSet.byCountry.filter(countryFilter)[0];
-    const credibilityData =
-      $credibilityDataSet.byCountry.filter(countryFilter)[0];
+    const credibilityData = $credibilityDataSet.byCountry.filter(countryFilter)[0];
+    const ambitionData = $ambitionDataSet.byCountry.filter(countryFilter)[0]
     const targetsData = $targetsDataSet.byCountry.filter(countryFilter)[0];
 
     return {
@@ -197,6 +199,7 @@ export const allCountryData = derived(
       housing: housingData,
       gasgrid: gasGridData,
       credibility: credibilityData,
+      ambition: ambitionData,
       targets: targetsData,
     };
   }

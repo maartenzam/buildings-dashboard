@@ -28,6 +28,8 @@
   let renewSelectedUnit = "share";
   let housingSelectedUnit = "share";
   let povertySelectedUnit = "share";
+
+  $: console.log($allCountryData.ambition[1][0])
 </script>
 
 <div class="country-page-wrapper">
@@ -197,7 +199,7 @@
           </li>
         </ul>
         <p>
-          And for <b>existing buildgins</b>.
+          And for <b>existing buildings</b>.
         </p>
         <ul>
           <li>
@@ -219,6 +221,11 @@
         <p>
           The national long-term renovation strategy is {$allCountryData
             .credibility[1][0]["credibility.status"]}.
+        </p>
+        <h4>Ambition level on energy efficiency</h4>
+        <p>
+          The ambition on energy efficiency (FEC) is  {$allCountryData
+            .ambition[1][0]["ee.fec.necp"]}.
         </p>
       {/if}
     </div>
