@@ -18,6 +18,7 @@
         {/if}
       </Section>
       <Section align="end">
+        <a href="/report" style={"color: white; margin-right: 12px;"}>Report 2022</a>
         <a href="/about" style={"color: white; margin-right: 12px;"}>About</a>
         <!--img src="./ecf-logo-white.png" alt="ECF logo" height="100%" /-->
       </Section>

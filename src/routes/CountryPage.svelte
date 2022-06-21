@@ -28,8 +28,6 @@
   let renewSelectedUnit = "share";
   let housingSelectedUnit = "share";
   let povertySelectedUnit = "share";
-
-  $: console.log($allCountryData.ambition[1][0])
 </script>
 
 <div class="country-page-wrapper">
