@@ -154,7 +154,7 @@ const indicators = [
         unitsShort: "legislation to ban use of oil",
       },
     ],
-    indicatorUpdateDate: "30 June 2022",
+    indicatorUpdateDate: "22 June 2022",
     indicatorSources: [
       {
         text: "ECOS, Member States’ ambition to phase out fossil-fuel heating – an analysis, Background briefing, July 2021",
@@ -194,9 +194,9 @@ const indicators = [
     <li>The Commission assessment of the final energy consumption (FEC) by 2030 indicated by Member States in their NECPs.</li>
     <li>The attitude of the Member State during the negotiation of the EED recast </li>
     </ol>
-    <p>Member States had to submit by end of 2019 their National Energy and Climate Plan (NECP) for 2021-2030 to the Commission. In these NECPs, Member States set their national contribution to achieve the EU-wide energy efficiency target according to the Energy Efficiency Directive. The <a href="https://energy.ec.europa.eu/topics/energy-strategy/national-energy-and-climate-plans-necps_en#the-process" target="_blank"><bold>Commission assessed the NECPs</bold> and qualified the national contribution</a> as sufficient, moderate, low or very low (see summary of each assessment). The Commission found that the cumulative impact of the NECPs for energy efficiency (FEC) would sum up to 29.4% and thus fall short of the current target of 32.5%. Member States will have to update their NECP by June 2024 in order to take into account the new EU-wide energy efficiency target as agreed in the Energy Efficiency Directive recast.</p>
+    <p>Member States had to submit by end of 2019 their National Energy and Climate Plan (NECP) for 2021-2030 to the Commission. In these NECPs, Member States set their national contribution to achieve the EU-wide energy efficiency target according to the Energy Efficiency Directive. The <a href="https://energy.ec.europa.eu/topics/energy-strategy/national-energy-and-climate-plans-necps_en#the-process" target="_blank"><bold>Commission assessed the NECPs</bold> and qualified the national contribution</a> as sufficient, moderate, low or very low (see summary of each assessment). The Commission found that the cumulative impact of the NECPs for energy efficiency (FEC) would sum up to 29.4%, falling short of the current target of 32.5%. Member States will have to update their NECP by June 2024 in order to take into account the new EU-wide energy efficiency target as agreed in the Energy Efficiency Directive recast.</p>
 
-    <p>During the <bold>negotiation of the Energy Efficiency Directive recast</bold>, some Member States expressed concern about too much, respective not enough ambition. These attitudes are expressed in the second presentation. (Basis is a joint comment by less ambitious Member States from 13 April 2022 and a letter by more ambitious Member States from 14 June 2022). The Energy Ministers will discuss the EED recast on 27 June 2022.</p>`,
+    <p>During the <bold>negotiation of the Energy Efficiency Directive recast</bold>, some Member States expressed concern about too high ambitions in the proposal and negotiation texts. This concern was expressed in joint comments by those less ambitious Member States dating from 13 April respective 8 June 2022. The Energy Ministers will discuss the EED recast on 27 June 2022.</p>`,
     indicatorUnits: [
       {
         unitsCode: "fecnecp",
