@@ -183,7 +183,7 @@ const indicators = [
         unitsShort: "status",
       },
     ],
-    indicatorUpdateDate: 22 June 2022",
+    indicatorUpdateDate: "22 June 2022",
     indicatorSources: [],
   },
   {
