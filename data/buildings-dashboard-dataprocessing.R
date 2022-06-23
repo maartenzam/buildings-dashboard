@@ -235,7 +235,9 @@ credibility <- credibility %>% rename(credibility.status = LTRS)
 
 ambition <- read_excel("traffic_light_indicators_data.xlsx", sheet = "ambition_NECP_EE_FEC")
 ambition$name <- countrycode(credibility$geo, origin = "eurostat", destination = "country.name")
-ambition <- select(ambition, -url)
+ambition <- select(ambition, -...3) %>%
+  rename(ee.fec.necp = `EE FEC NECP`, eed.recast = `EED recast`)
+
 
 # Country codes
 EU27 <- eu_grid1
