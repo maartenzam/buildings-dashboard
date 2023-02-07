@@ -128,9 +128,12 @@
     .x((d) => xScale(new Date(d[0])))
     .y((d) => yScale(d[1]));
 
-  $: xTicks = xDomain.concat(
-    scaleTime().domain(xDomain).ticks(timeYear.every(5))
-  );
+  $: intermediateXTicks = scaleTime().domain(xDomain).ticks(timeYear.every(5))
+  // Remove 2020 from the x axis to avoid overlap with 2021 tick label
+  $: if(xDomain[1].getFullYear() == 2021){
+      intermediateXTicks = intermediateXTicks.slice(0, intermediateXTicks.length - 1)
+    }
+  $: xTicks = xDomain.concat(intermediateXTicks);
 
   const formatFullYear = timeFormat("%Y");
 
