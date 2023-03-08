@@ -1,5 +1,5 @@
 <script>
-    import ReportText from "./../data/ReportText.js";
+    import ReportText from "../data/ReportText22.js";
   </script>
   
   <div class="container">

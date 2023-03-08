@@ -2,7 +2,8 @@
   import { Route } from "tinro";
   import Home from "./routes/Home.svelte";
   import About from "./routes/About.svelte";
-  import Report from "./routes/Report.svelte";
+  import Report22 from "./routes/Report22.svelte";
+  import Report23 from "./routes/Report23.svelte";
   import CountryPage from "./routes/CountryPage.svelte";
   import TopBar from "./TopBar.svelte";
   import Footer from "./Footer.svelte";
@@ -17,8 +18,11 @@
     <Route path="/country/:country" let:meta>
       <CountryPage />
     </Route>
-    <Route path="/report">
-      <Report />
+    <Route path="/report-2022">
+      <Report22 />
+    </Route>
+    <Route path="/report-2023">
+      <Report23 />
     </Route>
     <Route path="/about">
       <About />
